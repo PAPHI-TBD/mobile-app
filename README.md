@@ -3,10 +3,10 @@
 ## Project Description
 Mingley aims to help people find friends, events, and a community in new areas. We hope to foster safe and spontaneous hangouts for it's users.
 
-**Link to project:* https://mingley.azurewebsites.net/
+**Link to project:* (insert app link here)
 
 ## How to run the application (VSCode):
-
+- sudo npx expo start
 
 ## Development and CI/CD Pipeline
 
@@ -19,7 +19,14 @@ The development pipeline is structured around the branches within the repository
 ## Initial Development
 At the outset, development is segmented into four main branches, each corresponding to a key aspect of the application:
 
-- 
+- Login/Registration Page(s)
+- Live Page
+- Feed Friends Page
+- Feed Event Discovery Page
+- Profile Page
+- Chat Page
+- Post Page
+- Request to Mingle Page
 
 ## Development Integration
 The `development` branch consolidates changes from the initial four branches, representing the first iteration of the complete application. QA procedures, including sanity and regression testing if necessary, are executed to identify and resolve bugs.
