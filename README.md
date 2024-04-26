@@ -11,6 +11,7 @@ Mingley aims to help people find friends, events, and a community in new areas. 
 
 ## How to run the application (VSCode):
 - cd Mingley
+- npm add expo
 - sudo npx expo start
   - First time running install expo@50.0.17
 

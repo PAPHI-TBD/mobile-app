@@ -1,3 +1,7 @@
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { config } from '@gluestack-ui/config';
 import { Box, GluestackUIProvider, Text } from '@gluestack-ui/themed';
 import { ScrollView } from 'react-native';
@@ -6,14 +10,34 @@ import DocumentData from './assets/Icons/DocumentData';
 import LightBulbPerson from './assets/Icons/LightbulbPerson';
 import Rocket from './assets/Icons/Rocket';
 import Logo from './assets/Icons/Logo';
+import Feed from './feed'; // Import the Feed component
+import Post from './post'; // Import the Post component
+import Chat from './chat'; // Import the Chat component
+import Profile from './profile'; // Import the Profile component
 
 export default function App() {
   return (
     <GluestackUIProvider config={config}>
-      <Home />
+      <NavigationContainer>
+      <Tab.Navigator
+          screenOptions={{
+            headerShown: false, // Hide the top bar (header)
+        }}>
+        <Tab.Screen 
+          name="Live" 
+          component={Home} 
+        />
+        <Tab.Screen name="Feed" component={Feed} />
+        <Tab.Screen name="Post" component={Post} />
+        <Tab.Screen name="Chat" component={Chat} />
+        <Tab.Screen name="Profile" component={Profile} />
+      </Tab.Navigator>
+    </NavigationContainer>
     </GluestackUIProvider>
   );
 }
+
+const Tab = createBottomTabNavigator();
 
 const Home = () => {
   return <Container />;
