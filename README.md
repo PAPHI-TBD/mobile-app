@@ -5,8 +5,15 @@ Mingley aims to help people find friends, events, and a community in new areas. 
 
 **Link to project:* (insert app link here)
 
+## Install Dependencies:
+- cd Mingley
+- npm install
+
 ## How to run the application (VSCode):
+- cd Mingley
 - sudo npx expo start
+  - First time running install expo@50.0.17
+
 
 ## Development and CI/CD Pipeline
 

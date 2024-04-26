@@ -21,16 +21,16 @@ export default function TabLayout() {
   // navbar
   return (
     <Tabs
-      screenOptions={{
+        screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         // Disable the static render of the header on web
         // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
       }}>
       <Tabs.Screen
-        name="index"
+        name="live"
         options={{
-          title: 'Tab One',
+          title: 'Live Page',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -49,10 +49,34 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="feed"
         options={{
-          title: 'Tab Two',
+          title: 'Feed Page',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      />
+      {/* Add a new tab screen */}
+      <Tabs.Screen
+        name="post"
+        options={{
+          title: 'Post', // Set the title for the new tab
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />, // Set the icon for the new tab
+        }}
+      />
+      {/* Add a new tab screen */}
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Chat', // Set the title for the new tab
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />, // Set the icon for the new tab
+        }}
+      />
+      {/* Add a new tab screen */}
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile', // Set the title for the new tab
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />, // Set the icon for the new tab
         }}
       />
     </Tabs>
