@@ -115,7 +115,10 @@ const Container = () => {
             </Text>
           </Box>
           <Box justifyContent="center" alignItems="center">
-            <Logo />
+            <Text color="$white" fontWeight="$medium" ml="$2" fontSize={40}>
+              Mingley
+            </Text>
+            {/* <Logo /> */}
           </Box>
           <Box $base-flexDirection="column" $md-flexDirection="row">
             <FeatureCard
