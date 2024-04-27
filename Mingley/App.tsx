@@ -6,11 +6,11 @@ import { config } from '@gluestack-ui/config';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 
 // all the main tabs
-import Home from './tabs/index';
-import Feed from './tabs/feed';
-import Post from './tabs/post';
-import Chat from './tabs/chat';
-import Profile from './tabs/profile';
+import Home from './components/home/index';
+import Feed from './components/feed/feed';
+import Post from './components/post/post';
+import Chat from './components/chat/chat';
+import Profile from './components/profile/profile';
 import logoPage from './components/logo/logoPage';
 import loginPage from './components/login/login';
 import registrationPage from './components/registration/registration';
@@ -30,8 +30,8 @@ export default function App() {
         }}>
         <Tab.Screen 
           name="Home" 
-          // component={Home} 
-          component={logoPage}
+          component={Home} 
+          // component={logoPage}
           // component={loginPage}
           // component={registrationPage}
         />

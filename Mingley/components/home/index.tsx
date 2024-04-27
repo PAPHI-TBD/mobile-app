@@ -1,9 +1,9 @@
 import { Box, GluestackUIProvider, Text } from '@gluestack-ui/themed';
 import { ScrollView } from 'react-native';
-import Gradient from '../assets/Icons/Gradient';
-import DocumentData from '../assets/Icons/DocumentData';
-import LightBulbPerson from '../assets/Icons/LightbulbPerson';
-import Rocket from '../assets/Icons/Rocket';
+import Gradient from '../../assets/Icons/Gradient';
+import DocumentData from '../../assets/Icons/DocumentData';
+import LightBulbPerson from '../../assets/Icons/LightbulbPerson';
+import Rocket from '../../assets/Icons/Rocket';
 
 export default function Home() {
     return <Container />;
