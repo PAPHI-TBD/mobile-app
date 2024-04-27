@@ -11,6 +11,9 @@ import Feed from './tabs/feed';
 import Post from './tabs/post';
 import Chat from './tabs/chat';
 import Profile from './tabs/profile';
+import logoPage from './pages/logoPage';
+import loginPage from './pages/login';
+import registrationPage from './pages/registration';
 
 export default function App() {
   const Tab = createBottomTabNavigator();
@@ -26,6 +29,9 @@ export default function App() {
         <Tab.Screen 
           name="Home" 
           component={Home} 
+          // component={logoPage}
+          // component={loginPage}
+          // component={registrationPage}
         />
         <Tab.Screen 
           name="Feed" 
