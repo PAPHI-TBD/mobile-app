@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Image} from 'react-native';
+import styles from './logoPage.style';
+import { View, Image} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function logoPage() {
@@ -11,25 +12,10 @@ export default function logoPage() {
         >
             <View style={styles.content}>
                 <Image
-                    source={require('../assets/Logo.png')}
+                    source={require('../../assets/Logo.png')}
                     style={styles.logo}
                 />
             </View>
         </LinearGradient>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    content: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    logo: {
-        width: 142, // Adjust width as needed
-        height: 178, // Adjust height as needed
-    },
-});

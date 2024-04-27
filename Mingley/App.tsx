@@ -11,9 +11,9 @@ import Feed from './tabs/feed';
 import Post from './tabs/post';
 import Chat from './tabs/chat';
 import Profile from './tabs/profile';
-import logoPage from './pages/logoPage';
-import loginPage from './pages/login';
-import registrationPage from './pages/registration';
+import logoPage from './components/logo/logoPage';
+import loginPage from './components/login/login';
+import registrationPage from './components/registration/registration';
 
 // we use gluestack-ui
 
@@ -30,8 +30,8 @@ export default function App() {
         }}>
         <Tab.Screen 
           name="Home" 
-          component={Home} 
-          // component={logoPage}
+          // component={Home} 
+          component={logoPage}
           // component={loginPage}
           // component={registrationPage}
         />
