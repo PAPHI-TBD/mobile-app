@@ -5,9 +5,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
+    searchBar: {
+        marginTop: 33,
+        alignItems: 'center'
+    },
     locationContainer: {
         marginTop: 20,
-        marginLeft: 20,
+        marginLeft: 33,
         flexDirection: 'row',
         alignItems: 'center', // Center items vertically
     },
