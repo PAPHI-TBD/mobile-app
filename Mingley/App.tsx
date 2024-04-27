@@ -9,8 +9,9 @@ import { GluestackUIProvider } from '@gluestack-ui/themed';
 import Home from './components/home/index';
 import Feed from './components/feed/feed';
 import Post from './components/post/post';
-import Chat from './components/chat/chat';
+import Chat from './components/chat/chatLandingPage/chat';
 import Profile from './components/profile/profile';
+// for testing
 import logoPage from './components/logo/logoPage';
 import loginPage from './components/login/login';
 import registrationPage from './components/registration/registration';
@@ -30,10 +31,13 @@ export default function App() {
         }}>
         <Tab.Screen 
           name="Home" 
-          component={Home} 
+          // component={Home} 
+
+          // for testing comment out Home and uncomment out the page you want to see
           // component={logoPage}
           // component={loginPage}
           // component={registrationPage}
+          component={Feed} 
         />
         <Tab.Screen 
           name="Feed" 
