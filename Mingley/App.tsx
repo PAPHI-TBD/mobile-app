@@ -15,6 +15,8 @@ import logoPage from './pages/logoPage';
 import loginPage from './pages/login';
 import registrationPage from './pages/registration';
 
+// we use gluestack-ui
+
 export default function App() {
   const Tab = createBottomTabNavigator();
 
