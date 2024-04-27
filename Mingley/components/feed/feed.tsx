@@ -22,7 +22,7 @@ export default function Feed() {
                     />
                 </View>
             <HotTopic />
-            <UserFeed />
+            {/* <UserFeed /> */}
 
         </View>
     );
