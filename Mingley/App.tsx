@@ -3,142 +3,48 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { config } from '@gluestack-ui/config';
-import { Box, GluestackUIProvider, Text } from '@gluestack-ui/themed';
-import { ScrollView } from 'react-native';
-import Gradient from './assets/Icons/Gradient';
-import DocumentData from './assets/Icons/DocumentData';
-import LightBulbPerson from './assets/Icons/LightbulbPerson';
-import Rocket from './assets/Icons/Rocket';
-import Logo from './assets/Icons/Logo';
-import Feed from './feed'; // Import the Feed component
-import Post from './post'; // Import the Post component
-import Chat from './chat'; // Import the Chat component
-import Profile from './profile'; // Import the Profile component
+import { GluestackUIProvider } from '@gluestack-ui/themed';
+
+// all the main tabs
+import Home from './tabs/index';
+import Feed from './tabs/feed';
+import Post from './tabs/post';
+import Chat from './tabs/chat';
+import Profile from './tabs/profile';
 
 export default function App() {
+  const Tab = createBottomTabNavigator();
+
   return (
     <GluestackUIProvider config={config}>
+      {/* bottom tabs */}
       <NavigationContainer>
       <Tab.Navigator
           screenOptions={{
             headerShown: false, // Hide the top bar (header)
         }}>
         <Tab.Screen 
-          name="Live" 
+          name="Home" 
           component={Home} 
         />
-        <Tab.Screen name="Feed" component={Feed} />
-        <Tab.Screen name="Post" component={Post} />
-        <Tab.Screen name="Chat" component={Chat} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen 
+          name="Feed" 
+          component={Feed} 
+        />
+        <Tab.Screen 
+          name="Post" 
+          component={Post} 
+        />
+        <Tab.Screen 
+          name="Messages" 
+          component={Chat} 
+        />
+        <Tab.Screen 
+          name="Profile" 
+          component={Profile} 
+        />
       </Tab.Navigator>
     </NavigationContainer>
     </GluestackUIProvider>
   );
 }
-
-const Tab = createBottomTabNavigator();
-
-const Home = () => {
-  return <Container />;
-};
-
-const FeatureCard = ({ iconSvg: IconSvg, name, desc }: any) => {
-  return (
-    <Box
-      flexDirection="column"
-      borderWidth={1}
-      borderColor="$borderDark700"
-      $web-flex={1}
-      m="$2"
-      p="$4"
-      rounded="$md"
-    >
-      <Box alignItems="center" display="flex" flexDirection="row">
-        {/* <Image source={iconSvg} alt="document" width={22} height={22} /> */}
-        <Text>
-          <IconSvg />
-        </Text>
-        <Text fontSize={22} color="$white" fontWeight="500" ml="$2">
-          {name}
-        </Text>
-      </Box>
-      <Text color="$textDark400" mt="$2">
-        {desc}
-      </Text>
-    </Box>
-  );
-};
-
-const Container = () => {
-  return (
-    <Box flex={1} backgroundColor="$black">
-      <ScrollView
-        style={{ height: '100%' }}
-        contentContainerStyle={{ flexGrow: 1 }}
-      >
-        <Box
-          position="absolute"
-          $base-h={500}
-          $base-w={500}
-          $lg-h={700}
-          $lg-w={700}
-        >
-          <Gradient />
-        </Box>
-        <Box
-          height="60%"
-          $base-my="$16"
-          $base-mx="$5"
-          $base-h="80%"
-          $lg-my="$24"
-          $lg-mx="$32"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Box
-            bg="#64748B33"
-            py="$2"
-            px="$6"
-            rounded="$full"
-            alignItems="center"
-            marginTop={20}
-            $base-flexDirection="column"
-            $sm-flexDirection="row"
-            $md-alignSelf="flex-start"
-          >
-            <Text color="$white" fontWeight="$normal">
-              Get started by editing
-            </Text>
-            <Text color="$white" fontWeight="$medium" ml="$2">
-              App.tsx
-            </Text>
-          </Box>
-          <Box justifyContent="center" alignItems="center">
-            <Text color="$white" fontWeight="$medium" ml="$2" fontSize={40}>
-              Mingley
-            </Text>
-            {/* <Logo /> */}
-          </Box>
-          <Box $base-flexDirection="column" $md-flexDirection="row">
-            <FeatureCard
-              iconSvg={DocumentData}
-              name="Docs"
-              desc="Find in-depth information about gluestack features and API."
-            />
-            <FeatureCard
-              iconSvg={LightBulbPerson}
-              name="Learn"
-              desc="Learn about gluestack in an interactive course with quizzes!"
-            />
-            <FeatureCard
-              iconSvg={Rocket}
-              name="Deploy"
-              desc="Instantly drop your gluestack site to a shareable URL with vercel."
-            />
-          </Box>
-        </Box>
-      </ScrollView>
-    </Box>
-  );
-};
