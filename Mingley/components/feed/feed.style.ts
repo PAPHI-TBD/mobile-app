@@ -3,22 +3,31 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#8BC0C8', // Set background color here
-        justifyContent: 'center', // Center content vertically
-
+        backgroundColor: 'white',
     },
-    content: {
-        justifyContent: 'center',
-        textAlign: 'center', // Center text horizontally
+    locationContainer: {
+        marginTop: 20,
+        marginLeft: 20,
+        flexDirection: 'row',
+        alignItems: 'center', // Center items vertically
     },
-    location: {
-
+    textContainer: {
+        marginRight: 10, // Add margin to separate text and image
     },
     mainHeading: {
-
+        fontSize: 32,
+        fontFamily: 'SF Pro',
+        fontWeight: 'bold', // Alternatively, you can use fontWeight property
     },
     cityState: {
-        
+        marginTop: 5,
+        fontSize: 14,
+        fontFamily: 'SF Pro',
+    },
+    locationIcon: {
+        width: 24,
+        height: 24,
+        alignSelf: 'center'
     }
 });
 
