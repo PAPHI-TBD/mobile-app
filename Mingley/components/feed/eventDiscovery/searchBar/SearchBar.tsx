@@ -2,6 +2,11 @@ import React from 'react';
 import styles from './SearchBar.style';
 import { View, TextInput, Image } from 'react-native';
 
+// Define the props interface
+interface SearchBarProps {
+    // onUpdate: (newData: SearchData[]) => void;
+}
+
 const SearchBar: React.FC = () => {
     return (
         <View style={styles.container}>
