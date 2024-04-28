@@ -1,24 +1,24 @@
-// UserFeed.style.ts
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+const vw = width / (100 * 4.3);
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#ffffff',
-        paddingHorizontal: 20,
-        paddingTop: 20,
+        marginTop: 20 * vw,
+        marginLeft: 33 * vw
     },
     headingContainer: {
-        marginBottom: 10,
+        marginBottom: 10 * vw
     },
     headerText: {
         fontFamily: 'SF Pro',
-        fontSize: 24,
-        fontWeight: 'bold',
-    },
-    postContainer: {
-        flex: 1,
-    },
+        fontSize: 14 * vw,
+        fontWeight: 'bold'
+    }, 
+    topicContainer: {
+        // arrange items vertically
+    }
 });
 
 export default styles;

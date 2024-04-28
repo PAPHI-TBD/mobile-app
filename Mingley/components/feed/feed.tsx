@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import styles from './feed.style'; // Import styles from feed.style
 import HotTopic from './eventDiscovery/hotTopics/HotTopic'; // Import the HotTopic component
 import UserFeed from './userFeed/UserFeed';
@@ -7,7 +7,7 @@ import SearchBar from './eventDiscovery/searchBar/SearchBar'; // Import the Sear
 
 export default function Feed() {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.postContainer} showsVerticalScrollIndicator={false}>
             <View style={styles.searchBar}>
                 <SearchBar />
             </View>
@@ -23,6 +23,6 @@ export default function Feed() {
                 </View>
             <HotTopic />
             <UserFeed />
-        </View>
+        </ScrollView>
     );
 }

@@ -7,11 +7,11 @@ import PostItem from '../postItem/PostItem';
 const UserFeed: React.FC = () => {
     // dummy data
     const feedData = [
-        { id: 1, title: 'Topic 1' },
-        { id: 2, title: 'Topic 2' },
-        { id: 3, title: 'Topic 3' },
-        { id: 4, title: 'Topic 4' },
-        { id: 5, title: 'Topic 5' },
+        { id: 1, username: 'Topic', desc: 'description here...', picture: '' },
+        { id: 2, username: 'Topic', desc: 'description here...', picture: '' },
+        { id: 3, username: 'Topic', desc: 'description here...', picture: '' },
+        { id: 4, username: 'Topic', desc: 'description here...', picture: '' },
+        { id: 5, username: 'Topic', desc: 'description here...', picture: '' },
     ];
 
     return (
@@ -20,11 +20,9 @@ const UserFeed: React.FC = () => {
                 <Text style={styles.headerText}>People</Text>
             </View>
             {/* Load Posts */}
-            <ScrollView style={styles.postContainer} showsVerticalScrollIndicator={false}>
-                {feedData.map(post => (
-                    <PostItem key={post.id} id={post.id} title={post.title} />
-                ))}
-            </ScrollView>
+            {feedData.map(post => (
+                <PostItem key={post.id} id={post.id} username={post.username} desc={post.desc} picture={post.picture} />
+            ))}
         </View>
     );
 }
