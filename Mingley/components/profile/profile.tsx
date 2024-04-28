@@ -24,8 +24,8 @@ export default function Profile() {
     ]);
 
     const renderScene = SceneMap({
-        first: FirstRoute,
-        second: SecondRoute,
+        first: SecondRoute,
+        second: FirstRoute, // I messed up and too lazy to make the changes
     });
 
     return (

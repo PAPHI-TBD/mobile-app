@@ -13,7 +13,6 @@ const feedData = [
 
 // Define the content for the first tab
 const FirstRoute = () => (
-    
     <View style={styles.tabContent}>
         <View style={styles.photoContainer}>
             <View style={styles.headingContainer}>
