@@ -1,13 +1,14 @@
 import { View, Text, ScrollView } from 'react-native';
 import styles from './FirstRouteProfile.style';
-
+import PhotosItem from './photosItem/PhotosItem';
+import UserPost from './userPosts/UserPost';
 // dummy data
-const topics = [
-    { id: 1, title: 'Topic' },
-    { id: 2, title: 'Topic' },
-    { id: 3, title: 'Topic' },
-    { id: 4, title: 'Topic' },
-    { id: 5, title: 'Topic' },
+const feedData = [
+    { id: 1, username: 'Topic', desc: 'description here...', picture: '' },
+    { id: 2, username: 'Topic', desc: 'description here...', picture: '' },
+    { id: 3, username: 'Topic', desc: 'description here...', picture: '' },
+    { id: 4, username: 'Topic', desc: 'description here...', picture: '' },
+    { id: 5, username: 'Topic', desc: 'description here...', picture: '' },
 ];
 
 // Define the content for the first tab
@@ -16,15 +17,25 @@ const FirstRoute = () => (
     <View style={styles.tabContent}>
         <View style={styles.photoContainer}>
             <View style={styles.headingContainer}>
-                <Text style ={styles.headerText}>Hot Topics</Text>
+                <Text style ={styles.headerText}>Photos</Text>
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 <View style={styles.topicContainer}>
-                    {topics.map(topic => (
-                        // <UserPhoto/>
-                        <Text>hi</Text>
+                    {feedData.map(topic => (
+                        <PhotosItem key={topic.id} id={topic.id} username={topic.username} />
                     ))}
                 </View>
+            </ScrollView>
+        </View>
+        <View style={styles.userPostContainer}>
+            <View style={styles.headingContainer}>
+                <Text style ={styles.headerText}>Recent Posts</Text>
+            </View>
+            <ScrollView showsVerticalScrollIndicator={false}>
+                {/* Load Posts */}
+                {feedData.map(post => (
+                    <UserPost key={post.id} id={post.id} username={post.username} desc={post.desc} picture={post.picture} />
+                ))}
             </ScrollView>
         </View>
     </View>

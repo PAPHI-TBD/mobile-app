@@ -18,6 +18,10 @@ const styles = StyleSheet.create ({
     },
     topicContainer: {
         flexDirection: 'row', // Arrange items horizontally
+    },
+    userPostContainer: {
+        flex: 1,
+        backgroundColor: 'white',
     }
 });
 
