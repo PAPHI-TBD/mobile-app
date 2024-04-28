@@ -25,12 +25,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="SplashPage" screenOptions={{ headerShown: false }}>
           {/* Include your pages here */}
-            {/* COMMENT OUT FOR TESTING */}
+            {/* COMMENT OUT STACK SCREEN FOR TESTING */}
+              {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
             <Stack.Screen name="SplashPage" component={SplashPage} />
             <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
             <Stack.Screen name="LoginPage" component={LoginPage} />
             <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
-
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>
