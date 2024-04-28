@@ -1,63 +1,73 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { config } from '@gluestack-ui/config';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 
-// all the main tabs
+// Import your components
 import Home from './components/home/index';
 import Feed from './components/feed/feed';
 import Post from './components/post/post';
 import Chat from './components/chat/chatLandingPage/chat';
 import Profile from './components/profile/profile';
-// for testing
-import logoPage from './components/logo/logoPage';
-import loginPage from './components/login/login';
-import registrationPage from './components/registration/registration';
-
-// we use gluestack-ui
+import SplashPage from './components/splashLoginRegistration/splashPage'; // Import your LogoPage component
+import SplashPageButtons from './components/splashLoginRegistration/splashPageButtons';
+import LoginPage from './components/splashLoginRegistration/login/login'; // Import your LoginPage component
+import RegistrationPage from './components/splashLoginRegistration/registration/registration'; // Import your RegistrationPage component
 
 export default function App() {
-  const Tab = createBottomTabNavigator();
+  const Stack = createStackNavigator();
 
   return (
     <GluestackUIProvider config={config}>
-      {/* bottom tabs */}
       <NavigationContainer>
-      <Tab.Navigator
-          screenOptions={{
-            headerShown: false, // Hide the top bar (header)
-        }}>
-        <Tab.Screen 
-          name="Home" 
-          // component={Home} 
+        <Stack.Navigator initialRouteName="SplashPage" screenOptions={{ headerShown: false }}>
+          {/* Include your pages here */}
+            {/* COMMENT OUT FOR TESTING */}
+            <Stack.Screen name="SplashPage" component={SplashPage} />
+            <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
+            <Stack.Screen name="LoginPage" component={LoginPage} />
+            <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
 
-          // for testing comment out Home and uncomment out the page you want to see
-          // component={logoPage}
-          // component={loginPage}
-          // component={registrationPage}
-          // component={Feed} 
-          component={Profile}
-        />
-        <Tab.Screen 
-          name="Feed" 
-          component={Feed} 
-        />
-        <Tab.Screen 
-          name="Post" 
-          component={Post} 
-        />
-        <Tab.Screen 
-          name="Messages" 
-          component={Chat} 
-        />
-        <Tab.Screen 
-          name="Profile" 
-          component={Profile} 
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+          {/* Your bottom tabs navigation */}
+          <Stack.Screen name="MainTabs" component={MainTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </GluestackUIProvider>
+  );
+}
+
+// Define your bottom tabs navigation
+function MainTabs() {
+  const Tab = createBottomTabNavigator();
+
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false, // Hide the top bar (header)
+      }}>
+      <Tab.Screen 
+        name="Home" 
+        component={Home} 
+      />
+      <Tab.Screen 
+        name="Feed" 
+        component={Feed} 
+      />
+      <Tab.Screen 
+        name="Post" 
+        component={Post} 
+      />
+      <Tab.Screen 
+        name="Messages" 
+        component={Chat} 
+      />
+      <Tab.Screen 
+        name="Profile" 
+        component={Profile} 
+      />
+    </Tab.Navigator>
   );
 }
