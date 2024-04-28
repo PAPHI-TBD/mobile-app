@@ -37,7 +37,8 @@ export default function App() {
           // component={logoPage}
           // component={loginPage}
           // component={registrationPage}
-          component={Feed} 
+          // component={Feed} 
+          component={Profile}
         />
         <Tab.Screen 
           name="Feed" 

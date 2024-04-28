@@ -3,12 +3,15 @@ import { ViewStyle, TextStyle } from 'react-native';
 const styles: { [key: string]: ViewStyle | TextStyle } = {
     container: {
         backgroundColor: '#fff',
+        flex: 1
     },
     header: {
         marginTop:50,
         flexDirection: 'row',
         alignItems: 'center',
         padding: 20,
+        // use to find border
+        // backgroundColor: 'red'
     },
     avatar: {
         width: 100,
@@ -23,30 +26,12 @@ const styles: { [key: string]: ViewStyle | TextStyle } = {
         fontWeight: 'bold',
     },
     username: {
-        color: '#999',
+        color: 'black',
         fontSize: 18,
     },
-    stats: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        padding: 20,
-    },
-    stat: {
-        flex: 1,
-        alignItems: 'center',
-    },
-    statLabel: {
-        color: '#999',
-        fontSize: 14,
-    },
-    statValue: {
-        fontSize: 18,
-    },
-    bio: {
-        padding: 20,
-        fontSize: 16,
-        color: '#333',
-    },
+    tabContent: {
+        flex: 1
+    }
 };
 
 export default styles;
