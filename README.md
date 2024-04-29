@@ -6,11 +6,11 @@
 **Link to project:* (insert app link here)
 
 ## Install Dependencies:
-- cd Mingley
+- cd PAPHI
 - npm install
 
 ## How to run the application (VSCode):
-- cd Mingley
+- cd PAPHI
 - npm add expo
 - sudo npx expo start
   - First time running install expo@50.0.17
