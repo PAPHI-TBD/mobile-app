@@ -86,8 +86,6 @@ TBD
 ## Credits
 Founders:
 - Joshua De Chavez (Full Stack Developer + Project Manager)
-- Clare Shen (Backend Developer)
-- Joshua Sam Badshah (Business Team Lead)
 
 ## Future Considerations
 - Microservices Architecture
@@ -105,7 +103,6 @@ Members:
       - Johnnie (Full Stack Developer) 
       - Leo
       - Maya
-      - Shireen
       - Kailer
       - Sami
       - Will
@@ -120,7 +117,6 @@ Members:
     - Deven Shah (Team Lead)
       - Insert Members
   - Back-End Team
-    - Clare Shen (Team Lead)
       - Insert Members
 
 - UI/UX Team
@@ -133,7 +129,6 @@ Members:
     - Michelle
 
 - Business Team
-  - Joshua Badshah
   - Apoorva
   - Matt Dizon
 ## Licenses
