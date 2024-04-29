@@ -82,7 +82,7 @@ const Container = () => {
                 </Box>
                     <Box justifyContent="center" alignItems="center">
                         <Text color="$white" fontWeight="$medium" ml="$2" fontSize={40}>
-                            Mingley
+                        (Insert App Name)
                         </Text>
                     {/* <Logo /> */}
                     </Box>

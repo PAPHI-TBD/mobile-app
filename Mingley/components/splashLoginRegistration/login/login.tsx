@@ -6,7 +6,7 @@ export default function LoginPage() {
     return (
         <View style={[styles.container, styles.content]}>
             <View style={styles.headerSection}>
-                <Text style={styles.headerText}>Mingley</Text>
+                <Text style={styles.headerText}>(Insert App Name)</Text>
                 <Text style={styles.subheaderText}>Bringing real world connections back</Text>
             </View>
             <View style={styles.loginSection}>

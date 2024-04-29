@@ -28,7 +28,7 @@ const SplashPageButtons: React.FC = () => {
                 />
             </View>
             <View style={styles.headerSection}>
-                <Text style={styles.headerText}>Mingley</Text>
+                <Text style={styles.headerText}>(Insert App Name)</Text>
                 <Text style={styles.subheaderText}>Bringing real world connections back</Text>
             </View>
             <View style={styles.buttonContainer}>

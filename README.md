@@ -1,7 +1,7 @@
-# Mingley - App
+# (Insert App Name) - App
 
 ## Project Description
-Mingley aims to help people find friends, events, and a community in new areas. We hope to foster safe and spontaneous hangouts for it's users.
+(Insert App Name) aims to help people find friends, events, and a community in new areas. We hope to foster safe and spontaneous hangouts for it's users.
 
 **Link to project:* (insert app link here)
 
@@ -132,4 +132,4 @@ Members:
   - Apoorva
   - Matt Dizon
 ## Licenses
-You can not use any code from the Mingley organization. 
+You can not use any code from the (Insert App Name) organization. 

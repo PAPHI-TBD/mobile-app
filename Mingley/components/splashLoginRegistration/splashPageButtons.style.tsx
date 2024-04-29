@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         height: 178, // Adjust height as needed
     },
     headerSection: {
-        justifyContent: 'center', // Center vertically
+        // justifyContent: 'center', // Center vertically
         alignItems: 'center', // Center horizontally
         marginTop: 100, // Adjust the margin top as needed
     },
@@ -28,17 +28,21 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         marginTop: 20, // Adjust margin top as needed
+        justifyContent: 'center', // Center vertically
+        alignItems: 'center', // Center horizontally    
     },
     button: {
-        backgroundColor: '#fff', // Button background color
         paddingVertical: 15, // Vertical padding
         paddingHorizontal: 30, // Horizontal padding
-        borderRadius: 10, // Border radius
+        borderRadius: 50, // Border radius
         marginBottom: 10, // Margin bottom between buttons
+        width: 332,
+        height: 64,
+        backgroundColor: '#FCF8E6'
     },
     buttonText: {
-        fontSize: 18, // Button text size
-        fontWeight: 'bold', // Button text weight
+        fontSize: 30, // Button text size
+        fontFamily: 'Inter',
         color: '#000', // Button text color
         textAlign: 'center', // Text alignment
     },
