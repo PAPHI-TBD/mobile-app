@@ -102,7 +102,7 @@ Members:
   - Full Stack Team
     - Joshua De Chavez (Team Lead) (Project Manager)
       - Brooke
-      - Johnny 
+      - Johnnie 
       - Leo
       - Maya
       - Shireen
