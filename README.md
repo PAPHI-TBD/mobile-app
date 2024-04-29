@@ -14,6 +14,8 @@ Mingley aims to help people find friends, events, and a community in new areas. 
 - npm add expo
 - sudo npx expo start
   - First time running install expo@50.0.17
+- press w (for web version)
+  - inspect then set dimensions to iPhone 14 Max
 
 
 ## Development and CI/CD Pipeline
@@ -49,6 +51,8 @@ Upon decision, the `staging` branch is merged into the `production` branch, mark
 ## Tech Stack
 - App
   - React Native
+    - Animations:
+      - https://github.com/software-mansion/react-native-reanimated
   - Echo
   - Firebase
 
