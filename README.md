@@ -100,7 +100,7 @@ Members:
   - Full Stack Team
     - Joshua De Chavez (Team Lead) (Project Manager)
       - Brooke
-      - Johnnie (Full Stack Developer) 
+      - Johnnie Vu (Full Stack Developer) 
       - Leo
       - Maya
       - Kailer
@@ -115,7 +115,7 @@ Members:
       - Alyza
   - Back-End Team
     - Deven Shah (Team Lead)
-      - Insert Members
+      - Andrew Ho (Back-end Developer)
   - Back-End Team
       - Insert Members
 
