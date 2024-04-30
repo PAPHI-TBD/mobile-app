@@ -116,8 +116,6 @@ Members:
   - Back-End Team
     - Deven Shah (Team Lead)
       - Andrew Ho (Back-end Developer)
-  - Back-End Team
-      - Insert Members
 
 - UI/UX Team
   - Team Leads
