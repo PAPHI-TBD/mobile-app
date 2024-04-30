@@ -18,15 +18,13 @@ const SplashPageButtons: React.FC = () => {
     return (
         <LinearGradient
             colors={['#E9CBD9', '#8BC0C8']}
-            locations={[0, 0.69]}
+            locations={[0.21, 0.49]}
             style={styles.container}
         >
-            <View style={styles.content}>
-                <Image
-                    source={require('../../assets/Logo.png')}
-                    style={styles.logo}
-                />
-            </View>
+            <Image
+                source={require('../../assets/Logo.png')}
+                style={styles.logo}
+            />
             <View style={styles.headerSection}>
                 <Text style={styles.headerText}>(Insert App Name)</Text>
                 <Text style={styles.subheaderText}>Bringing real world connections back</Text>

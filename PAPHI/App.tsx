@@ -27,7 +27,7 @@ export default function App() {
           {/* Include your pages here */}
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
-            <Stack.Screen name="SplashPage" component={SplashPage} />
+            {/* <Stack.Screen name="SplashPage" component={SplashPage} /> */}
             <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
             <Stack.Screen name="LoginPage" component={LoginPage} />
             <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
