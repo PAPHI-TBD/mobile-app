@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
     },
     searchBar: {
-        marginTop: 33 * vw,
+        // marginTop: 33 * vw,    no margin top
         alignItems: 'center'
     },
     locationContainer: {

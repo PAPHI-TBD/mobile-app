@@ -4,6 +4,7 @@ import styles from './feed.style'; // Import styles from feed.style
 import HotTopic from './eventDiscovery/hotTopics/HotTopic'; // Import the HotTopic component
 import UserFeed from './userFeed/UserFeed';
 import SearchBar from './eventDiscovery/searchBar/SearchBar'; // Import the SearchBar component
+import Toggle from './toggle/toggle';
 
 // Define the type for the data returned from the search bar
 interface SearchData {
@@ -25,6 +26,7 @@ export default function Feed() {
 
     return (
         <ScrollView style={styles.postContainer} showsVerticalScrollIndicator={false}>
+            <Toggle />
             <View style={styles.searchBar}>
                 {/* <SearchBar onUpdate={updateFeedData} /> */}
                 <SearchBar />
@@ -44,5 +46,6 @@ export default function Feed() {
             <HotTopic />
             <UserFeed />
         </ScrollView>
+        
     );
 }

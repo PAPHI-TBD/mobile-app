@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
         padding: 10 * vw,
         borderRadius: 10 * vw,
         marginVertical: 10 * vw,
+        // marginVertical: 0,
         width: 358 * vw,
         flexDirection: 'row', // Arrange items horizontally
     },
