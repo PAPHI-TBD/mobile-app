@@ -29,11 +29,10 @@ export default function App() {
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
             {/* <Stack.Screen name="HangRequest"  component={HangRequest}/> */}
-            {/* <Stack.Screen name="SplashPage" component={SplashPage} />
+            <Stack.Screen name="SplashPage" component={SplashPage} />
             <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
             <Stack.Screen name="LoginPage" component={LoginPage} />
-            <Stack.Screen name="RegistrationPage" component={RegistrationPage} /> */}
-            {/* <Stack.Screen name="Profile" component={Profile} /> */}
+            <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>
