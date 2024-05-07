@@ -4,6 +4,7 @@ import styles from './feed.style'; // Import styles from feed.style
 import HotTopic from './eventDiscovery/hotTopics/HotTopic'; // Import the HotTopic component
 import UserFeed from './userFeed/UserFeed';
 import SearchBar from './eventDiscovery/searchBar/SearchBar'; // Import the SearchBar component
+import FriendsFeed from './friendsFeed/FriendsFeed';
 
 // Define the type for the data returned from the search bar
 interface SearchData {

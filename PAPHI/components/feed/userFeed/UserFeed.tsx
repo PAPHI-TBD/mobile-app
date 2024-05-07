@@ -3,9 +3,12 @@ import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import styles from './UserFeed.style';
 import PostItem from '../postItem/PostItem';
+import { useNavigation } from '@react-navigation/native'
 
 const UserFeed: React.FC = () => {
     // dummy data
+    const navigation = useNavigation();
+
     const feedData = [
         { id: 1, username: 'Topic', desc: 'description here...', picture: '' },
         { id: 2, username: 'Topic', desc: 'description here...', picture: '' },
@@ -21,7 +24,7 @@ const UserFeed: React.FC = () => {
             </View>
             {/* Load Posts */}
             {feedData.map(post => (
-                <PostItem key={post.id} id={post.id} username={post.username} desc={post.desc} picture={post.picture} />
+                <PostItem key={post.id} id={post.id} username={post.username} desc={post.desc} picture={post.picture} navigation={navigation}/>
             ))}
         </View>
     );
