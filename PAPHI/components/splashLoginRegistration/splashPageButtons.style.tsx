@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 // iPhone 14 Pro Max
 const guidelineBaseWidth = 430;

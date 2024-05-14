@@ -30,9 +30,9 @@ export default function LoginPage() {
                 </Text>
             </View>
             <View style={styles.orSection}>
-                <View style={styles.line} /> {/* Left line */}
+                <View style={styles.line} />
                 <Text style={styles.orText}>or</Text>
-                <View style={styles.line} /> {/* Right line */}
+                <View style={styles.line} />
             </View>
             <View style={styles.appIconSection}>
                 <Image
