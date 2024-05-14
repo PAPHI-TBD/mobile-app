@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import styles from './registration.style';
-import { Platform, View, StyleSheet, Text, TextInput, Image, Pressable, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { useNavigation } from '@react-navigation/native';
 
 export default function registrationPage() {
     const [date, setDate] = useState(new Date());
     const [dateOfBirth, setDateOfBirth] = useState("");
     const [isDatePickVisible, setDatePickVisible] = useState(false);
     const [isDateSelected, setIsDateSelected] = useState(false);
+    const navigation = useNavigation<any>();
+
+    const handleLoginPress = () => {
+        navigation.navigate('LoginPage');
+    };
 
     const toggleDatePicker = () => {
         setDatePickVisible(!isDatePickVisible);
@@ -138,6 +144,11 @@ export default function registrationPage() {
                     source={require('../../../assets/loginIcons/Ellipse 4.png')}
                     style={styles.loginIcons}
                 />
+            </View>
+            <View style={styles.signUpSection}>
+                <Text>
+                    Already have an account? <Text style={styles.signUpText} onPress={handleLoginPress}>Log in</Text>
+                </Text>
             </View>
         </View>
     );

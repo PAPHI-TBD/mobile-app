@@ -122,10 +122,14 @@ const styles = StyleSheet.create({
         elevation: 6,
     },
     signupButtonText: {
+        marginTop: 3,
         fontSize: moderateScale(25), // Button text size
         fontFamily: 'Inter',
+        fontWeight: 'bold',
         color: '#000', // Button text color
         textAlign: 'center', // Text alignment
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     orSection: {
         flexDirection: 'row', // Arrange items horizontally
@@ -152,7 +156,19 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50, 
         margin: 10
-    }
+    },
+    signUpSection: {
+        alignItems: 'center',
+        justifyContent: 'center', // Horizontally center items
+        fontSize: 12,
+        fontFamily: 'Inter',
+        color: '#3A3A3A',
+        textDecorationLine: 'underline', // Add underline to the text
+    },
+    signUpText: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
 });
 
 export default styles;
