@@ -6,6 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { config } from '@gluestack-ui/config';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 
+import { RootStackParamList } from './types';
+
 // Import your components
 import Home from './components/home/index';
 import Feed from './components/feed/feed';
@@ -17,10 +19,11 @@ import SplashPageButtons from './components/splashLoginRegistration/splashPageBu
 import LoginPage from './components/splashLoginRegistration/login/login'; // Import your LoginPage component
 import RegistrationPage from './components/splashLoginRegistration/registration/registration'; // Import your RegistrationPage component
 import HangRequest from './components/hangRequest/hangRequest';
+import Birthday from './components/splashLoginRegistration/registration/registrationPages/birthday';
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const Stack = createStackNavigator();
-
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
@@ -29,10 +32,11 @@ export default function App() {
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
             {/* <Stack.Screen name="HangRequest"  component={HangRequest}/> */}
-            <Stack.Screen name="SplashPage" component={SplashPage} />
+            {/* <Stack.Screen name="SplashPage" component={SplashPage} /> */}
             <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
             <Stack.Screen name="LoginPage" component={LoginPage} />
             <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
+            <Stack.Screen name="Birthday" component={Birthday}/>
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>
