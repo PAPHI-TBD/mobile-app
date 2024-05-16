@@ -20,7 +20,8 @@ import LoginPage from './components/splashLoginRegistration/login/login'; // Imp
 import RegistrationPage from './components/splashLoginRegistration/registration/registration'; // Import your RegistrationPage component
 import HangRequest from './components/hangRequest/hangRequest';
 import Birthday from './components/splashLoginRegistration/registration/registrationPages/birthday';
-
+import Gender from './components/splashLoginRegistration/registration/registrationPages/gender';
+import Password from './components/splashLoginRegistration/registration/registrationPages/password';
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
@@ -33,10 +34,13 @@ export default function App() {
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
             {/* <Stack.Screen name="HangRequest"  component={HangRequest}/> */}
             {/* <Stack.Screen name="SplashPage" component={SplashPage} /> */}
+            <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
             <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
             <Stack.Screen name="LoginPage" component={LoginPage} />
-            <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
+            {/* <Stack.Screen name="RegistrationPage" component={RegistrationPage} /> */}
             <Stack.Screen name="Birthday" component={Birthday}/>
+            <Stack.Screen name="Gender" component={Gender}/>
+            <Stack.Screen name="Password" component={Password}/>
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>

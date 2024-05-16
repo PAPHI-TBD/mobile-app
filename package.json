@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@react-native-community/datetimepicker": "^8.0.1",
-    "expo": "^51.0.2"
-  }
-}

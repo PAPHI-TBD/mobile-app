@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
+import styles from './registration.style';
 
 export default function RegistrationPage() {
     const [fullName, setFullName] = useState('');
@@ -27,34 +28,3 @@ export default function RegistrationPage() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-    },
-    label: {
-        fontSize: 18,
-        marginBottom: 8,
-    },
-    input: {
-        width: '100%',
-        padding: 10,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 4,
-        marginBottom: 16,
-    },
-    button: {
-        backgroundColor: '#007BFF',
-        paddingVertical: 12,
-        paddingHorizontal: 24,
-        borderRadius: 4,
-    },
-    buttonText: {
-        color: '#fff',
-        fontSize: 16,
-    },
-});

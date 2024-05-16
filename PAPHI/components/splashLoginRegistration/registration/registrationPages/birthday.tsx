@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, Button, Platform, StyleSheet } from 'react-native';
+import { View, Text, Button, Platform, TouchableOpacity } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { RootStackParamList } from '../../../../types'; // Adjust the import path as necessary
+import styles from './birthday.style';
 
 type BirthdayRouteProp = RouteProp<RootStackParamList, 'Birthday'>;
 
@@ -23,9 +25,15 @@ export default function Birthday() {
         setShow(true);
     };
 
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const handleNext = () => {
+        navigation.navigate('Gender', { fullName, date });
+    };
+
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>Hello, {fullName}! When is your birthday?</Text>
+            <Text style={styles.label}>Hello, {fullName}<br/>When is your birthday?</Text>
             <Button onPress={showDatepicker} title="Select Birthday" />
             {show && (
                 <DateTimePicker
@@ -37,23 +45,9 @@ export default function Birthday() {
                 />
             )}
             <Text style={styles.dateText}>Selected date: {date.toDateString()}</Text>
+            <TouchableOpacity style={styles.button} onPress={handleNext}>
+                <Text style={styles.buttonText}>Next</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-    },
-    label: {
-        fontSize: 18,
-        marginBottom: 16,
-    },
-    dateText: {
-        fontSize: 16,
-        marginTop: 16,
-    },
-});
