@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { RootStackParamList } from '../../../../types'; // Adjust the import path as necessary
-// import styles from './password.style';
+import styles from './password.style';
 
 type PasswordRouteProp = RouteProp<RootStackParamList, 'Password'>;
 
@@ -11,15 +11,20 @@ export default function Password() {
     const { fullName, date } = route.params;
 
     const [formData, setFormData] = useState({
+        // need to create a page
         username: fullName,
+        // need to create a page for both
         password: 'Test',
         confirmPassword: 'Test',
+        // need to create a page
         email: 'Test@gmail.com',
         age: '',
         dob: date.toISOString().split('T')[0],
+        // need to create a page
         sex: 'Test'
     });
 
+    // calculates age
     useEffect(() => {
         if (formData.dob) {
             const birthDate = new Date(formData.dob);
@@ -62,31 +67,3 @@ export default function Password() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-    },
-    input: {
-        width: '100%',
-        height: 40,
-        borderColor: '#ccc',
-        borderWidth: 1,
-        borderRadius: 5,
-        padding: 8,
-        marginVertical: 8,
-    },
-    button: {
-        backgroundColor: '#007BFF',
-        padding: 10,
-        borderRadius: 5,
-        marginTop: 20,
-    },
-    buttonText: {
-        color: '#fff',
-        textAlign: 'center',
-    },
-});
