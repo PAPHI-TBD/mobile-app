@@ -18,7 +18,7 @@ export default function Gender() {
 
     const handleNext = () => {
         if (gender) {
-            navigation.navigate('Password', { fullName, date, gender });
+            navigation.navigate('Username', { fullName, date, gender });
         } else {
             Alert.alert('Please select a gender.');
         }

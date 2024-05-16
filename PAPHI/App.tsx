@@ -22,6 +22,9 @@ import HangRequest from './components/hangRequest/hangRequest';
 import Birthday from './components/splashLoginRegistration/registration/registrationPages/birthday';
 import Gender from './components/splashLoginRegistration/registration/registrationPages/gender';
 import Password from './components/splashLoginRegistration/registration/registrationPages/password';
+import Username from './components/splashLoginRegistration/registration/registrationPages/username';
+import Email from './components/splashLoginRegistration/registration/registrationPages/email';
+
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
@@ -29,18 +32,19 @@ export default function App() {
     <GluestackUIProvider config={config}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="SplashPage" screenOptions={{ headerShown: false }}>
-          {/* Include your pages here */}
-            {/* COMMENT OUT STACK SCREEN FOR TESTING */}
-              {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
-            {/* <Stack.Screen name="HangRequest"  component={HangRequest}/> */}
-            {/* <Stack.Screen name="SplashPage" component={SplashPage} /> */}
-            <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
-            <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
-            <Stack.Screen name="LoginPage" component={LoginPage} />
-            {/* <Stack.Screen name="RegistrationPage" component={RegistrationPage} /> */}
-            <Stack.Screen name="Birthday" component={Birthday}/>
-            <Stack.Screen name="Gender" component={Gender}/>
-            <Stack.Screen name="Password" component={Password}/>
+          {/* COMMENT OUT STACK SCREEN FOR TESTING */}
+          {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
+          {/* <Stack.Screen name="HangRequest"  component={HangRequest}/> */}
+          {/* <Stack.Screen name="SplashPage" component={SplashPage} /> */}
+          <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
+          <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
+          <Stack.Screen name="LoginPage" component={LoginPage} />
+          {/* <Stack.Screen name="RegistrationPage" component={RegistrationPage} /> */}
+          <Stack.Screen name="Birthday" component={Birthday}/>
+          <Stack.Screen name="Gender" component={Gender}/>
+          <Stack.Screen name="Username" component={Username}/>
+          <Stack.Screen name="Email" component={Email}/>
+          <Stack.Screen name="Password" component={Password}/>
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
         </Stack.Navigator>

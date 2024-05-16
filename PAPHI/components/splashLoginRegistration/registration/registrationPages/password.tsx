@@ -8,16 +8,17 @@ type PasswordRouteProp = RouteProp<RootStackParamList, 'Password'>;
 
 export default function Password() {
     const route = useRoute<PasswordRouteProp>();
-    const { fullName, date, gender } = route.params;
+    const { fullName, date, gender, username, email } = route.params;
 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [confirmIsTyping, setConfirmIsTyping] = useState(false);
+    
     const [formData, setFormData] = useState({
         username: fullName,
         password: '',
         confirmPassword: '',
-        email: 'Test@gmail.com',
+        email: email,
         age: '',
         dob: date.toISOString().split('T')[0],
         sex: gender

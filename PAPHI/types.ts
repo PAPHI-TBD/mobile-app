@@ -6,6 +6,8 @@ export type RootStackParamList = {
     RegistrationPage: undefined;
     Birthday: { fullName: string };
     Gender: { fullName: string, date: Date };
-    Password: { fullName: string, date: Date, gender: string };
+    Username: {fullName: string, date: Date, gender: string};
+    Email: {fullName: string, date: Date, gender: string, username: string};
+    Password: {fullName: string, date: Date, gender: string, username: string, email: string};
     MainTabs: undefined;
 };
