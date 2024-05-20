@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "expo": "^51.0.2"
+  },
+  "devDependencies": {
+    "metro": "^0.80.9"
   }
 }
