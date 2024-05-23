@@ -1,4 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const guidelineBaseWidth = 430;
+const guidelineBaseHeight = 932;
+const { width , height } = Dimensions.get("window");
+const horizontalScale = (size: number) =>
+    (width / guidelineBaseWidth) * size;
+const verticalScale = (size: number) =>
+    (height / guidelineBaseHeight) * size;
+const moderateScale = (size: number, factor = 0.5) =>
+    size + (horizontalScale(size) - size) * factor;
 
 const styles = StyleSheet.create({
     container: {
@@ -55,6 +65,72 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 6,
     },
+    datePicker: {
+        height: 120,
+        marginTop: -10,
+    },
+    dateCancelButton: {
+        paddingHorizontal: 20,
+        fontSize: 14,
+        fontWeight: "500",
+        color: "#FFFFFF",
+        backgroundColor: "rgba(185, 185, 185, 0.4)",
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 50,
+        marginTop: 10,
+        marginBottom: 15,
+        fontFamily: 'Inter',
+        marginRight: 10,
+    },
+    dateConfirmButton: {
+        paddingHorizontal: 20,
+        fontSize: 14,
+        fontWeight: "500",
+        color: "#FFFFFF",
+        backgroundColor: "rgba(185, 185, 185, 0.75)",
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 50,
+        marginTop: 10,
+        marginBottom: 15,
+        fontFamily: 'Inter',
+        marginLeft: 10,
+    },
+    signupButton: {
+        textAlign: 'center',
+        width: '80%',
+        height: 40,
+        borderWidth: 1,
+        borderColor: 'black',
+        backgroundColor: '#FCF8E6',
+        borderRadius: 50,
+        paddingLeft: 10,
+        marginTop: 15,
+        fontSize: 15,
+        fontFamily: 'Inter',
+        color: '#000',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
+    },
+    signupButtonText: {
+        marginTop: 3,
+        fontSize: moderateScale(25), // Button text size
+        fontFamily: 'Inter',
+        fontWeight: 'bold',
+        color: '#000', // Button text color
+        textAlign: 'center', // Text alignment
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     orSection: {
         flexDirection: 'row', // Arrange items horizontally
         alignItems: 'center', // Center items vertically
@@ -80,7 +156,19 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50, 
         margin: 10
-    }
+    },
+    signUpSection: {
+        alignItems: 'center',
+        justifyContent: 'center', // Horizontally center items
+        fontSize: 12,
+        fontFamily: 'Inter',
+        color: '#3A3A3A',
+        textDecorationLine: 'underline', // Add underline to the text
+    },
+    signUpText: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
 });
 
 export default styles;

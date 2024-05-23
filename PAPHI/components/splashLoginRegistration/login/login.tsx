@@ -1,8 +1,15 @@
 import React from 'react';
 import styles from './login.style';
-import { View, Text, TextInput, Image} from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginPage() {
+    const navigation = useNavigation<any>();
+
+    const handleRegistrationPress = () => {
+        navigation.navigate('RegistrationPage');
+    };
+
     return (
         <View style={[styles.container, styles.content]}>
             <View style={styles.headerSection}>
@@ -28,11 +35,14 @@ export default function LoginPage() {
                 <Text style={styles.forgotText}>
                     Forgot Password?
                 </Text>
+                <TouchableOpacity style={styles.loginButton}>
+                    <Text style={styles.loginButtonText}>Log in</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.orSection}>
-                <View style={styles.line} /> {/* Left line */}
+                <View style={styles.line} />
                 <Text style={styles.orText}>or</Text>
-                <View style={styles.line} /> {/* Right line */}
+                <View style={styles.line} />
             </View>
             <View style={styles.appIconSection}>
                 <Image
@@ -54,7 +64,7 @@ export default function LoginPage() {
             </View>
             <View style={styles.signUpSection}>
                 <Text>
-                    Don't have an account? Sign up.
+                    Don't have an account? <Text style={styles.signUpText}onPress={handleRegistrationPress}>Sign up</Text>
                 </Text>
             </View>
         </View>
