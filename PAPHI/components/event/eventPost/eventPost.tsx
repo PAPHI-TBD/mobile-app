@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Animated } from 'react-native';
+import { View, Text, Animated, TouchableOpacity } from 'react-native';
 import { PanGestureHandler, State, PanGestureHandlerStateChangeEvent } from 'react-native-gesture-handler';
 import styles from './eventPost.style';
 import Categories from './categories/categories';
@@ -8,8 +8,9 @@ import EventCreator from './eventCreator/eventCreator';
 import ImagePost from './imagePost/imagePost';
 import Attendees from './attendees/attendees';
 import Icons from './icons/icons';
+import { useNavigation, ParamListBase,  NavigationProp } from '@react-navigation/native';
 
-interface EventPostProps {
+export interface EventPostProps {
     name: string;
     price: number;
     labels: {
@@ -40,8 +41,9 @@ interface EventPostProps {
 //     eventsFeed: EventPostItem[];
 // }
 
-const EventPost: React.FC = ({ }) => {
-
+const EventPost: React.FC = ({}) => {
+    const navigation: NavigationProp<ParamListBase> = useNavigation();
+    
     const [eventPostData, setEventPostData] = useState<EventPostProps[]>([
         {
             name: 'ohgeesy1',
@@ -204,10 +206,6 @@ const EventPost: React.FC = ({ }) => {
         },
     ]);
 
-    const eventClicked = () => {
-        // add logic for when event is clicked
-    };
-
     const [currentIndex, setCurrentIndex] = useState(0);
     const translateX = new Animated.Value(0);
     const translateY = new Animated.Value(0);
@@ -262,6 +260,11 @@ const EventPost: React.FC = ({ }) => {
     };
 
     const currentPost = eventPostData[currentIndex];
+    
+    const eventClicked = () => {
+        navigation.navigate('IndividualEvent', { eventData: currentPost });
+    };
+
     return (
 
         <PanGestureHandler
@@ -269,21 +272,23 @@ const EventPost: React.FC = ({ }) => {
             onHandlerStateChange={handleStateChange}
         >
             <Animated.View style={[styles.container, styles.shadowProp, { transform: [{ translateX }, { translateY }] }]}>
-                <View>
-                    <View style={styles.firstRow}>
-                        <Text style={styles.title}>{currentPost.name}</Text>
-                        <Text style={styles.price}>${currentPost.price}</Text>
+                <TouchableOpacity onPress={eventClicked}>
+                    <View>
+                        <View style={styles.firstRow}>
+                            <Text style={styles.title}>{currentPost.name}</Text>
+                            <Text style={styles.price}>${currentPost.price}</Text>
+                        </View>
+                        <Categories categoriesList={currentPost.labels} />
+                        <Info date={currentPost.date} time={currentPost.time} location={currentPost.location} />
+                        <EventCreator profile={currentPost.profile} />
+                        <Text style={{fontSize: 18}}>{currentPost.description}</Text>
+                        <ImagePost img={currentPost.image} />
+                        <View style={styles.bottom}>
+                            <Attendees number={currentPost.attendees.number} profileList={currentPost.attendees.profiles} />
+                            <Icons />
+                        </View>
                     </View>
-                    <Categories categoriesList={currentPost.labels} />
-                    <Info date={currentPost.date} time={currentPost.time} location={currentPost.location} />
-                    <EventCreator profile={currentPost.profile} />
-                    <Text style={{fontSize: 18}}>{currentPost.description}</Text>
-                    <ImagePost img={currentPost.image} />
-                    <View style={styles.bottom}>
-                        <Attendees number={currentPost.attendees.number} profileList={currentPost.attendees.profiles} />
-                        <Icons />
-                    </View>
-                </View>
+                </TouchableOpacity>
             </Animated.View>
         </PanGestureHandler>
         
