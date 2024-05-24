@@ -8,7 +8,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const navigation = useNavigation<any>();
 
-    const apiBaseUrl = 'https://localhost:7257';
+    const apiBaseUrl = 'https://moxy-api.azurewebsites.net';
 
     const handleRegistrationPress = () => {
         navigation.navigate('RegistrationPage');
@@ -28,7 +28,7 @@ export default function LoginPage() {
                 // localStorage.setItem('isLoggedIn', 'true');
                 // onLogin();
                 // AsyncStorange.setItem('isLoggedIn', 'true'); // if using AsyncStorage for persistence
-                navigation.navigate('FriendsFeed');
+                navigation.navigate('MainTabs');
             } else {
                 Alert.alert('Invalud username or password');
             }
