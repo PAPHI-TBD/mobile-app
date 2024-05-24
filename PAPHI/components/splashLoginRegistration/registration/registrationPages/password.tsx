@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { RouteProp, useRoute } from '@react-navigation/native';
+import { View, Text, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Platform } from 'react-native';
+import { RouteProp, useRoute, useNavigation, NavigationProp } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import { RootStackParamList } from '../../../../types'; // Adjust the import path as necessary
 import styles from './password.style';
 
@@ -9,13 +10,15 @@ type PasswordRouteProp = RouteProp<RootStackParamList, 'Password'>;
 export default function Password() {
     const route = useRoute<PasswordRouteProp>();
     const { fullName, date, gender, username, email } = route.params;
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [confirmIsTyping, setConfirmIsTyping] = useState(false);
     
     const [formData, setFormData] = useState({
-        username: fullName,
+        fullName: fullName,
+        username: username,
         password: '',
         confirmPassword: '',
         email: email,
@@ -85,10 +88,17 @@ export default function Password() {
                 password: password,
                 confirmPassword: confirmPassword
             }));
+            await createUser();
+            Alert.alert('Success', 'User cread successfully.');
+            // navigation.navigate('Home');
         } catch (error) {
             console.error('Error in password validation:', error);
             return;
         }
+    };
+
+    const handleBack = () => {
+        navigation.navigate('Email', { fullName, date, gender, username, email });
     };
     
     useEffect(() => {
@@ -104,28 +114,53 @@ export default function Password() {
     
     
     return (
-        <View style={styles.container}>
-            <Text style={styles.label}>Password:</Text>
-            <TextInput
-                style={styles.input}
-                value={password}
-                onChangeText={setPassword}
-                placeholder="Enter your password"
-                secureTextEntry
-            />
-            <Text style={styles.label}>Confirm Password:</Text>
-            <TextInput
-                style={styles.input}
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-                onFocus={() => setConfirmIsTyping(true)}
-                onBlur={() => setConfirmIsTyping(false)}
-                placeholder="Confirm your password"
-                secureTextEntry
-            />
-            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                <Text style={styles.buttonText}>Create User</Text>
+        <KeyboardAvoidingView 
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
+        >
+            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+                <Icon name="arrowleft" size={30} color="white" />
             </TouchableOpacity>
-        </View>
+            <View style={styles.labelContainer}>
+                <Text style={styles.label}>Enter your</Text>
+                <Text style={styles.label}>password</Text>
+            </View>
+            <View style={styles.inputWrapper}>
+                <TextInput
+                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    value={password}
+                    onChangeText={setPassword}
+                    placeholder="Password"
+                    placeholderTextColor="#ccc"
+                    secureTextEntry
+                />
+            </View>
+            <View style={styles.labelContainer}>
+                <Text style={styles.label}>Confirm your</Text>
+                <Text style={styles.label}>password</Text>
+            </View>
+            <View style={styles.inputWrapper}>
+                <TextInput
+                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    placeholder="Confirm Password"
+                    placeholderTextColor="#ccc"
+                    secureTextEntry
+                    onFocus={() => setConfirmIsTyping(true)}
+                    onBlur={() => setConfirmIsTyping(false)}
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity 
+                    style={[styles.button, confirmPassword ? styles.buttonEnabled : styles.buttonDisabled]} 
+                    onPress={handleSubmit}
+                    disabled={!confirmPassword}
+                >
+                    <Text style={styles.buttonText}>Create User</Text>
+                </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
     );
 }

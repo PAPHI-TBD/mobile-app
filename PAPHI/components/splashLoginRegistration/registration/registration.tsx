@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
 import styles from './registration.style';
 
@@ -10,21 +11,47 @@ export default function RegistrationPage() {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const handleNext = () => {
-        navigation.navigate('Birthday', { fullName });
+        if (fullName.trim()) {
+            navigation.navigate('Birthday', { fullName });
+        }
+    };
+
+    const handleBack = () => {
+        navigation.navigate('SplashPageButtons');
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.label}>What is your full name?</Text>
-            <TextInput
-                style={styles.input}
-                value={fullName}
-                onChangeText={setFullName}
-                placeholder="Enter your first name"
-            />
-            <TouchableOpacity style={styles.button} onPress={handleNext}>
-                <Text style={styles.buttonText}>Next</Text>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
+        >
+            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+                <Icon name="close" size={30} color="white" />
             </TouchableOpacity>
-        </View>
+            <View style={styles.labelContainer}>
+                <Text style={styles.label}>What is your</Text>
+                <Text style={styles.label}>full name?</Text>
+            </View>
+            <View style={styles.inputWrapper}>
+                <TextInput
+                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    value={fullName}
+                    onChangeText={setFullName}
+                    placeholder="Full Name"
+                    placeholderTextColor="#ccc"
+                />
+                <Text style={styles.subLabel}>This is how it will appear in the app</Text>
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity 
+                    style={[styles.button, fullName.trim() ? styles.buttonEnabled : styles.buttonDisabled]} 
+                    onPress={handleNext}
+                    disabled={!fullName.trim()}
+                >
+                    <Text style={styles.buttonText}>Continue</Text>
+                </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
     );
 }

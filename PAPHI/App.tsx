@@ -35,11 +35,10 @@ export default function App() {
           {/* COMMENT OUT STACK SCREEN FOR TESTING */}
           {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
           {/* <Stack.Screen name="HangRequest"  component={HangRequest}/> */}
-          {/* <Stack.Screen name="SplashPage" component={SplashPage} /> */}
-          <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
+          <Stack.Screen name="SplashPage" component={SplashPage} />
           <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
           <Stack.Screen name="LoginPage" component={LoginPage} />
-          {/* <Stack.Screen name="RegistrationPage" component={RegistrationPage} /> */}
+          <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
           <Stack.Screen name="Birthday" component={Birthday}/>
           <Stack.Screen name="Gender" component={Gender}/>
           <Stack.Screen name="Username" component={Username}/>

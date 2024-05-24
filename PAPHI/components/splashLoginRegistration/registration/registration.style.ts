@@ -13,39 +13,80 @@ const moderateScale = (size: number, factor = 0.5) =>
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         padding: 30,
+        paddingTop: 160,
         backgroundColor: '#8BC0C8'
     },
+    backButton: {
+        position: 'absolute',
+        top: 60,
+        left: 20,
+        padding: 10,
+    },
+    labelContainer: {
+        alignItems: 'flex-start',
+        width: '90%',
+        marginBottom: 16,
+    },
     label: {
-        fontSize: 28,
+        fontSize: 35,
         fontFamily: 'Arial',
         fontWeight: 'bold',
-        marginBottom: 8,
-        color: 'white'
+        marginBottom: -2,
+        color: 'white',
+        textAlign: 'center',
+    },
+    subLabel: {
+        fontSize: 14,
+        color: 'white',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    inputWrapper: {
+        flex: 1,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingBottom: 160,
     },
     input: {
         height: 50,
-        width: '80%',
+        width: '90%',
         padding: 10,
-        borderColor: '#ccc',
-        borderWidth: 1,
-        borderRadius: 10,
+        borderBottomColor: '#ccc',
+        borderBottomWidth: 2,
         backgroundColor: '#fff',
-        fontSize: 16,
+        fontSize: 22,
+        marginBottom: 10,
+        color: '#FFFFFF'
+    },
+    buttonContainer: {
+        position: 'absolute',
+        bottom: 90,
+        width: '100%',
+        alignItems: 'center',
     },
     button: {
-        marginTop: 10,
+        marginTop: 20,
         borderRadius: 10,
-        width: '30%',
+        width: '60%',
         backgroundColor: '#007BFF',
         paddingVertical: 12,
         paddingHorizontal: 24,
+        alignItems: 'center',
+    },
+    buttonEnabled: {
+        backgroundColor: '#007BFF',
+    },
+    buttonDisabled: {
+        backgroundColor: '#A9A9A9',
     },
     buttonText: {
         color: '#fff',
         fontSize: 16,
+        fontWeight: 'bold',
     },
 });    
 

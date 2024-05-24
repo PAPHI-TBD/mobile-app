@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Button, Platform, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, Platform, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import Icon from 'react-native-vector-icons/AntDesign';
 import { RootStackParamList } from '../../../../types'; // Adjust the import path as necessary
 import styles from './email.style';
 
@@ -20,18 +20,41 @@ export default function Email() {
         navigation.navigate('Password', { fullName, date, gender, username, email });
     };
 
+    const handleBack = () => {
+        navigation.navigate('Username', { fullName, date, gender, username });
+    };
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.label}>What is your email?</Text>
-            <TextInput
-                style={styles.input}
-                value={fullName}
-                onChangeText={setEmail}
-                placeholder="Enter your email"
-            />
-            <TouchableOpacity style={styles.button} onPress={handleNext}>
-                <Text style={styles.buttonText}>Next</Text>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
+        >
+            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+                <Icon name="arrowleft" size={30} color="white" />
             </TouchableOpacity>
-        </View>
+            <View style={styles.labelContainer}>
+                <Text style={styles.label}>What is your</Text>
+                <Text style={styles.label}>email?</Text>
+            </View>
+            <View style={styles.inputWrapper}>
+                <TextInput
+                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    value={email}
+                    onChangeText={setEmail}
+                    placeholder="Email"
+                    placeholderTextColor="#ccc"
+                />
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity 
+                    style={[styles.button, email ? styles.buttonEnabled : styles.buttonDisabled]} 
+                    onPress={handleNext}
+                    disabled={!email}
+                >
+                    <Text style={styles.buttonText}>Continue</Text>
+                </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
     );
 }

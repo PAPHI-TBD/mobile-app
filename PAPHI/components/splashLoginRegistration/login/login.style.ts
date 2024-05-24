@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
         width: '80%',
         height: 40,
         borderWidth: 1,
-        borderColor: 'black',
-        backgroundColor: '#FCF8E6',
+        borderColor: '#007BFF',
+        backgroundColor: '#007BFF',
         borderRadius: 50,
         paddingLeft: 10,
         marginTop: 15,
@@ -94,11 +94,11 @@ const styles = StyleSheet.create({
         elevation: 6,
     },
     loginButtonText: {
-        marginTop: 3,
-        fontSize: moderateScale(25), // Button text size
+        marginTop: 6,
+        fontSize: moderateScale(20), // Button text size
         fontFamily: 'Inter',
         fontWeight: 'bold',
-        color: '#000', // Button text color
+        color: '#FFFFFF', // Button text color
         textAlign: 'center', // Text alignment
         justifyContent: 'center',
         alignItems: 'center'
