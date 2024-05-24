@@ -90,7 +90,7 @@ export default function Password() {
             }));
             await createUser();
             Alert.alert('Success', 'User cread successfully.');
-            // navigation.navigate('Home');
+            navigation.navigate('MainTabs');
         } catch (error) {
             console.error('Error in password validation:', error);
             return;
