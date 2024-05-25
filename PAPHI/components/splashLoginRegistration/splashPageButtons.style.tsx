@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         alignItems: 'center', // Center horizontally    
     },
     button: {
-        paddingVertical: verticalScale(15), // Vertical padding
+        paddingVertical: verticalScale(12), // Vertical padding
         paddingHorizontal: horizontalScale(30), // Horizontal padding
         borderRadius: moderateScale(50), // Border radius
         marginBottom: verticalScale(20), // Margin bottom between buttons
