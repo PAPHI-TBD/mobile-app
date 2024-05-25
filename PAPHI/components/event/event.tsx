@@ -199,68 +199,40 @@ const eventPostData: EventPostItem[] = [
 export default function Event({ }) {
 
     const [data, setData] = useState<EventPostItem[]>(eventPostData);
-    const [isMainSection, setIsMainSection] = useState(false);
+    // const [isMainSection, setIsMainSection] = useState(true);
     const [currentPostIndex, setCurrentPostIndex] = useState(0);
 
     const currentPost = data[currentPostIndex];
 
-    const navigateToAttendeesPage = () => {
-        setIsMainSection(false);
-    };
+    // const navigateToAttendeesPage = () => {
+    //     setIsMainSection(false);
+    // };
 
-    const navigateToMainSection = () => {
-        setIsMainSection(true);
-    };
+    // const navigateToMainSection = () => {
+    //     setIsMainSection(true);
+    // };
 
     return (
 
-        // <View style={{flex: 1}}>
-        //     <LinearGradient
-        //     colors={['#8BC0C8', '#E9CBD9']}
-        //     locations={[0, 0.69]}
-        //     style={styles.eventPageContainer}
-        //     >
-        //         <Text style={styles.header}>EVENT DISCOVERY</Text>
-        //         <SearchEvent />
-        //         <Filter />
-        //         <EventPost />
-        //     </LinearGradient>
-        // </View>
         <View style={{flex: 1}}>
-            {isMainSection ? (
-                <View style={{flex: 1}}>
-                    <LinearGradient
-                    colors={['#8BC0C8', '#E9CBD9']}
-                    locations={[0, 0.69]}
-                    style={styles.eventPageContainer}
-                    >
-                        <Text style={styles.header}>EVENT DISCOVERY</Text>
-                        <SearchEvent />
-                        <Filter />
-                        <EventPost 
-                            eventPostData={eventPostData} 
-                            currentPostIndex={currentPostIndex} 
-                            setCurrentPostIndex={setCurrentPostIndex} 
-                            navigateToAttendeesPage={navigateToAttendeesPage} 
-                            setEventPostData={setData}
-                        />
-                    </LinearGradient>
-                </View>
-            ) : (
-                <View style={styles.attendeesPage}>
-                    <AttendeesPage 
-                        profileList={currentPost.attendees.profiles} 
-                        navigateToMainSection={navigateToMainSection} 
-                    />
-                </View>
-            )
-        
-            }
+            <LinearGradient
+            colors={['#8BC0C8', '#E9CBD9']}
+            locations={[0, 0.69]}
+            style={styles.eventPageContainer}
+            >
+                <Text style={styles.header}>EVENT DISCOVERY</Text>
+                <SearchEvent />
+                <Filter />
+                <EventPost 
+                    eventPostData={eventPostData} 
+                    currentPostIndex={currentPostIndex} 
+                    setCurrentPostIndex={setCurrentPostIndex} 
+                    // navigateToAttendeesPage={navigateToAttendeesPage} 
+                    setEventPostData={setData}
+                />
+            </LinearGradient>
         </View>
 
-        // <View style={styles.attendeesPage}>
-        //     <AttendeesPage profileList={currentPost.attendees.profiles} />
-        // </View>
         
     );
 

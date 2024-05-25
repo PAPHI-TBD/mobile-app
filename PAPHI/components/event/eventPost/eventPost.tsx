@@ -10,11 +10,7 @@ import Attendees from './attendees/attendees';
 import Icons from './icons/icons';
 import { useNavigation, ParamListBase,  NavigationProp } from '@react-navigation/native';
 
-<<<<<<< HEAD
-interface EventPostItem {
-=======
-export interface EventPostProps {
->>>>>>> 51348372c1aaaa228b4ee5c417b7239682a2aabb
+export interface EventPostItem {
     name: string;
     price: number;
     labels: {
@@ -44,344 +40,14 @@ interface EventPostProps {
     eventPostData: EventPostItem[];
     currentPostIndex: number;
     setCurrentPostIndex: (index: number) => void;
-    navigateToAttendeesPage: () => void;
+    // navigateToAttendeesPage: () => void;
     setEventPostData: React.Dispatch<React.SetStateAction<EventPostItem[]>>;
 }
 
-<<<<<<< HEAD
-const EventPost: React.FC<EventPostProps> = ({ eventPostData, currentPostIndex, setCurrentPostIndex, navigateToAttendeesPage, setEventPostData }) => {
-
-    // const [eventPostData, setEventPostData] = useState<EventPostProps[]>([
-    //     {
-    //         name: 'ohgeesy1',
-    //         price: 35,
-    //         labels: [
-    //             {
-    //                 name: 'public',
-    //                 color: '#9CFE50',
-    //             }, 
-    //             {
-    //                 name: 'concert',
-    //                 color: '#ECDC4D',
-    //             }, 
-    //             {
-    //                 name: 'id required',
-    //                 color: '#4DECD9',
-    //             },
-    //         ],
-    //         profile: {
-    //             name: 'MATT DIZON',
-    //             img: require('../../../assets/bio/bio-pic.png'),
-    //         },
-    //         description: 'we getting fucked up',
-    //         date: 'May 10th',
-    //         time: '9:30PM to 12:00AM',
-    //         location: 'YiFang',
-    //         image: require('../../../assets/event/sampleEvent.jpg'),
-    //         attendees: {
-    //             number: 100,
-    //             profiles: [
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //             ],
-    //         },
-    //         saved: false,
-    //     },
-    //     {
-    //         name: 'ohgeesy2',
-    //         price: 35,
-    //         labels: [
-    //             {
-    //                 name: 'public',
-    //                 color: '#9CFE50',
-    //             }, 
-    //             {
-    //                 name: 'concert',
-    //                 color: '#ECDC4D',
-    //             }, 
-    //             {
-    //                 name: 'id required',
-    //                 color: '#4DECD9',
-    //             },
-    //         ],
-    //         profile: {
-    //             name: 'MATT DIZON',
-    //             img: require('../../../assets/bio/bio-pic.png'),
-    //         },
-    //         description: 'we getting fucked up',
-    //         date: 'May 10th',
-    //         time: '9:30PM to 12:00AM',
-    //         location: 'YiFang',
-    //         image: require('../../../assets/event/sampleEvent.jpg'),
-    //         attendees: {
-    //             number: 100,
-    //             profiles: [
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //             ],
-    //         },
-    //         saved: false,
-    //     },
-    //     {
-    //         name: 'ohgeesy3',
-    //         price: 35,
-    //         labels: [
-    //             {
-    //                 name: 'public',
-    //                 color: '#9CFE50',
-    //             }, 
-    //             {
-    //                 name: 'concert',
-    //                 color: '#ECDC4D',
-    //             }, 
-    //             {
-    //                 name: 'id required',
-    //                 color: '#4DECD9',
-    //             },
-    //         ],
-    //         profile: {
-    //             name: 'MATT DIZON',
-    //             img: require('../../../assets/bio/bio-pic.png'),
-    //         },
-    //         description: 'we getting fucked up',
-    //         date: 'May 10th',
-    //         time: '9:30PM to 12:00AM',
-    //         location: 'YiFang',
-    //         image: require('../../../assets/event/sampleEvent.jpg'),
-    //         attendees: {
-    //             number: 100,
-    //             profiles: [
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //                 {
-    //                     username: 'John Doe',
-    //                     img: require('../../../assets/bio/bio-pic.png')
-    //                 },
-    //             ],
-    //         },
-    //         saved: false,
-    //     },
-    // ]);
+const EventPost: React.FC<EventPostProps> = ({ eventPostData, currentPostIndex, setCurrentPostIndex, setEventPostData }) => {
+    const navigation: NavigationProp<ParamListBase> = useNavigation();
 
     const currentPost = eventPostData[currentPostIndex];
-=======
-const EventPost: React.FC = ({}) => {
-    const navigation: NavigationProp<ParamListBase> = useNavigation();
-    
-    const [eventPostData, setEventPostData] = useState<EventPostProps[]>([
-        {
-            name: 'ohgeesy1',
-            price: 35,
-            labels: [
-                {
-                    name: 'public',
-                    color: '#9CFE50',
-                }, 
-                {
-                    name: 'concert',
-                    color: '#ECDC4D',
-                }, 
-                {
-                    name: 'id required',
-                    color: '#4DECD9',
-                },
-            ],
-            profile: {
-                name: 'MATT DIZON',
-                img: require('../../../assets/bio/bio-pic.png'),
-            },
-            description: 'we getting fucked up',
-            date: 'May 10th',
-            time: '9:30PM to 12:00AM',
-            location: 'YiFang',
-            image: require('../../../assets/event/sampleEvent.jpg'),
-            attendees: {
-                number: 100,
-                profiles: [
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                ],
-            },
-            saved: false,
-        },
-        {
-            name: 'ohgeesy2',
-            price: 35,
-            labels: [
-                {
-                    name: 'public',
-                    color: '#9CFE50',
-                }, 
-                {
-                    name: 'concert',
-                    color: '#ECDC4D',
-                }, 
-                {
-                    name: 'id required',
-                    color: '#4DECD9',
-                },
-            ],
-            profile: {
-                name: 'MATT DIZON',
-                img: require('../../../assets/bio/bio-pic.png'),
-            },
-            description: 'we getting fucked up',
-            date: 'May 10th',
-            time: '9:30PM to 12:00AM',
-            location: 'YiFang',
-            image: require('../../../assets/event/sampleEvent.jpg'),
-            attendees: {
-                number: 100,
-                profiles: [
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                ],
-            },
-            saved: false,
-        },
-        {
-            name: 'ohgeesy3',
-            price: 35,
-            labels: [
-                {
-                    name: 'public',
-                    color: '#9CFE50',
-                }, 
-                {
-                    name: 'concert',
-                    color: '#ECDC4D',
-                }, 
-                {
-                    name: 'id required',
-                    color: '#4DECD9',
-                },
-            ],
-            profile: {
-                name: 'MATT DIZON',
-                img: require('../../../assets/bio/bio-pic.png'),
-            },
-            description: 'we getting fucked up',
-            date: 'May 10th',
-            time: '9:30PM to 12:00AM',
-            location: 'YiFang',
-            image: require('../../../assets/event/sampleEvent.jpg'),
-            attendees: {
-                number: 100,
-                profiles: [
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                    {
-                        username: 'John Doe',
-                        img: require('../../../assets/bio/bio-pic.png')
-                    },
-                ],
-            },
-            saved: false,
-        },
-    ]);
-
-    const [currentIndex, setCurrentIndex] = useState(0);
->>>>>>> 51348372c1aaaa228b4ee5c417b7239682a2aabb
     const translateX = new Animated.Value(0);
     const translateY = new Animated.Value(0);
 
@@ -416,14 +82,16 @@ const EventPost: React.FC = ({}) => {
         // implement save event
     };
 
-<<<<<<< HEAD
-=======
-    const currentPost = eventPostData[currentIndex];
-    
     const eventClicked = () => {
-        navigation.navigate('IndividualEvent', { eventData: currentPost });
+        try {
+            navigation.navigate("IndividualEvent", { eventData: currentPost });
+            console.log('event clicked');
+        } catch (error) {
+            console.error(error);
+        }
+        
     };
->>>>>>> 51348372c1aaaa228b4ee5c417b7239682a2aabb
+
 
     return (
 
