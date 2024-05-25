@@ -1,155 +1,57 @@
 import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/AntDesign';
+import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
 import styles from './registration.style';
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { useNavigation } from '@react-navigation/native';
 
-export default function registrationPage() {
-    const [date, setDate] = useState(new Date());
-    const [dateOfBirth, setDateOfBirth] = useState("");
-    const [isDatePickVisible, setDatePickVisible] = useState(false);
-    const [isDateSelected, setIsDateSelected] = useState(false);
-    const navigation = useNavigation<any>();
+export default function RegistrationPage() {
+    const [fullName, setFullName] = useState('');
 
-    const handleLoginPress = () => {
-        navigation.navigate('LoginPage');
-    };
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-    const toggleDatePicker = () => {
-        setDatePickVisible(!isDatePickVisible);
-    };
-    
-    const onPickerChange = ({ type }, selectedDate) => {
-        if (type === "set") {
-            const currDate = selectedDate;
-            setDate(currDate);
-
-        } else {
-            toggleDatePicker();
+    const handleNext = () => {
+        if (fullName.trim()) {
+            navigation.navigate('Birthday', { fullName });
         }
     };
 
-    const handleConfirmDate = () => {
-        setDateOfBirth(date.toDateString());
-        setIsDateSelected(true);
-        toggleDatePicker();
-    }
-
-    const handleCancel = () => {
-        setDateOfBirth("");
-        setIsDateSelected(false);
-        toggleDatePicker();
-    }
+    const handleBack = () => {
+        navigation.navigate('SplashPageButtons');
+    };
 
     return (
-        <View style={[styles.container, styles.content]}>
-            <View style={styles.headerSection}>
-                <Text style={styles.headerText}>(Insert App Name)</Text>
-                <Text style={styles.subheaderText}>Bringing real world connections back</Text>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
+        >
+            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+                <Icon name="close" size={30} color="white" />
+            </TouchableOpacity>
+            <View style={styles.labelContainer}>
+                <Text style={styles.label}>What is your</Text>
+                <Text style={styles.label}>full name?</Text>
             </View>
-            <View style={styles.loginSection}>
-                <Text style={styles.loginHeaderText}>Sign Up</Text>
+            <View style={styles.inputWrapper}>
                 <TextInput
-                    style={styles.input}
-                    placeholder="Username"
-                    placeholderTextColor="#A9A9A9"
-                    keyboardType="default"
+                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    value={fullName}
+                    onChangeText={setFullName}
+                    placeholder="Full Name"
+                    placeholderTextColor="#ccc"
                 />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Email"
-                    placeholderTextColor="#A9A9A9"
-                    keyboardType="email-address"
-                />
-                <TextInput
-                    style={styles.input}
-                    secureTextEntry={true}
-                    placeholder="Password"
-                    placeholderTextColor="#A9A9A9"
-                    keyboardType="default"
-                />
-                <TextInput
-                    style={styles.input}
-                    secureTextEntry={true}
-                    placeholder="Confirm Password"
-                    placeholderTextColor="#A9A9A9"
-                    keyboardType="default"
-                />
-                {isDatePickVisible ? (
-                    <DateTimePicker
-                        mode="date"
-                        value={date}
-                        display="spinner"
-                        is24Hour={true}
-                        onChange={onPickerChange}
-                        style={styles.datePicker}
-                    />
-                ) : null}
-                {!isDatePickVisible ? (
-                    <TextInput 
-                        style={[
-                            styles.input, 
-                            { color: isDateSelected ? 'black' : '#A9A9A9' }
-                        ]}
-                        placeholder="Birthday"
-                        placeholderTextColor="#A9A9A9"
-                        value={dateOfBirth}
-                        onChangeText={setDateOfBirth}
-                        editable={false}
-                        onPressIn={toggleDatePicker}
-                    />
-                ) : null}
-                {isDatePickVisible ? (
-                    <View
-                        style={{ flexDirection: "row" ,
-                                 justifyContent: "space-around" }}
-                    >
-                        <TouchableOpacity 
-                            style={styles.dateCancelButton}
-                            onPress={handleCancel}
-                        >
-                            <Text style={{ color: 'white' }}>Cancel</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity 
-                            style={styles.dateConfirmButton}
-                            onPress={handleConfirmDate}
-                        >
-                            <Text style={{ color: 'white' }}>Confirm</Text>
-                        </TouchableOpacity>
-                    </View>
-                ): null}
-                <TouchableOpacity style={styles.signupButton}>
-                    <Text style={styles.signupButtonText}>Sign Up</Text>
+                <Text style={styles.subLabel}>This is how it will appear in the app</Text>
+            </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity 
+                    style={[styles.button, fullName.trim() ? styles.buttonEnabled : styles.buttonDisabled]} 
+                    onPress={handleNext}
+                    disabled={!fullName.trim()}
+                >
+                    <Text style={styles.buttonText}>Continue</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.orSection}>
-                <View style={styles.line} />
-                <Text style={styles.orText}>or</Text>
-                <View style={styles.line} />
-            </View>
-            <View style={styles.appIconSection}>
-                <Image
-                    source={require('../../../assets/loginIcons/Ellipse 6.png')}
-                    style={styles.loginIcons}
-                />
-                <Image
-                    source={require('../../../assets/loginIcons/Ellipse 3.png')}
-                    style={styles.loginIcons}
-                />
-                <Image
-                    source={require('../../../assets/loginIcons/Ellipse 5.png')}
-                    style={styles.loginIcons}
-                />
-                <Image
-                    source={require('../../../assets/loginIcons/Ellipse 4.png')}
-                    style={styles.loginIcons}
-                />
-            </View>
-            <View style={styles.signUpSection}>
-                <Text>
-                    Already have an account? <Text style={styles.signUpText} onPress={handleLoginPress}>Log in</Text>
-                </Text>
-            </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 }

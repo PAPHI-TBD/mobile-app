@@ -1,14 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './login.style';
-import { View, Text, TextInput, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function LoginPage() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const navigation = useNavigation<any>();
+
+    const apiBaseUrl = 'https://moxy-api.azurewebsites.net';
 
     const handleRegistrationPress = () => {
         navigation.navigate('RegistrationPage');
     };
+
+    const handleLoginPress = async () => {
+        try {
+            const response = await fetch(`${apiBaseUrl}/api/User/GetUser?username=${username}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch user data: ${response.statusText}`);
+            }
+
+            const userData = await response.json();
+
+            // Check if user exists and password matches
+            if (userData.data.username === username && userData.data.password === password) {
+                // localStorage.setItem('isLoggedIn', 'true');
+                // onLogin();
+                // AsyncStorange.setItem('isLoggedIn', 'true'); // if using AsyncStorage for persistence
+                navigation.navigate('MainTabs');
+            } else {
+                Alert.alert('Invalud username or password');
+            }
+        } catch (error) {
+            console.error('Error logging in:', error);
+            Alert.alert('Error logging in, please try again later.');
+        }
+    }
 
     return (
         <View style={[styles.container, styles.content]}>
@@ -22,20 +50,24 @@ export default function LoginPage() {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Username/Email"
+                    placeholder="Username"
                     placeholderTextColor="#A9A9A9"
                     keyboardType="email-address"
+                    value={username}
+                    onChangeText={setUsername}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="Password"
                     placeholderTextColor="#A9A9A9"
-                    keyboardType="email-address"
+                    secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
                 />
                 <Text style={styles.forgotText}>
                     Forgot Password?
                 </Text>
-                <TouchableOpacity style={styles.loginButton}>
+                <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
                     <Text style={styles.loginButtonText}>Log in</Text>
                 </TouchableOpacity>
             </View>
