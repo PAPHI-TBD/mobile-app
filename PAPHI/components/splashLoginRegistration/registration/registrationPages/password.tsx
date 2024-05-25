@@ -7,6 +7,17 @@ import styles from './password.style';
 
 type PasswordRouteProp = RouteProp<RootStackParamList, 'Password'>;
 
+interface FormData {
+    fullName: string;
+    username: string;
+    password: string;
+    confirmPassword: string;
+    email: string;
+    age: string;
+    dob: string;
+    sex: string;
+}
+
 export default function Password() {
     const route = useRoute<PasswordRouteProp>();
     const { fullName, date, gender, username, email } = route.params;
@@ -16,7 +27,7 @@ export default function Password() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [confirmIsTyping, setConfirmIsTyping] = useState(false);
     
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         fullName: fullName,
         username: username,
         password: '',
@@ -62,7 +73,7 @@ export default function Password() {
         }
     }, [confirmIsTyping, password, confirmPassword]);
 
-    const createUser = async () => {
+    const createUser = async (formData: FormData) => {
         console.log('Form Data:', formData);
         const response = await fetch('https://moxy-api.azurewebsites.net/api/User/CreateUser', {
             method: 'POST',
@@ -81,37 +92,26 @@ export default function Password() {
     const handleSubmit = async () => {
         try {
             validatePassword();
-    
-            // Update formData with password and confirm password
-            setFormData(prevState => ({
-                ...prevState,
+
+            const updatedFormData: FormData = {
+                ...formData,
                 password: password,
                 confirmPassword: confirmPassword
-            }));
-            await createUser();
-            Alert.alert('Success', 'User cread successfully.');
+            };
+
+            await createUser(updatedFormData);
+
+            Alert.alert('Success', 'User created successfully.');
             navigation.navigate('MainTabs');
         } catch (error) {
             console.error('Error in password validation:', error);
-            return;
+            Alert.alert('Error', 'An unexpected error occurred.');
         }
     };
 
     const handleBack = () => {
         navigation.navigate('Email', { fullName, date, gender, username, email });
     };
-    
-    useEffect(() => {
-        if (formData.password && formData.confirmPassword) {
-            createUser().then(() => {
-                Alert.alert('Success', 'User created successfully.');
-            }).catch(error => {
-                console.error('Error creating an account:', error);
-                alert('Error creating an account. Please try again later.');
-            });
-        }
-    }, [formData]);
-    
     
     return (
         <KeyboardAvoidingView 
