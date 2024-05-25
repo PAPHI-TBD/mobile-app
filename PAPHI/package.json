@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@expo/html-elements": "latest",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-native-fontawesome": "^0.3.2",
     "@gluestack-style/react": "latest",
     "@gluestack-ui/config": "latest",
     "@gluestack-ui/themed": "latest",

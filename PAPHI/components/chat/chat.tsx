@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Button, TextInput } from 'react-native';
 import styles from './chat.style';
-import BioHeader from './bio/bio';
-import BioDescription from './description/description';
+import BioHeader from './chatMessagesPage/bio/bio';
+import BioDescription from './chatMessagesPage/description/description';
 import ChatRequest from './chatRequest/chatRequest';
-import ChatBubbles from './chatBubbles/chatBubbles';
-import ChatInput from './chatInput/chatInput';
 
+import ChatBubbles from './chatMessagesPage/chatBubbles/chatBubbles';
+import ChatInput from './chatMessagesPage/chatBubbles/chatInput/chatInput';
 
 export default function Chat({ chatLog }: { chatLog?: { text: string; type: string, timestamp: string }[] }) {
     // Default or empty chat log data if not provided
