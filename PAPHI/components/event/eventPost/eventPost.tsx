@@ -88,7 +88,7 @@ const EventPost: React.FC<EventPostProps> = ({ eventPostData, currentPostIndex, 
 
     const eventClicked = () => {
         try {
-            navigation.navigate("IndividualEvent", { eventData: currentPost });
+            navigation.navigate("IndividualEvent", { eventData: currentPost, categories: labels, profile: profile, attendeesList: attendees });
             console.log('event clicked');
         } catch (error) {
             console.error(error);
