@@ -38,7 +38,7 @@ interface EventDetails {
     }
 }
 
-interface EventPostItem {
+export interface EventPostItem {
     name: string;
     price: number;
     labels: {
@@ -62,6 +62,14 @@ interface EventPostItem {
         }[];
     };
     saved: boolean;
+}
+
+export interface AttendeesType {
+    number: number;
+    profiles: {
+        username: string;
+        img: string;
+    }[];
 }
 
 const eventPostData: EventPostItem[] = [
@@ -227,7 +235,33 @@ const eventPostData: EventPostItem[] = [
     },
 ];
 
-const fetchEventSliderData = async (tag: string, setEventSliderData: Function) => {
+const attendees: AttendeesType = {
+    number: 100,
+    profiles: [
+        {
+            username: 'John Doe',
+            img: require('../../assets/bio/bio-pic.png')
+        },
+        {
+            username: 'Jane Doe',
+            img: require('../../assets/bio/bio-pic.png')
+        },
+        {
+            username: 'Jack Doe',
+            img: require('../../assets/bio/bio-pic.png')
+        },
+        {
+            username: 'Jill Doe',
+            img: require('../../assets/bio/bio-pic.png')
+        },
+        {
+            username: 'Jan Doe',
+            img: require('../../assets/bio/bio-pic.png')
+        },
+    ],
+};
+
+const fetchEventSliderData = async (tag: string, setEventSliderData: Function, setCurrentPostIndex: Function) => {
     try {
         console.log('Fetching event slider data from API...');
         const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
@@ -236,89 +270,96 @@ const fetchEventSliderData = async (tag: string, setEventSliderData: Function) =
         }
         const eventData = await response.json();
         console.log('Event slider data fetched from API:', eventData);
-        setEventSliderData(eventData);
+        // setEventSliderData(eventData);
+        setEventSliderData([...eventData.data.eventIdList]); // Store event slider data in state
+        setCurrentPostIndex(0);
     } catch (error) {
         console.error('Error fetching event slider data:', error);
     }
 };
+
 
 export default function Event({ }) {
 
     const [data, setData] = useState<EventPostItem[]>(eventPostData);
     const [currentPostIndex, setCurrentPostIndex] = useState(0);
 
-    // const currentPost = data[currentPostIndex];
+    const [attendeesData, setAttendeesData] = useState<AttendeesType>(attendees);
+
+    const currentPost = data[currentPostIndex];
+    const [eventSliderData, setEventSliderData] = useState<any[]>([]);
+    const [eventDetailsData, setEventDetailsData] = useState<any[]>([]);
 
 
     const [profileData, setProfileData] = useState(null);
-    const [eventSliderData, setEventSliderData] = useState<EventSliderData | null>(null); // State to store event slider data
-    const [eventDetails, setEventDetails] = useState<EventDetails[] | null>(null); // State to store detailed event data
+    // const [eventSliderData, setEventSliderData] = useState<EventSliderData | null>(null); // State to store event slider data
+    // const [eventDetailsData, setEventDetails] = useState<EventDetails[] | null>(null); // State to store detailed event data
     const username = 'josh'; // Assuming username is known
     const tag = 'hot_topics';
 
     useEffect(() => {
-        fetchEventSliderData(tag, setEventSliderData);
+        fetchEventSliderData(tag, setEventSliderData, setCurrentPostIndex);
     }, [tag]);
 
-    useEffect(() => {
-        const fetchEventSliderData = async (tag: string) => {
-            try {
-                console.log('Fetching event slider data from API...');
-                // fetching from azure
-                // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
+    // useEffect(() => {
+    //     const fetchEventSliderData = async (tag: string) => {
+    //         try {
+    //             console.log('Fetching event slider data from API...');
+    //             // fetching from azure
+    //             // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
 
-                // fetching from local 
-                const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch event slider data: ${response.statusText}`);
-                }
-                const eventData = await response.json();
-                console.log('Event slider data fetched from API:', eventData);
-                setEventSliderData(eventData); // Store event slider data in state
-                setCurrentPostIndex(0);
-            } catch (error) {
-                console.error('Error fetching event slider data:', error);
-            }
-        };
+    //             // fetching from local 
+    //             const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
+    //             if (!response.ok) {
+    //                 throw new Error(`Failed to fetch event slider data: ${response.statusText}`);
+    //             }
+    //             const eventData = await response.json();
+    //             console.log('Event slider data fetched from API:', eventData);
+    //             setEventSliderData(eventData); // Store event slider data in state
+    //             setCurrentPostIndex(0);
+    //         } catch (error) {
+    //             console.error('Error fetching event slider data:', error);
+    //         }
+    //     };
 
-        fetchEventSliderData(tag);
-    }, [tag]);
+    //     fetchEventSliderData(tag);
+    // }, [tag]);
 
-    useEffect(() => {
-        const fetchEventData = async () => {
-            try {
-                let cachedEventData = localStorage.getItem('cachedEventData');
-                if (cachedEventData) {
-                    // Use cached data if available
-                    setEventDetails(JSON.parse(cachedEventData));
-                    console.log('Event details data retrieved from cache:', JSON.parse(cachedEventData));
-                } else if (eventSliderData && eventSliderData.data && eventSliderData.data.eventIdList) {
-                    console.log('Fetching event details data from API...');
-                    const eventDetails = await Promise.all(eventSliderData.data.eventIdList.map(eventid =>
-                        fetch(`https://moxy-api.azurewebsites.net/api/Event/GetEvent?eventid=${eventid}`)
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error(`Failed to fetch event data: ${response.statusText}`);
-                                }
-                                return response.json();
-                            })
-                    ));
-                    console.log('Event details data fetched from API:', eventDetails);
-                    setEventDetails(eventDetails); // Store event details data in state
+    // useEffect(() => {
+    //     const fetchEventData = async () => {
+    //         try {
+    //             let cachedEventData = localStorage.getItem('cachedEventData');
+    //             if (cachedEventData) {
+    //                 // Use cached data if available
+    //                 setEventDetails(JSON.parse(cachedEventData));
+    //                 console.log('Event details data retrieved from cache:', JSON.parse(cachedEventData));
+    //             } else if (eventSliderData && eventSliderData.data && eventSliderData.data.eventIdList) {
+    //                 console.log('Fetching event details data from API...');
+    //                 const eventDetails = await Promise.all(eventSliderData.data.eventIdList.map(eventid =>
+    //                     fetch(`https://moxy-api.azurewebsites.net/api/Event/GetEvent?eventid=${eventid}`)
+    //                         .then(response => {
+    //                             if (!response.ok) {
+    //                                 throw new Error(`Failed to fetch event data: ${response.statusText}`);
+    //                             }
+    //                             return response.json();
+    //                         })
+    //                 ));
+    //                 console.log('Event details data fetched from API:', eventDetails);
+    //                 setEventDetails(eventDetails); // Store event details data in state
     
-                    // Cache the fetched event data
-                    localStorage.setItem('cachedEventData', JSON.stringify(eventDetails));
-                    console.log('Event details data cached.');
-                } else {
-                    console.log('Event slider data is not fully loaded yet.');
-                }
-            } catch (error) {
-                console.error('Error fetching event details data:', error);
-            }
-        };
+    //                 // Cache the fetched event data
+    //                 localStorage.setItem('cachedEventData', JSON.stringify(eventDetails));
+    //                 console.log('Event details data cached.');
+    //             } else {
+    //                 console.log('Event slider data is not fully loaded yet.');
+    //             }
+    //         } catch (error) {
+    //             console.error('Error fetching event details data:', error);
+    //         }
+    //     };
     
-        fetchEventData();
-    }, [eventSliderData]);
+    //     fetchEventData();
+    // }, [eventSliderData]);
 
 
 
@@ -332,6 +373,72 @@ export default function Event({ }) {
         { name: 'Movies', tag: 'movies' },
     ];
 
+    useEffect(() => {
+        // let tag = 'trending'
+        const fetchSliderData = async(tag: string) => {
+            try {
+                // fetching from azure
+                const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
+
+                // fetching from local 
+                // const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
+                const eventData = await response.json()
+
+                console.log('Event slider data fetched from API:', eventData);
+                setEventSliderData([...eventData.data.eventIdList]); // Store event slider data in state
+                setCurrentPostIndex(0);
+            } catch (err) {
+                console.log('got an error, it didnt work')
+                console.log(err)
+            }
+        }
+        fetchSliderData(tag);
+    }, [tag]);
+
+    useEffect(() => {
+        const fetchEventData = async() => {
+            if (eventSliderData) {
+
+                try {
+                    console.log(eventSliderData)
+                    // const eventDetails = await Promise.all(eventSliderData.map(eventid => {
+                    //     console.log(eventid)
+    
+                    //     fetch(`https://localhost:7257/api/Event/GetEvent?eventid=${eventid}`)
+                    //         .then(response => {
+                    //             if (!response.ok) {
+                    //                 throw new Error(`Failed to fetch event data: ${response.statusText}`);
+                    //             }
+                    //             return response.json();
+                    //     })
+                    // }));
+                    let arr = [];
+                    for (let i = 0; i < eventSliderData.length; i++) {
+                        console.log(eventSliderData[i]);
+                        // fetch from azure api
+                        const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/GetEvent?eventid=${eventSliderData[i]}`)
+                        // fetch from local
+                        // const response = await fetch(`https://localhost:7257/api/Event/GetEvent?eventid=${eventSliderData[i]}`);
+                        const data = await response.json();
+                        arr.push(data.data);
+                    }
+                    console.log('Event details data fetched from API:');
+                    console.log(arr);
+                    setEventDetailsData([...arr]); // Store event details data in state
+                    // setEventDetails(eventDetails); // Store event details data in state
+    
+                } catch (err) {
+                    console.log('got an error, it didnt work');
+                    console.log(err);
+                }
+            }
+        }
+        fetchEventData();
+    }, [eventSliderData]);
+
+    console.log(eventSliderData);
+    console.log(eventDetailsData);
+
     return (
 
         <View style={{flex: 1}}>
@@ -342,12 +449,13 @@ export default function Event({ }) {
             >
                 <Text style={styles.header}>EVENT DISCOVERY</Text>
                 <SearchEvent />
-                <Filter filterList={filterList} clickEventSlider={() => fetchEventSliderData(tag, setEventSliderData)} />
+                <Filter filterList={filterList} clickEventSlider={(tag) => fetchEventSliderData(tag, setEventSliderData, setCurrentPostIndex)} />
                 <EventPost 
-                    eventPostData={eventPostData} 
+                    eventPostData={eventDetailsData.length === 0 ? eventPostData : eventDetailsData} 
+                    // eventPostData={eventPostData}
                     currentPostIndex={currentPostIndex} 
+                    attendees={attendeesData}
                     setCurrentPostIndex={setCurrentPostIndex} 
-                    // navigateToAttendeesPage={navigateToAttendeesPage} 
                     setEventPostData={setData}
                 />
             </LinearGradient>

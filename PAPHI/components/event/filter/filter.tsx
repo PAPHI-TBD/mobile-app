@@ -43,36 +43,6 @@ const Filter: React.FC<FilterProps> = ({ filterList, clickEventSlider }) => {
         
     // );
 
-    const [filterData] = [
-        {
-            name: 'trending',
-            tag: 'trending',
-        },
-        {
-            name: 'hot topics',
-            tag: 'hot_topics',
-        },
-        {
-            name: 'concert',
-            tag: 'concert',
-        },
-        {
-            name: 'party',
-            tag: 'party',
-        },
-        {
-            name: 'sports',
-            tag: 'sports',
-        },
-        {
-            name: 'art',
-            tag: 'art',
-        },
-        {
-            name: 'movies',
-            tag: 'movies',
-        },
-    ]
 
     
 
@@ -80,7 +50,7 @@ const Filter: React.FC<FilterProps> = ({ filterList, clickEventSlider }) => {
     const handleCategoryClick = ( tag: string ) => {
         // handle filter click here
         clickEventSlider(tag);
-        console.log(`clicked category`);
+        console.log(`clicked ${tag}`);
     };
 
     const handleFilterClick = () => {
@@ -96,23 +66,6 @@ const Filter: React.FC<FilterProps> = ({ filterList, clickEventSlider }) => {
                 </View>
             </TouchableOpacity>
         );
-        // if (index === 0) {
-        //     return (
-        //         <TouchableOpacity onPress={handleCategoryClick(item.tag)}>
-        //             <View style={[styles.textContainer, styles.first]}>
-        //                 <Text style={styles.text}>{item.name}</Text>
-        //             </View>
-        //         </TouchableOpacity> 
-        //     );
-        // } else {
-        //     return (
-        //         <TouchableOpacity onPress={handleCategoryClick}>
-        //             <View style={styles.textContainer}>
-        //                 <Text style={styles.text}>{item.name}</Text>
-        //             </View>
-        //         </TouchableOpacity>
-        //     );
-        // }
         
     }
 
