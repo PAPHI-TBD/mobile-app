@@ -263,8 +263,13 @@ const attendees: AttendeesType = {
 
 const fetchEventSliderData = async (tag: string, setEventSliderData: Function, setCurrentPostIndex: Function) => {
     try {
-        console.log('Fetching event slider data from API...');
+        // fetching from azure
+        // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
+
+        // fetching from local 
         const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
+        // console.log('Fetching event slider data from API...');
+        // const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
         if (!response.ok) {
             throw new Error(`Failed to fetch event slider data: ${response.statusText}`);
         }
@@ -315,10 +320,10 @@ export default function Event({ }) {
         const fetchSliderData = async(tag: string) => {
             try {
                 // fetching from azure
-                const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
+                // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
 
                 // fetching from local 
-                // const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
+                const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
                 const eventData = await response.json()
 
                 console.log('Event slider data fetched from API:', eventData);
@@ -353,9 +358,9 @@ export default function Event({ }) {
                     for (let i = 0; i < eventSliderData.length; i++) {
                         console.log(eventSliderData[i]);
                         // fetch from azure api
-                        const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/GetEvent?eventid=${eventSliderData[i]}`)
+                        // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/GetEvent?eventid=${eventSliderData[i]}`)
                         // fetch from local
-                        // const response = await fetch(`https://localhost:7257/api/Event/GetEvent?eventid=${eventSliderData[i]}`);
+                        const response = await fetch(`https://localhost:7257/api/Event/GetEvent?eventid=${eventSliderData[i]}`);
                         const data = await response.json();
                         arr.push(data.data);
                     }
