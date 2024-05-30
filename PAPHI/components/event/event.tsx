@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './event.style';
@@ -203,6 +203,8 @@ export default function Event({ }) {
     const [currentPostIndex, setCurrentPostIndex] = useState(0);
 
     const currentPost = data[currentPostIndex];
+    const [eventSliderData, setEventSliderData] = useState<any[]>([])
+    const [eventDetailsData, setEventDetailsData] = useState<any[]>([])
 
     // const navigateToAttendeesPage = () => {
     //     setIsMainSection(false);
@@ -212,6 +214,60 @@ export default function Event({ }) {
     //     setIsMainSection(true);
     // };
 
+    useEffect(() => {
+        let tag = 'trending'
+        const fetchSliderData = async() => {
+            try {
+                const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`)
+                const eventData = await response.json()
+                console.log(eventData)
+                console.log(eventData.data.eventIdList)
+                setEventSliderData([...eventData.data.eventIdList])
+            } catch (err) {
+                console.log('got an error, it didnt work')
+                console.log(err)
+            }
+        }
+        fetchSliderData()
+    }, [])
+
+    useEffect(() => {
+        const fetchEventData = async() => {
+            if (eventSliderData) {
+
+                try {
+                    console.log(eventSliderData)
+                    // const eventDetails = await Promise.all(eventSliderData.map(eventid => {
+                    //     console.log(eventid)
+    
+                    //     fetch(`https://localhost:7257/api/Event/GetEvent?eventid=${eventid}`)
+                    //         .then(response => {
+                    //             if (!response.ok) {
+                    //                 throw new Error(`Failed to fetch event data: ${response.statusText}`);
+                    //             }
+                    //             return response.json();
+                    //     })
+                    // }));
+                    let arr = []
+                    for (let i = 0; i < eventSliderData.length; i++) {
+                        console.log(eventSliderData[i])
+                        const response = await fetch(`https://localhost:7257/api/Event/GetEvent?eventid=${eventSliderData[i]}`)
+                        const data = await response.json()
+                        arr.push(data)
+                    }
+                    console.log('Event details data fetched from API:');
+                    console.log(arr)
+                    setEventDetailsData([...arr]); // Store event details data in state
+                } catch (err) {
+                    console.log('got an error, it didnt work')
+                    console.log(err)
+                }
+            }
+        }
+        fetchEventData()
+    }, [eventSliderData])
+    console.log(eventSliderData)
+    console.log(eventDetailsData)
     return (
 
         <View style={{flex: 1}}>
