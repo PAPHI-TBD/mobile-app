@@ -38,15 +38,18 @@ import { AttendeesType, EventPostItem } from '../event';
 // }
 
 interface EventPostProps {
+    username: string,
     eventPostData: EventPostItem[] | any[];
     currentPostIndex: number;
     attendees: AttendeesType;
     setCurrentPostIndex: (index: number) => void;
     // navigateToAttendeesPage: () => void;
     setEventPostData: React.Dispatch<React.SetStateAction<EventPostItem[] | any[]>>;
+    saveEventToProfile: (eventId: string, username: string, setSavedEventsData: Function) => void;
+    setSavedEventsData: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-const EventPost: React.FC<EventPostProps> = ({ eventPostData, currentPostIndex, attendees, setCurrentPostIndex, setEventPostData }) => {
+const EventPost: React.FC<EventPostProps> = ({ username, eventPostData, currentPostIndex, attendees, setCurrentPostIndex, setEventPostData, saveEventToProfile, setSavedEventsData }) => {
     const navigation: NavigationProp<ParamListBase> = useNavigation();
 
     const currentPost = eventPostData[currentPostIndex];
@@ -84,6 +87,8 @@ const EventPost: React.FC<EventPostProps> = ({ eventPostData, currentPostIndex, 
 
     const saveEvent = () => {
         // implement save event
+        console.log('saving event with eventid: ', currentPost.eventid);
+        saveEventToProfile(currentPost.eventid, username, setSavedEventsData);
     };
 
     const eventClicked = () => {

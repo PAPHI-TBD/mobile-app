@@ -5,38 +5,7 @@ import styles from './event.style';
 import SearchEvent from './searchEvent/searchEvent';
 import EventPost from './eventPost/eventPost';
 import Filter from './filter/filter';
-import AttendeesPage from './attendeesPage/attendeesPage';
 
-interface EventSliderData {
-    statusCode: number;
-    statusMessage: string;
-    statusMessageText: string;
-    timestamp: string;
-    data: {
-        eventIdList: string[]
-    }
-}
-
-interface EventDetails {
-    statusCode: number,
-    statusMessage: string,
-    statusMessageText: string,
-    timestamp: string,
-    data: {
-        name: string,
-        location: {
-            city: string,
-            state: string,
-            street: string,
-            country: string,
-            zipcode: string,
-        },
-        category: string,
-        date: Date,
-        eventId: string,
-        eventDiscoveryTag: string,
-    }
-}
 
 export interface EventPostItem {
     name: string;
@@ -261,28 +230,6 @@ const attendees: AttendeesType = {
     ],
 };
 
-const fetchEventSliderData = async (tag: string, setEventSliderData: Function, setCurrentPostIndex: Function) => {
-    try {
-        // fetching from azure
-        // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
-
-        // fetching from local 
-        const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
-        // console.log('Fetching event slider data from API...');
-        // const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch event slider data: ${response.statusText}`);
-        }
-        const eventData = await response.json();
-        console.log('Event slider data fetched from API:', eventData);
-        // setEventSliderData(eventData);
-        setEventSliderData([...eventData.data.eventIdList]); // Store event slider data in state
-        setCurrentPostIndex(0);
-    } catch (error) {
-        console.error('Error fetching event slider data:', error);
-    }
-};
-
 
 export default function Event({ }) {
 
@@ -292,17 +239,23 @@ export default function Event({ }) {
     const [attendeesData, setAttendeesData] = useState<AttendeesType>(attendees);
 
     const currentPost = data[currentPostIndex];
+    const [savedEventsData, setSavedEventsData] = useState<any[]>([]);
     const [eventSliderData, setEventSliderData] = useState<any[]>([]);
     const [eventDetailsData, setEventDetailsData] = useState<any[]>([]);
 
 
-    const [profileData, setProfileData] = useState(null);
+    const [profileData, setProfileData] = useState<any>(null);
     const username = 'josh'; // Assuming username is known
     const tag = 'hot_topics';
+    const eventId = 'ce022957-4f2f-484f-8ccb-1805260ed967';
 
     useEffect(() => {
         fetchEventSliderData(tag, setEventSliderData, setCurrentPostIndex);
     }, [tag]);
+
+    useEffect(() => {
+        saveEventToProfile(username, eventId, setSavedEventsData);
+    }, [eventId]);
 
     
     const filterList = [
@@ -314,6 +267,59 @@ export default function Event({ }) {
         { name: 'Art', tag: 'art' },
         { name: 'Movies', tag: 'movies' },
     ];
+
+    useEffect(() => {
+        const fetchProfileData = async () => {
+            try {
+                const cachedProfileData = localStorage.getItem('cachedProfileData');
+                if (cachedProfileData) {
+                    console.log('Profile data retrieved from cache:', JSON.parse(cachedProfileData));
+                    setProfileData(JSON.parse(cachedProfileData));
+                } else {
+                    console.log('Fetching profile data from API...');
+                    const response = await fetch(`https://moxy-api.azurewebsites.net/api/Profile/GetProfile?username=${username}`);
+                    if (!response.ok) {
+                        throw new Error(`Failed to fetch user data: ${response.statusText}`);
+                    }
+                    const userData = await response.json();
+                    setProfileData(userData);
+                    setSavedEventsData([...userData.data.events]);
+                    localStorage.setItem('cachedProfileData', JSON.stringify(userData));
+                    console.log('Profile data fetched from API:', userData);
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchProfileData();
+    }, [username]);
+
+
+    const saveEventToProfile = async (eventId: string, username: string, setSavedEventsData: Function) => {
+        try {
+            if (savedEventsData && !savedEventsData.includes(eventId)) {
+                // post with azure
+                // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Profile/AddProfileEvent?username=${username}&eventid=${eventId}`);
+
+                // post with local
+                const response = await fetch(`https://localhost:7257/api/Profile/AddProfileEvent?username=${username}&eventid=${eventId}`, {
+                    method: 'POST',
+                });
+                if (!response.ok) {
+                    throw new Error(`Failed to save event to profile: ${response.statusText}`);
+                }
+                const savedEvents = await response.json();
+                console.log('saved events to profile:', savedEvents);
+                setSavedEventsData([...savedEvents.data.events]);
+            } else {
+                console.log(eventId, ' has already been saved to profile');
+            }
+        } catch (error) {
+            console.error('error saving event to profile: ', error)
+        }
+    }
+
 
     useEffect(() => {
         // let tag = 'trending'
@@ -336,6 +342,27 @@ export default function Event({ }) {
         }
         fetchSliderData(tag);
     }, [tag]);
+
+    const fetchEventSliderData = async (tag: string, setEventSliderData: Function, setCurrentPostIndex: Function) => {
+        try {
+            // fetching from azure
+            // const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/listEventsByTag?tag=${tag}`);
+    
+            // fetching from local 
+            const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
+            // console.log('Fetching event slider data from API...');
+            // const response = await fetch(`https://localhost:7257/api/Event/listEventsByTag?tag=${tag}`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch event slider data: ${response.statusText}`);
+            }
+            const eventData = await response.json();
+            console.log('Event slider data fetched from API:', eventData);
+            setEventSliderData([...eventData.data.eventIdList]); // Store event slider data in state
+            setCurrentPostIndex(0);
+        } catch (error) {
+            console.error('Error fetching event slider data:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchEventData = async() => {
@@ -392,12 +419,15 @@ export default function Event({ }) {
                 <SearchEvent />
                 <Filter filterList={filterList} clickEventSlider={(tag) => fetchEventSliderData(tag, setEventSliderData, setCurrentPostIndex)} />
                 <EventPost 
+                    username={username}
                     eventPostData={eventDetailsData.length === 0 ? eventPostData : eventDetailsData} 
                     // eventPostData={eventPostData}
                     currentPostIndex={currentPostIndex} 
                     attendees={attendeesData}
                     setCurrentPostIndex={setCurrentPostIndex} 
                     setEventPostData={setData}
+                    saveEventToProfile={(eventId) => saveEventToProfile(eventId, username, setSavedEventsData)}
+                    setSavedEventsData={setSavedEventsData}
                 />
             </LinearGradient>
         </View>
