@@ -133,16 +133,16 @@ const EventPost: React.FC<EventPostProps> = ({ username, eventPostData, currentP
                     <View>
                         <View style={styles.firstRow}>
                             <Text style={styles.title}>{currentPost.name}</Text>
-                            {/* <Text style={styles.price}>${currentPost.price}</Text> */}
-                            <Text style={styles.price}>$35</Text>
+                            <Text style={styles.price}>${currentPost.price}</Text>
+                            {/* <Text style={styles.price}>$35</Text> */}
                         </View>
                         {/* <Categories categoriesList={currentPost.labels} /> */}
                         <Categories categoriesList={labels} />
                         {/* <Info date={currentPost.date} time={currentPost.time} location={currentPost.location} /> */}
                         <Info date={currentPost.date} time={"sample time"} location={currentPost.location.city} />
 
-                        {/* <EventCreator profile={currentPost.profile} /> */}
-                        <EventCreator profile={profile} />
+                        <EventCreator host={currentPost.host} />
+                        {/* <EventCreator profile={profile} /> */}
 
                         {/* <Text style={{fontSize: 18}}>{currentPost.description}</Text> */}
                         <Text style={{fontSize: 18}}>sample description !!!!!!</Text>

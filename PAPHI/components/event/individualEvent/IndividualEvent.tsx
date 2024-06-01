@@ -46,8 +46,8 @@ const IndividualEvent: React.FC = ({}) => {
                     </TouchableOpacity>
                         <View style={styles.firstRow}>
                             <Text style={styles.title}>{eventData.name}</Text>
-                            {/* <Text style={styles.price}>${eventData.price}</Text> */}
-                            <Text style={styles.price}>$35</Text>
+                            <Text style={styles.price}>${eventData.price}</Text>
+                            {/* <Text style={styles.price}>$35</Text> */}
                         </View>
                         {/* <Categories categoriesList={currentPost.labels} /> */}
                         <Categories categoriesList={categories} />
@@ -55,8 +55,8 @@ const IndividualEvent: React.FC = ({}) => {
                         {/* <Info date={eventData.date} time={eventData.time} location={eventData.location} /> */}
                         <Info date={eventData.date} time={"sample time"} location={eventData.location.city} />
                         
-                        {/* <EventCreator profile={currentPost.profile} /> */}
-                        <EventCreator profile={profile} />
+                        <EventCreator host={eventData.host} />
+                        {/* <EventCreator profile={profile} /> */}
                         
                         {/* <ImagePost img={currentPost.image} /> */}
                         <ImagePost img={require('../../../assets/event/sampleEvent.jpg')} />
