@@ -13,16 +13,16 @@ function KitchenCard({ title, date, location }: { title: string, date: string, l
             </View>
             <View style={styles.kitchenInfo}>
                 <View>
-                    <Text>Ohgeesy</Text>
+                    <Text style={styles.kitchenTitle}>{title}</Text>
                     {/* icon */}
                 </View>
                 <View>
                     {/* icon */}
-                    <Text>FRI JULY 7  9:30PM</Text>
+                    <Text style={styles.kitchenDate}>{date}</Text>
                 </View>
                 <View>
                     {/* icon */}
-                    <Text>2123 New Avenue</Text>
+                    <Text style={styles.kitchenLocation}>{location}</Text>
                 </View>
             </View>
         </View>

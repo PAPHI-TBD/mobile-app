@@ -38,10 +38,6 @@ export default function Event({ }) {
                     {/* <EventSlider title='Created by friends'/> */}
                     {/* vertical slider */}
                 </View>
-                
-                
-            
-                
             </LinearGradient>
         </View>
 

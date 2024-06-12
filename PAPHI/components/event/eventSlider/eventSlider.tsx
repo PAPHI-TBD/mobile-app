@@ -8,14 +8,14 @@ const EventSlider = ({ title }: { title: string }) => {
     
 
     const recommendedEvents = recEvents.map((event, index) => {
-        return(<KitchenCard />);
+        return(<KitchenCard title='Ohgeesy' date='FRI JULY 7  9:30PM' location='2123 New Avenue'/>);
     });
 
     return (
         <View style={styles.feedContainer}>
             <Text style={styles.titleText}>{title}</Text>
             {/* {recommendedEvents} */}
-            <KitchenCard/>
+            <KitchenCard title='Ohgeesy' date='FRI JULY 7 9:30PM' location='2123 New Avenue'/>
         </View>
     );
 }

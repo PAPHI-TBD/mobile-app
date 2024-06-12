@@ -13,15 +13,39 @@ const styles = StyleSheet.create({
         width: 247,
         height: 265,
         backgroundColor: 'white',
+        marginTop: 20,
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        elevation: 3,
     },
     kitchenImage: {
         height: 170,
-        backgroundColor: 'grey'
+        backgroundColor: 'grey',
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     },
     kitchenInfo: {
         height: 95,
-        backgroundColor: 'red',
-        padding: 15
+        padding: 15,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10
+    },
+    kitchenTitle: {
+        fontWeight: 800,
+        fontSize: 20,
+        marginBottom: 8
+    },
+    kitchenDate: {
+        fontWeight: 600,
+        fontSize: 12,
+        marginBottom: 2
+    },
+    kitchenLocation: {
+        fontWeight: 500,
+        fontSize: 12
     }
     
 });
