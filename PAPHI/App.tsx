@@ -17,7 +17,6 @@ import SplashPageButtons from './components/splashLoginRegistration/splashPageBu
 import LoginPage from './components/splashLoginRegistration/login/login'; // Import your LoginPage component
 import RegistrationPage from './components/splashLoginRegistration/registration/registration'; // Import your RegistrationPage component
 import HangRequest from './components/hangRequest/hangRequest';
-import IndividualEvent from './components/event/individualEvent/IndividualEvent';
 import Event from './components/event/event';
 import Birthday from './components/splashLoginRegistration/registration/registrationPages/birthday';
 import Gender from './components/splashLoginRegistration/registration/registrationPages/gender';
@@ -106,7 +105,6 @@ export default function App() {
             {/*<Stack.Screen name="Profile" component={Profile} />
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
-          <Stack.Screen name="IndividualEvent" component={IndividualEvent} />
         </Stack.Navigator>
       </NavigationContainer>
     </GluestackUIProvider>
@@ -130,7 +128,7 @@ function MainTabs() {
           let IconComponent;
           if (route.name === 'Home') {
             IconComponent = HomeIcon;
-          } else if (route.name === 'Mingle') {
+          } else if (route.name === 'Event') {
             IconComponent = MingleIcon;
           } else if (route.name === 'Community') {
             IconComponent = CommunityIcon;
@@ -152,11 +150,12 @@ function MainTabs() {
       >
       <Tab.Screen 
         name="Home" 
-        component={Feed} 
+        // component={Feed} // change back to feed when merge to main
+        component={Event} 
         options={{ headerShown: false }}
       />
       <Tab.Screen 
-        name="Mingle" 
+        name="Event" 
         component={Event} 
         options={{ headerShown: false }}
       />

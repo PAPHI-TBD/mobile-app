@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
     searchEventContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginHorizontal: 'auto',
+        marginLeft: 25 * vw,
+        marginRight: 10 * vh,
         marginVertical: 7 * vh,
-        width: '80%',
+        width: 334,
         padding: 10 * vw,
-        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#EBEBEB',
         borderRadius: 10 * vw,
-        opacity: 0.5,
     },
     icon: {
         justifyContent: 'center',
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         fontSize: 17,
+        color: '#3C3C43'
     },
 });
 
