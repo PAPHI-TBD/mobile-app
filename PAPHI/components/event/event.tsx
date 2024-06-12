@@ -24,12 +24,17 @@ export default function Event({ }) {
             colors={['#8BC0C8', '#E1CAD8']}
             locations={[0, 1]}
             style={styles.eventPageContainer}
-            >
-                <Text style={styles.header}>EVENT DISCOVERY</Text>
-                <View style = {styles.searchSection}>
-                    <SearchEvent />
-                    <Image source={FilterIcon} style={{width: 24, height: 24}}/>
+            >   
+                <View style={styles.headerSection}>
+                    <Text style={styles.header}>EVENT DISCOVERY</Text>
+                    <View style = {styles.searchSection}>
+                        <SearchEvent />
+                        <Image source={FilterIcon} style={{width: 24, height: 24}}/>
+                    </View>
                 </View>
+
+                
+                
             
                 
             </LinearGradient>
