@@ -9,14 +9,21 @@ const vw = width / (100 * 4.3);
 const vh = height / (100 * 4.3);
 
 const styles = StyleSheet.create({
-    feedContainer: {
-        marginLeft: 25 * vw,
-        marginTop: 10 * vh,
+    kitchenCardContainer: {
+        width: 247,
+        height: 265,
+        backgroundColor: 'white',
     },
-    titleText: {
-        fontSize: 22,
-        fontWeight: 600
+    kitchenImage: {
+        height: 170,
+        backgroundColor: 'grey'
+    },
+    kitchenInfo: {
+        height: 95,
+        backgroundColor: 'red',
+        padding: 15
     }
+    
 });
 
 export default styles;

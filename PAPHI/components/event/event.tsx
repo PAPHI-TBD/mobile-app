@@ -27,10 +27,10 @@ export default function Event({ }) {
             style={styles.eventPageContainer}
             >   
                 <View style={styles.headerSection}>
-                    <Text style={styles.header}>EVENT DISCOVERY</Text>
+                    <Text style={styles.header}>DISCOVERY</Text>
                     <View style = {styles.searchSection}>
                         <SearchEvent />
-                        <Image source={FilterIcon} style={{width: 24, height: 24}}/>
+                        <Image source={FilterIcon} style={{width: 24, height: 24, cursor: 'pointer'}}/>
                     </View>
                 </View>
                 <View>
