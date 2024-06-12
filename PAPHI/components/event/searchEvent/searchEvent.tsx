@@ -35,11 +35,11 @@ const SearchEvent: React.FC = ({}) => {
 
         <View style={styles.searchEventContainer}>
             <TouchableOpacity style={styles.icon} onPress={onSearchButtonClick}>
-                <FontAwesomeIcon icon={faSearch} size={18} color="black"/>
+                <FontAwesomeIcon icon={faSearch} size={18} color="#3C3C43"/>
             </TouchableOpacity>
             <TextInput
                 style={styles.input}
-                placeholder="Search topics, people, places"
+                placeholder="Search events"
                 value={message}
                 onChangeText={handleMessageChange}
             />
