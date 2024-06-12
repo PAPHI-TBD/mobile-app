@@ -3,8 +3,8 @@ import { View, Text, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './event.style';
 import SearchEvent from './searchEvent/searchEvent';
-// import FilterIcon from '../../assets/event/eventFilter.jpg';
-import FilterIcon from './eventFilter.png';
+
+const FilterIcon = require('../../assets/event/eventFilter.png');
 
 export default function Event({ }) {    
     const filterList = [
@@ -26,11 +26,9 @@ export default function Event({ }) {
             style={styles.eventPageContainer}
             >
                 <Text style={styles.header}>EVENT DISCOVERY</Text>
-                <View>
+                <View style = {styles.searchSection}>
                     <SearchEvent />
                     <Image source={FilterIcon} style={{width: 24, height: 24}}/>
-                    <Text>hi</Text>
-
                 </View>
             
                 

@@ -24,6 +24,10 @@ const styles = StyleSheet.create({
         padding: 15 * vw,
         paddingTop: 20 * vh,
     },
+    searchSection: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    }
 });
 
 export default styles;

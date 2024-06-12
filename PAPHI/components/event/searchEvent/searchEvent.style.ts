@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     searchEventContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginHorizontal: 'auto',
+        marginLeft: 25 * vw,
+        marginRight: 10 * vh,
         marginVertical: 7 * vh,
         width: 334,
         padding: 10 * vw,
