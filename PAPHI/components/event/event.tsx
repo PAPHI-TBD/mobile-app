@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './event.style';
 import SearchEvent from './searchEvent/searchEvent';
+import EventSlider from './eventSlider/eventSlider';
 
 const FilterIcon = require('../../assets/event/eventFilter.png');
 
@@ -32,7 +33,11 @@ export default function Event({ }) {
                         <Image source={FilterIcon} style={{width: 24, height: 24}}/>
                     </View>
                 </View>
-
+                <View>
+                    <EventSlider title='Suggested for you'/>
+                    {/* <EventSlider title='Created by friends'/> */}
+                    {/* vertical slider */}
+                </View>
                 
                 
             
