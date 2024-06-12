@@ -22,7 +22,7 @@ export default function Event({ }) {
         <View style={{flex: 1}}>
             <LinearGradient
             colors={['#8BC0C8', '#E1CAD8']}
-            locations={[0, 0.69]}
+            locations={[0, 1]}
             style={styles.eventPageContainer}
             >
                 <Text style={styles.header}>EVENT DISCOVERY</Text>
