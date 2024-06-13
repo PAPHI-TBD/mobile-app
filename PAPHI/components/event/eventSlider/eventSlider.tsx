@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native'; 
 import styles from './eventSlider.style';
 import KitchenCard from '../cards/kitchenCard';
+import SmallCard from '../cards/smallCard';
+// import LargeCard from '../cards/largeCard'; // Ensure you import LargeCard
 
 interface Event {
     id: string;
@@ -10,38 +12,22 @@ interface Event {
     location: string;
 }
 
-const EventSlider = ({ title, data }: { title: string, data: any }) => {
+interface EventSliderProps {
+    title: string;
+    data: string[]; // Assuming data is an array of event IDs
+    category: string;
+}
+
+const EventSlider = ({ title, data, category }: EventSliderProps) => {
     const [recEvents, setRecEvents] = useState<Event[]>([]);
 
-    const [ kCard, setKCard ] = useState(false);
-    const [ sCard, setSCard ] = useState(false);
-    const [ lCard, setLCard ] = useState(false);
-
-    let tag; // replace later as a prop
-
-    const cardType = (tag: string) => {
-        // replace to suggested in the future
-        if(tag === 'hot_topics') {
-            setKCard(true);
-
-            setSCard(false);
-            setLCard(false);
-        } else if (tag === 'trending') {
-            setLCard(true);
-
-            setKCard(false);
-            setSCard(false);
-        } else {
-            setSCard(true);
-
-            setKCard(false);
-            setLCard(false);
-        }
-    }
-
-    // get event data from each event id from the event data array
     useEffect(() => {
         const fetchEventData = async () => {
+            if (!data || !Array.isArray(data)) {
+                console.error('Data is either undefined or not an array');
+                return;
+            }
+
             try {
                 const promises = data.map(async (id: string) => {
                     const response = await fetch(`https://moxy-api.azurewebsites.net/api/Event/GetEvent?eventid=${id}`);
@@ -54,11 +40,9 @@ const EventSlider = ({ title, data }: { title: string, data: any }) => {
                 const eventDataArray = await Promise.all(promises);
                 console.log('Event data fetched from API:', eventDataArray);
 
-                // Assuming eventDataArray is an array of event objects with fields id, title, date, location
                 setRecEvents(eventDataArray.map((event: any) => ({
                     id: event.data.eventid,
                     title: event.data.name,
-                    // need to add time
                     date: event.data.date,
                     location: `${event.data.location.street}, ${event.data.location.state}`,
                 })));
@@ -69,21 +53,23 @@ const EventSlider = ({ title, data }: { title: string, data: any }) => {
 
         fetchEventData();
     }, [data]);
-    
-    const recommendedEvents = recEvents.map((event, index) => (
-        <KitchenCard
-            key={event.id}
-            title={event.title}
-            date={event.date}
-            location={event.location}
-        />
-    ));
+
+    const renderCard = (event: Event) => {
+        switch (category) {
+            case 'hot_topics':
+                return <KitchenCard key={event.id} title={event.title} date={event.date} location={event.location} />;
+            // case 'trending':
+            //     return <LargeCard key={event.id} title={event.title} date={event.date} location={event.location} />;
+            default:
+                return <SmallCard key={event.id} title={event.title} date={event.date} location={event.location} />;
+        }
+    };
 
     return (
         <View style={styles.feedContainer}>
             <Text style={styles.titleText}>{title}</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {recommendedEvents}
+                {recEvents.map(renderCard)}
             </ScrollView>
         </View>
     );
