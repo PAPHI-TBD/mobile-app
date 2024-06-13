@@ -10,4 +10,6 @@ export type RootStackParamList = {
     Email: { fullName: string, date: Date, gender: string, username: string, email?: string };
     Password: { fullName: string, date: Date, gender: string, username: string, email: string, password?: string };
     MainTabs: undefined;
+    Attendees: undefined; // fix
+    EventPage: {data ?: any}; // fix
 };

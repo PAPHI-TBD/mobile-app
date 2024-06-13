@@ -23,6 +23,8 @@ import Gender from './components/splashLoginRegistration/registration/registrati
 import Username from './components/splashLoginRegistration/registration/registrationPages/username';
 import Password from './components/splashLoginRegistration/registration/registrationPages/password';
 import Email from './components/splashLoginRegistration/registration/registrationPages/email';
+import Attendees from './components/event/attendeePage/attendees';
+import EventPage from './components/event/eventPage/eventPage';
 
 const customColor = '#322E22';
 
@@ -105,6 +107,8 @@ export default function App() {
             {/*<Stack.Screen name="Profile" component={Profile} />
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
+          <Stack.Screen name="Attendees" component={Attendees} />
+          <Stack.Screen name="EventPage" component={EventPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </GluestackUIProvider>
