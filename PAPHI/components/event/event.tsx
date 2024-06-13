@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import styles from './event.style';
 import SearchEvent from './searchEvent/searchEvent';
 import EventSlider from './eventSlider/eventSlider';
+import VerticalEventSlider from './eventSlider/verticalEventSlider';
 
 const FilterIcon = require('../../assets/event/eventFilter.png');
 
@@ -62,7 +63,7 @@ export default function Event() {
                     {/* in the future have this populate by tags picked in filter */}
                     <EventSlider title='Suggested for you' data={event} category='hot_topics'/>
                     <EventSlider title='Created by friends' data={event} category='friends'/>
-                    {/* vertical slider */}
+                    <VerticalEventSlider title='Hot in your area' data={event} category='hot'/>
                 </ScrollView>
             </LinearGradient>
         </View>

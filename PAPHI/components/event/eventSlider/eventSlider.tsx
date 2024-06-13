@@ -3,7 +3,6 @@ import { View, Text, ScrollView } from 'react-native';
 import styles from './eventSlider.style';
 import KitchenCard from '../cards/kitchenCard';
 import SmallCard from '../cards/smallCard';
-// import LargeCard from '../cards/largeCard'; // Ensure you import LargeCard
 
 interface Event {
     id: string;
@@ -58,8 +57,6 @@ const EventSlider = ({ title, data, category }: EventSliderProps) => {
         switch (category) {
             case 'hot_topics':
                 return <KitchenCard key={event.id} title={event.title} date={event.date} location={event.location} />;
-            // case 'trending':
-            //     return <LargeCard key={event.id} title={event.title} date={event.date} location={event.location} />;
             default:
                 return <SmallCard key={event.id} title={event.title} date={event.date} location={event.location} />;
         }
