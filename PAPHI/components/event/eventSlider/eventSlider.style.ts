@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     titleText: {
         fontSize: 22,
         fontWeight: 600
-    }
+    },
 });
 
 export default styles;

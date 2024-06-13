@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         height: 265,
         backgroundColor: 'white',
         marginTop: 20,
+        marginRight: 15,
         borderRadius: 10,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
