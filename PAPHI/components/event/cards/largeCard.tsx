@@ -4,11 +4,11 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
 
-export default function LargeCard({ title, date, location }: { title: string, date: string, location: string }) {
+export default function LargeCard({ title, date, location, data }: { title: string, date: string, location: string, data: any }) {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const eventPage = () => {
-        navigation.navigate('EventPage');
+        navigation.navigate('EventPage', {data});
     };
 
     return (

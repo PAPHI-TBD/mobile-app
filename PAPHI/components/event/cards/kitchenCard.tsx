@@ -8,13 +8,14 @@ interface KitchenCardProps {
     title: string;
     date: string;
     location: string;
+    data: any; // object data
 }
 
-const KitchenCard = ({ title, date, location }: KitchenCardProps) => {
+const KitchenCard = ({ title, date, location, data}: KitchenCardProps) => {
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const eventPage = () => {
-        navigation.navigate('EventPage');
+        navigation.navigate('EventPage', {data});
     };
 
     return (

@@ -11,5 +11,5 @@ export type RootStackParamList = {
     Password: { fullName: string, date: Date, gender: string, username: string, email: string, password?: string };
     MainTabs: undefined;
     Attendees: undefined; // fix
-    EventPage: undefined; // fix
+    EventPage: {data ?: any}; // fix
 };

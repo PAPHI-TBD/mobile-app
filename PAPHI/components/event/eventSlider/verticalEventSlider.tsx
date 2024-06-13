@@ -23,9 +23,9 @@ const VerticalEventSlider = ({ title, data, category }: EventSliderProps) => {
         <View style={styles.verticalFeedContainer}>
             <Text style={styles.titleText}>{title}</Text>
             {/* create a map later */}
-            <LargeCard key='1' title='1' date='{event.date}' location='{event.location}' />
-            <LargeCard key='2' title='1' date='{event.date}' location='{event.location}' />
-            <LargeCard key='3' title='1' date='{event.date}' location='{event.location}' />
+            <LargeCard key='1' title='1' date='{event.date}' location='{event.location}' data={data}/>
+            <LargeCard key='2' title='1' date='{event.date}' location='{event.location}' data={data}/>
+            <LargeCard key='3' title='1' date='{event.date}' location='{event.location}' data={data}/>
 
         </View>
     );

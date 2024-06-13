@@ -55,10 +55,11 @@ const EventSlider = ({ title, data, category }: EventSliderProps) => {
 
     const renderCard = (event: Event) => {
         switch (category) {
+            
             case 'hot_topics':
-                return <KitchenCard key={event.id} title={event.title} date={event.date} location={event.location} />;
+                return <KitchenCard key={event.id} title={event.title} date={event.date} location={event.location} data={data}/>;
             default:
-                return <SmallCard key={event.id} title={event.title} date={event.date} location={event.location} />;
+                return <SmallCard key={event.id} title={event.title} date={event.date} location={event.location} data={data}/>;
         }
     };
 
