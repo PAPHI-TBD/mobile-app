@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Text, Image } from 'react-native';
+import { View, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../types'; // Adjust the import path as necessary
 import styles from './event.style';
 import SearchEvent from './searchEvent/searchEvent';
 import EventSlider from './eventSlider/eventSlider';
@@ -27,6 +29,8 @@ export default function Event() {
     const [tag, setTag] = useState<string>('hot_topics');
     const [event, setEventSliderData] = useState<string[]>([]);
 
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
     useEffect(() => {
         const fetchSliderData = async (tag: string) => {
             try {
@@ -45,6 +49,10 @@ export default function Event() {
         fetchSliderData(tag);
     }, [tag]);
 
+    const attendeesPage = function() {
+        navigation.navigate('Attendees');
+    }
+
     return (
         <View style={{ flex: 1 }}>
             <LinearGradient
@@ -56,13 +64,20 @@ export default function Event() {
                     <Text style={styles.header}>DISCOVERY</Text>
                     <View style={styles.searchSection}>
                         <SearchEvent />
-                        <Image source={FilterIcon} style={{ width: 24, height: 24, cursor: 'pointer' }} />
+                        {/* on click navigate to discovery filter page */}
+                        {/* categories selected in that page gets returned in populated categories */}
+                        <TouchableOpacity onPress={attendeesPage}>
+                            <Image source={FilterIcon} style={{ width: 24, height: 24 }} />
+                        </TouchableOpacity>                    
                     </View>
+                    {/* location drop down */}
+                    {/* populate with categories */}
                 </View>
                 <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
                     {/* in the future have this populate by tags picked in filter */}
                     <EventSlider title='Suggested for you' data={event} category='hot_topics'/>
                     <EventSlider title='Created by friends' data={event} category='friends'/>
+                    {/* constant */}
                     <VerticalEventSlider title='Hot in your area' data={event} category='hot'/>
                 </ScrollView>
             </LinearGradient>

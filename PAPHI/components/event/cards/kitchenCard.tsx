@@ -1,10 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
 import styles from './kitchenCard.style';
-import { View, Text } from 'react-native';
 
-function KitchenCard({ title, date, location }: { title: string, date: string, location: string }) {
+interface KitchenCardProps {
+    title: string;
+    date: string;
+    location: string;
+}
+
+const KitchenCard = ({ title, date, location }: KitchenCardProps) => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const eventPage = () => {
+        navigation.navigate('EventPage');
+    };
+
     return (
-        <View style={styles.kitchenCardContainer}>
+        <TouchableOpacity style={styles.kitchenCardContainer} onPress={eventPage}>
             <View style={styles.kitchenImage}>
                 {/* icon top right */}
                 <View>
@@ -25,8 +39,8 @@ function KitchenCard({ title, date, location }: { title: string, date: string, l
                     <Text style={styles.kitchenLocation}>{location}</Text>
                 </View>
             </View>
-        </View>
-    )
-}
+        </TouchableOpacity>
+    );
+};
 
-export default KitchenCard
+export default KitchenCard;

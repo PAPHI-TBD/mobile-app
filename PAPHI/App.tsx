@@ -18,7 +18,8 @@ import LoginPage from './components/splashLoginRegistration/login/login'; // Imp
 import RegistrationPage from './components/splashLoginRegistration/registration/registration'; // Import your RegistrationPage component
 import HangRequest from './components/hangRequest/hangRequest';
 import Event from './components/event/event';
-
+import Attendees from './components/event/attendeePage/attendees';
+import EventPage from './components/event/eventPage/eventPage';
 
 const customColor = '#322E22';
 
@@ -95,6 +96,8 @@ export default function App() {
             {/*<Stack.Screen name="Profile" component={Profile} />
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
+          <Stack.Screen name="Attendees" component={Attendees} />
+          <Stack.Screen name="EventPage" component={EventPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </GluestackUIProvider>

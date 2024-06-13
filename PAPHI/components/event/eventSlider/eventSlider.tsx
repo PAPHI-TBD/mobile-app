@@ -19,7 +19,7 @@ interface EventSliderProps {
 
 const EventSlider = ({ title, data, category }: EventSliderProps) => {
     const [recEvents, setRecEvents] = useState<Event[]>([]);
-
+    
     useEffect(() => {
         const fetchEventData = async () => {
             if (!data || !Array.isArray(data)) {

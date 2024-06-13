@@ -1,10 +1,18 @@
 import React from 'react'
 import styles from './largeCard.style';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
 
 export default function LargeCard({ title, date, location }: { title: string, date: string, location: string }) {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const eventPage = () => {
+        navigation.navigate('EventPage');
+    };
+
     return (
-        <View style={styles.largeCardContainer}>
+        <TouchableOpacity style={styles.largeCardContainer} onPress={eventPage}>
             {/* heart icon */}
             <View style={styles.smallCardInfo}>
                 <View>
@@ -20,6 +28,6 @@ export default function LargeCard({ title, date, location }: { title: string, da
                     <Text style={styles.smallCardLocation}>{location}</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
