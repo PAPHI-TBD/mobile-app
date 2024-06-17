@@ -3,12 +3,10 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
-// import { RouteProp, useRoute } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import styles from './attendees.style';
 
-// type EventPageRouteProp = RouteProp<RootStackParamList, 'EventPage'>;
 
 interface Attendee {
     icon: string;
@@ -122,18 +120,33 @@ function Attendees() {
         },
     ]
 
-    const [selectedTag, setSelectedTag] = useState<string | null>(null);
-    const filteredAttendees = selectedTag ? attendeesList.filter(attendee => attendee.tag.text === selectedTag) : attendeesList;
+    const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
     const eventPage = () => {
         navigation.goBack();
     };
 
-    // const filterByTag = (tag: string) => {
-    //     console.log('filter by', tag);
-    // };
-    const filterByTag = (tag: string | null) => {
-        setSelectedTag(tag);
+
+    const toggleTag = (tag: string) => {
+        if (selectedTags.includes(tag)) {
+            // removes tag (by selecting all other tags) if it is already selected (in list)
+            setSelectedTags(selectedTags.filter(t => t !== tag));
+        } else {
+            // adds tag to list using ... operator
+            setSelectedTags([...selectedTags, tag]);
+        }
+    };
+
+    // filters attendees list based on the selected tags
+    // if no tag is selected, show all attendees
+    const filteredAttendees = selectedTags.length > 0
+        ? attendeesList.filter(attendee => selectedTags.includes(attendee.tag.text))
+        : attendeesList;
+
+
+    const invite = () => {
+        // implement inviting
+        console.log('invite');
     };
 
     const renderAttendee = (attendee: Attendee) => {
@@ -148,9 +161,11 @@ function Attendees() {
                     </View>
                     
                 </View>
-                <View style={styles.inviteButton}>
-                    <Text style={styles.inviteButtonText}>Send Invite</Text>
-                </View>
+                <TouchableOpacity onPress={invite} style={styles.inviteButton}>
+                    {/* <View style={styles.inviteButton}> */}
+                        <Text style={styles.inviteButtonText}>Send Invite</Text>
+                    {/* </View> */}
+                </TouchableOpacity>
             </View>
         );
     };
@@ -170,26 +185,25 @@ function Attendees() {
                 <Text style={{ fontSize: 24, fontWeight: '700', left: 'auto', paddingVertical: 5 }}>Attendees</Text>
 
                 <View style={styles.buttonGroupContainer}>
-                    {/* () => createPost(sharedPost) */}
-                    <TouchableOpacity onPress={() => filterByTag('Friend')}>
-                        <View style={[styles.button, selectedTag === 'Friend' && styles.selectedButton]}>
-                            <Text style={[styles.buttonText, selectedTag === 'Friend' && styles.selectedButtonText]}>Friends</Text>
+                    <TouchableOpacity onPress={() => toggleTag('Friend')}>
+                        <View style={[styles.button, selectedTags.includes('Friend') && styles.selectedButton]}>
+                            <Text style={[styles.buttonText, selectedTags.includes('Friend') && styles.selectedButtonText]}>Friends</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => filterByTag('Mutual')}>
-                        <View style={[styles.button, selectedTag === 'Mutual' && styles.selectedButton]}>
-                            <Text style={[styles.buttonText, selectedTag === 'Mutual' && styles.selectedButtonText]}>Mutuals</Text>
+                    <TouchableOpacity onPress={() => toggleTag('Mutual')}>
+                        <View style={[styles.button, selectedTags.includes('Mutual') && styles.selectedButton]}>
+                            <Text style={[styles.buttonText, selectedTags.includes('Mutual') && styles.selectedButtonText]}>Mutuals</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => filterByTag('Looking for People')}>
-                        <View style={[styles.button, selectedTag === 'Looking for People' && styles.selectedButton]}>
-                            <Text style={[styles.buttonText, selectedTag === 'Looking for People' && styles.selectedButtonText]}>Looking for People</Text>
+                    <TouchableOpacity onPress={() => toggleTag('Looking for People')}>
+                        <View style={[styles.button, selectedTags.includes('Looking for People') && styles.selectedButton]}>
+                            <Text style={[styles.buttonText, selectedTags.includes('Looking for People') && styles.selectedButtonText]}>Looking for People</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    {attendeesList.map(renderAttendee)}
+                    {filteredAttendees.map(renderAttendee)}
                 </ScrollView>
 
             </LinearGradient>
