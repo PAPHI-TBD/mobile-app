@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import styles from './attendees.style';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../../../types'; // Adjust the import path as necessary
 
 interface Attendee {
     img: string;
@@ -14,14 +16,17 @@ interface AttendeesProps {
 
 const Attendees = ({ number, userList }: AttendeesProps) => {
 
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
     const renderAttendee = (user: Attendee) => {
         return (
             <Image style={styles.userImage}/>
         );
     };
 
-    const showMore = () => {
+    const attendeesPage = () => {
         // implement showing more attendees
+        navigation.navigate('Attendees');
     };
 
     return (
@@ -34,7 +39,7 @@ const Attendees = ({ number, userList }: AttendeesProps) => {
                 <Text style={styles.number}>100 </Text>
                 <Text style={[styles.number, { color: '#5545353', fontWeight: 'regular' }]}>people going</Text>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={attendeesPage}>
                     <Text style={{ fontSize: 10, textDecorationLine: 'underline', paddingHorizontal: 5, marginTop: 2, fontWeight: '500' }}>show more</Text>
                 </TouchableOpacity>
                 

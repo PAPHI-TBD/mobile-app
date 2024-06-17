@@ -21,7 +21,6 @@ import { RootStackParamList } from '../../../../types'; // Adjust the import pat
 //         name="font-awesome-5" type="fire-alt" />  
 
 interface HeaderProps {
-
     imageList: string[];
 }
 
