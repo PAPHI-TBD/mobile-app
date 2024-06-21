@@ -39,7 +39,7 @@ export default function RegistrationPage() {
                     value={fullName}
                     onChangeText={setFullName}
                     placeholder="Full Name"
-                    placeholderTextColor="#ccc"
+                    placeholderTextColor="#ddd"
                 />
                 <Text style={styles.subLabel}>This is how it will appear in the app</Text>
             </View>

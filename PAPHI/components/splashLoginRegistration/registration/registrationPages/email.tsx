@@ -43,7 +43,7 @@ export default function Email() {
                     value={email}
                     onChangeText={setEmail}
                     placeholder="Email"
-                    placeholderTextColor="#ccc"
+                    placeholderTextColor="#ddd"
                 />
             </View>
             <View style={styles.buttonContainer}>

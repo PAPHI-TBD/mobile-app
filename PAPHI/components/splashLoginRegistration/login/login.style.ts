@@ -93,6 +93,14 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
         elevation: 6,
     },
+    buttonEnabled: {
+        backgroundColor: '#007BFF',
+        borderColor: '#007BFF'
+    },
+    buttonDisabled: {
+        backgroundColor: '#ccc',
+        borderColor: '#ccc'
+    },
     loginButtonText: {
         marginTop: 6,
         fontSize: moderateScale(20), // Button text size

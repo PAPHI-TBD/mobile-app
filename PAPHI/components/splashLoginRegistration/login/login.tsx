@@ -26,7 +26,6 @@ export default function LoginPage() {
             // Check if user exists and password matches
             if (userData.data.username === username && userData.data.password === password) {
                 // localStorage.setItem('isLoggedIn', 'true');
-                // onLogin();
                 // AsyncStorange.setItem('isLoggedIn', 'true'); // if using AsyncStorage for persistence
                 navigation.navigate('MainTabs');
             } else {
@@ -46,7 +45,7 @@ export default function LoginPage() {
             </View>
             <View style={styles.loginSection}>
                 <Text style={styles.loginHeaderText}>
-                    Login
+                    Log in here
                 </Text>
                 <TextInput
                     style={styles.input}
@@ -67,7 +66,11 @@ export default function LoginPage() {
                 <Text style={styles.forgotText}>
                     Forgot Password?
                 </Text>
-                <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
+                <TouchableOpacity 
+                    style={[styles.loginButton, username && password ? styles.buttonEnabled : styles.buttonDisabled]} 
+                    onPress={handleLoginPress}
+                    disabled={!username && !password}
+                    >
                     <Text style={styles.loginButtonText}>Log in</Text>
                 </TouchableOpacity>
             </View>

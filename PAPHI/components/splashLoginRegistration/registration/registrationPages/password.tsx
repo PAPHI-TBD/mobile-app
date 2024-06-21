@@ -120,11 +120,11 @@ export default function Password() {
             keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
         >
             <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                <Icon name="arrowleft" size={30} color="white" />
+                <Icon name="arrowleft" size={30} color="#212F3D" />
             </TouchableOpacity>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>Enter your</Text>
-                <Text style={styles.label}>password</Text>
+                <Text style={styles.label}>password:</Text>
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
@@ -132,13 +132,13 @@ export default function Password() {
                     value={password}
                     onChangeText={setPassword}
                     placeholder="Password"
-                    placeholderTextColor="#ccc"
+                    placeholderTextColor="#ddd"
                     secureTextEntry
                 />
             </View>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>Confirm your</Text>
-                <Text style={styles.label}>password</Text>
+                <Text style={styles.label}>password:</Text>
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
@@ -146,7 +146,7 @@ export default function Password() {
                     value={confirmPassword}
                     onChangeText={setConfirmPassword}
                     placeholder="Confirm Password"
-                    placeholderTextColor="#ccc"
+                    placeholderTextColor="#ddd"
                     secureTextEntry
                     onFocus={() => setConfirmIsTyping(true)}
                     onBlur={() => setConfirmIsTyping(false)}
@@ -154,9 +154,9 @@ export default function Password() {
             </View>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity 
-                    style={[styles.button, confirmPassword ? styles.buttonEnabled : styles.buttonDisabled]} 
+                    style={[styles.button, password && confirmPassword ? styles.buttonEnabled : styles.buttonDisabled]} 
                     onPress={handleSubmit}
-                    disabled={!confirmPassword}
+                    disabled={!password && !confirmPassword}
                 >
                     <Text style={styles.buttonText}>Create User</Text>
                 </TouchableOpacity>

@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: -2,
         color: 'white',
+        // color: '#212F3D',
         textAlign: 'left',
     },
     inputWrapper: {
@@ -57,14 +58,25 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     radioButtonSelected: {
-        backgroundColor: '#007BFF',
+        backgroundColor: '#3b99ff',
         padding: 10,
-        borderColor: '#007BFF',
+        borderColor: '#3b99ff',
+    },
+    radioButtonSelectedFemale: {
+        backgroundColor: '#E9CBD9', 
+        padding: 10,
+        borderColor: '#E9CBD9',
     },
     radioButtonText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: "#FFFFFF",
+        // color: "#FFFFFF",
+        color: '#eee',
+    },
+    radioButtonTextSelected: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#FFFFFF'
     },
     buttonContainer: {
         position: 'absolute',
@@ -74,7 +86,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 20,
-        borderRadius: 10,
+        borderRadius: 30,
         width: '60%',
         backgroundColor: '#007BFF',
         paddingVertical: 12,

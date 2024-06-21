@@ -65,7 +65,7 @@ export default function Birthday() {
                     <TextInput
                         style={styles.input}
                         placeholder="MM/DD/YYYY"
-                        placeholderTextColor="#ccc"
+                        placeholderTextColor="#ddd"
                         value={dateOfBirth}
                         onChangeText={setDateOfBirth}
                         editable={false}

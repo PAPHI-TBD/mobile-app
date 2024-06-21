@@ -41,12 +41,12 @@ export default function Gender() {
                 <TouchableOpacity
                     style={[styles.radioButton, gender === 'Male' ? styles.radioButtonSelected : null]}
                     onPress={() => setGender('Male')}>
-                    <Text style={styles.radioButtonText}>Male</Text>
+                    <Text style={[styles.radioButtonText, gender === 'Male' ? styles.radioButtonTextSelected : null]}>Male</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={[styles.radioButton, gender === 'Female' ? styles.radioButtonSelected : null]}
+                    style={[styles.radioButton, gender === 'Female' ? styles.radioButtonSelectedFemale : null]}
                     onPress={() => setGender('Female')}>
-                    <Text style={styles.radioButtonText}>Female</Text>
+                    <Text style={[styles.radioButtonText, gender === 'Female' ? styles.radioButtonTextSelected : null]}>Female</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.buttonContainer}>

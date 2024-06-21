@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: -2,
         color: 'white',
+        // color: '#212F3D',
         textAlign: 'left',
     },
     inputWrapper: {
@@ -47,9 +48,10 @@ const styles = StyleSheet.create({
     },
     subLabel: {
         fontSize: 14,
-        color: '#FFFFFF',
+        // color: '#FFFFFF',
         textAlign: 'center',
         marginTop: 5,
+        color: '#212F3D',
     },
     inputContainer: {
         height: 50,
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginRight: 10,
         backgroundColor: '#ccc',
-        borderRadius: 5,
+        borderRadius: 30,
         padding: 10,
         alignItems: 'center',
     },
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 10,
         backgroundColor: '#3b99ff',
-        borderRadius: 5,
+        borderRadius: 30,
         padding: 10,
         alignItems: 'center',
     },
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 20,
-        borderRadius: 10,
+        borderRadius: 30,
         width: '60%',
         backgroundColor: '#007BFF',
         paddingVertical: 12,

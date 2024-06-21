@@ -43,7 +43,7 @@ export default function Username() {
                     value={username}
                     onChangeText={setUsername}
                     placeholder="Username"
-                    placeholderTextColor="#ccc"
+                    placeholderTextColor="#ddd"
                 />
             </View>
             <View style={styles.buttonContainer}>

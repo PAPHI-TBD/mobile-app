@@ -36,13 +36,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: -2,
         color: 'white',
+        // color: '#212F3D',
         textAlign: 'center',
-    },
-    subLabel: {
-        fontSize: 14,
-        color: 'white',
-        textAlign: 'center',
-        marginBottom: 20,
     },
     inputWrapper: {
         flex: 1,
@@ -70,7 +65,7 @@ const styles = StyleSheet.create({
     },
     button: {
         marginTop: 20,
-        borderRadius: 10,
+        borderRadius: 30,
         width: '60%',
         backgroundColor: '#007BFF',
         paddingVertical: 12,
