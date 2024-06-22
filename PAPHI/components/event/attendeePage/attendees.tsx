@@ -6,6 +6,7 @@ import { RootStackParamList } from '../../../types'; // Adjust the import path a
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import styles from './attendees.style';
+import FilterSlider from '../filterSlider/filterSlider';
 
 
 interface Attendee {
