@@ -41,15 +41,6 @@ const styles = StyleSheet.create({
       borderColor: '#314BD8',
       borderWidth: 1,
     },
-    priceLabel: {
-      position: 'absolute',
-      width: '100%',
-      top: -25, 
-      transform: [{ translateX: -1 * vw }], 
-      padding: 5,
-      borderRadius: 5,
-      zIndex: 1,
-    },
 });
 
 export default styles;

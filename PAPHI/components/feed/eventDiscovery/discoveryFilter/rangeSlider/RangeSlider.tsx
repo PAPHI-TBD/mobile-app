@@ -10,6 +10,8 @@ interface RangeSliderComponentProps {
 }
 
 const RangeSliderComponent: React.FC<RangeSliderComponentProps> = ({ priceRange, onPriceRangeChange }) => {
+  const [range, setRange] = useState([0, 300]);
+
   return (
     <View style={styles.container}>
       <View style={styles.sliderRow}>
@@ -30,14 +32,14 @@ const RangeSliderComponent: React.FC<RangeSliderComponentProps> = ({ priceRange,
           trackHeight={4}
           thumbSize={20}
           slideOnTap={true}
-          onValueChange={onPriceRangeChange}
+          onValueChange={range => setRange(range)}
         />
         <Text style={styles.rightLabel}>$300</Text>
       </View>
       <RangeInput 
         onUpdateRange={onPriceRangeChange}>
       </RangeInput>
-      </View>
+    </View>
   );
 };
 

@@ -50,10 +50,6 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       zIndex: 1,
     },
-    valueText: {
-      marginTop: 16,
-      fontSize: 18,
-    },
 });
 
 export default styles;

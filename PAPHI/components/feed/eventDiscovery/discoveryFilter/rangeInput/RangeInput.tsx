@@ -10,7 +10,6 @@ const RangeInput: React.FC<RangeInputProps> = ({ onUpdateRange }) => {
   const [minValue, setMinValue] = useState<number | undefined>(undefined);
   const [maxValue, setMaxValue] = useState<number | undefined>(undefined);
 
-  // Function to handle text input change for min value
   const handleMinValueChange = (text: string) => {
     const value = parseFloat(text.replace('$', ''));
     if (!isNaN(value)) {
@@ -25,7 +24,6 @@ const RangeInput: React.FC<RangeInputProps> = ({ onUpdateRange }) => {
     }
   };
 
-  // Function to handle text input change for max value
   const handleMaxValueChange = (text: string) => {
     const value = parseFloat(text.replace('$', ''));
     if (!isNaN(value)) {
@@ -57,7 +55,7 @@ const RangeInput: React.FC<RangeInputProps> = ({ onUpdateRange }) => {
         value={maxValue !== undefined ? `$${maxValue}` : ''}
         onChangeText={handleMaxValueChange}
         keyboardType="numeric"
-        placeholder="$0"
+        placeholder="$300"
       />
     </View>
   );

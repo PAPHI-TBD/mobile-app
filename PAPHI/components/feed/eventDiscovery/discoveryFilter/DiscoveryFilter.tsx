@@ -6,13 +6,16 @@ import DropdownMenu from './dropdownMenu/DropdownMenu';
 import Toggle from './toggle/Toggle';
 import RangeSliderComponent from './rangeSlider/RangeSlider';
 import SliderComponent from './slider/Slider';
+import RangeInput from './rangeInput/RangeInput';
 
 const DiscoveryFilter: React.FC = ({}) => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
     const [selectedDate, setSelectedDate] = useState<string | null>(null);
     const [distance, setDistance] = useState<number>(0);
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 300]);
+    const [rangeInput, setRangeInput] = useState<[number, number]>([0, 0]);
     const [suggestedOnly, setSuggestedOnly] = useState(false);
+    const [reset, setReset] = useState(false);
 
     const fetchEvents = () => {};
 
@@ -24,18 +27,9 @@ const DiscoveryFilter: React.FC = ({}) => {
         }
       };
 
-    const handleDistanceChange = (newDistance: number) => {
-         setDistance(newDistance);
-    };
-
-    const handlePriceRangeChange = (newPriceRange: [number, number]) => {
-        setPriceRange(newPriceRange);
-        console.log('Price Range Updated:', newPriceRange); // Add logging for debugging
-      };
-
     const handleResetFilters = () => {
         setSelectedCategories([]);
-        setSelectedDate(null);
+        setSelectedDate('Select Date');
         setDistance(0);
         setPriceRange([0, 300]);
         setSuggestedOnly(false);
@@ -56,10 +50,7 @@ const DiscoveryFilter: React.FC = ({}) => {
                 onDateChange={setSelectedDate}
             />        
             <Text style={styles.headerText}>By Distance</Text>
-            <SliderComponent 
-                distance={distance} 
-                onDistanceChange={handleDistanceChange} 
-            />
+            <SliderComponent/>
             <Text style={styles.headerText}>By Price</Text>
             <RangeSliderComponent
                 priceRange={priceRange}
