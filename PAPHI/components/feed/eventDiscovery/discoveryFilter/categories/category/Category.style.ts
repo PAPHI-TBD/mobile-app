@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         flexShrink: 1,
         marginRight: 8,
         marginBottom: 8,
-        alignItems: 'center',
     },
     text: {
         color: 'black',

@@ -18,8 +18,6 @@ const styles = StyleSheet.create({
       text: {
         color: '#343434',
         fontSize: 14,
-        justifyContent: 'center',
-        alignItems: 'center',
       },
       input: {
         borderWidth: 1,
@@ -30,6 +28,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         textAlign: 'center',
       },
+      
 });
 
 export default styles;
