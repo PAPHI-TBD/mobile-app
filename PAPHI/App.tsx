@@ -18,6 +18,11 @@ import LoginPage from './components/splashLoginRegistration/login/login'; // Imp
 import RegistrationPage from './components/splashLoginRegistration/registration/registration'; // Import your RegistrationPage component
 import HangRequest from './components/hangRequest/hangRequest';
 import Event from './components/event/event';
+import Birthday from './components/splashLoginRegistration/registration/registrationPages/birthday';
+import Gender from './components/splashLoginRegistration/registration/registrationPages/gender';
+import Username from './components/splashLoginRegistration/registration/registrationPages/username';
+import Password from './components/splashLoginRegistration/registration/registrationPages/password';
+import Email from './components/splashLoginRegistration/registration/registrationPages/email';
 import Attendees from './components/event/attendeePage/attendees';
 import EventPage from './components/event/eventPage/eventPage';
 
@@ -88,11 +93,17 @@ export default function App() {
           {/* Include your pages here */}
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
-            {/* <Stack.Screen name="HangRequest"  component={HangRequest}/> */}
-            {/*<Stack.Screen name="SplashPage" component={SplashPage} />*/}
-            {/*<Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />*/}
-            {/*<Stack.Screen name="LoginPage" component={LoginPage} />*/}
-            {/*<Stack.Screen name="RegistrationPage" component={RegistrationPage} />*/}
+            <Stack.Screen name="HangRequest"  component={HangRequest}/>
+            <Stack.Screen name="SplashPage" component={SplashPage} />
+            <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
+            <Stack.Screen name="LoginPage" component={LoginPage} />
+            <Stack.Screen name="RegistrationPage" component={RegistrationPage} />
+            <Stack.Screen name="Birthday" component={Birthday} />
+            <Stack.Screen name="Gender" component={Gender} />
+            <Stack.Screen name="Username" component={Username} />
+            <Stack.Screen name="Email" component={Email} />
+            <Stack.Screen name="Password" component={Password} />
+
             {/*<Stack.Screen name="Profile" component={Profile} />
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />
