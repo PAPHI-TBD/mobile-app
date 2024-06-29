@@ -15,7 +15,6 @@ const DiscoveryFilter: React.FC = ({}) => {
     const [priceRange, setPriceRange] = useState<[number, number]>([0, 300]);
     const [rangeInput, setRangeInput] = useState<[number, number]>([0, 0]);
     const [suggestedOnly, setSuggestedOnly] = useState(false);
-    const [reset, setReset] = useState(false);
 
     const fetchEvents = () => {};
 
