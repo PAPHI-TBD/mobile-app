@@ -8,7 +8,7 @@ import { GluestackUIProvider } from '@gluestack-ui/themed';
 
 // Import your components
 import Home from './components/home/index';
-import Feed from './components/feed/feed';
+import Feed from './components/friendFeed/feed';
 import Post from './components/post/post';
 import Chat from './components/chat/chatLandingPage/chat';
 import Profile from './components/profile/profile';
@@ -155,7 +155,7 @@ function MainTabs() {
       <Tab.Screen 
         name="Home" 
         // component={Feed} // change back to feed when merge to main
-        component={Event} 
+        component={Feed} 
         options={{ headerShown: false }}
       />
       <Tab.Screen 
