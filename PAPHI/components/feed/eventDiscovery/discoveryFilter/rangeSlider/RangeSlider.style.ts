@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     slider: {
       flex: 1,
       marginHorizontal: 15 * vw,
+      width: '80%'
     },
     track: {
       backgroundColor: '#D9D9D9',

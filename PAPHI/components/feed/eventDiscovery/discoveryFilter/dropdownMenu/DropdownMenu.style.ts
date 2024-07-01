@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   dropdown: {
       backgroundColor: '#314BD8',
       width: 120 * vw,
+      paddingVertical: 8 * vw,
       borderRadius: 8,
       justifyContent: 'center',
       alignItems: 'center',

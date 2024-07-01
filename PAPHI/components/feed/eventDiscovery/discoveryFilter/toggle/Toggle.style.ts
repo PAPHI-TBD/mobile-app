@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     },
     switchContainer: {
         marginTop: 10 * vw,
-        marginBottom: 30 * vw,
+        marginBottom: 40 * vw,
         width: 65 * vw,
         height: 30 * vw,
         borderRadius: 30,

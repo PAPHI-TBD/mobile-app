@@ -7,6 +7,7 @@ import Toggle from './toggle/Toggle';
 import RangeSliderComponent from './rangeSlider/RangeSlider';
 import SliderComponent from './slider/Slider';
 import RangeInput from './rangeInput/RangeInput';
+import Header from './header/Header';
 
 const DiscoveryFilter: React.FC = ({}) => {
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -37,7 +38,7 @@ const DiscoveryFilter: React.FC = ({}) => {
 
     return (
         <ScrollView style={styles.container}>
-            <Text style={styles.title}>FILTERS</Text>
+            <Header></Header>
             <Text style={styles.headerText}>By Category</Text>
             <Categories 
                 selectedCategories={selectedCategories} 
