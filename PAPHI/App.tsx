@@ -9,7 +9,7 @@ import { GluestackUIProvider } from '@gluestack-ui/themed';
 // Import your components
 import Home from './components/home/index';
 import Feed from './components/feed/feed';
-import Post from './components/post/post';
+import Community from './components/community/community';
 import Chat from './components/chat/chatLandingPage/chat';
 import Profile from './components/profile/profile';
 import SplashPage from './components/splashLoginRegistration/splashPage'; // Import your LogoPage component
@@ -93,7 +93,7 @@ export default function App() {
           {/* Include your pages here */}
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
-            <Stack.Screen name="HangRequest"  component={HangRequest}/>
+            {/* <Stack.Screen name="HangRequest"  component={HangRequest}/>
             <Stack.Screen name="SplashPage" component={SplashPage} />
             <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />
             <Stack.Screen name="LoginPage" component={LoginPage} />
@@ -102,7 +102,7 @@ export default function App() {
             <Stack.Screen name="Gender" component={Gender} />
             <Stack.Screen name="Username" component={Username} />
             <Stack.Screen name="Email" component={Email} />
-            <Stack.Screen name="Password" component={Password} />
+            <Stack.Screen name="Password" component={Password} /> */}
 
             {/*<Stack.Screen name="Profile" component={Profile} />
           {/* Your bottom tabs navigation */}
@@ -165,7 +165,7 @@ function MainTabs() {
       />
       <Tab.Screen 
         name="Community" 
-        component={Post} 
+        component={Community} 
         options={{ headerShown: false }}
       />
       <Tab.Screen 
