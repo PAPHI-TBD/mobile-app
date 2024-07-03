@@ -3,7 +3,7 @@ import { View, ScrollView, Image, Text, TouchableOpacity, TextInput, KeyboardAvo
 import styles from './commentSection.style';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart, faComment, faArrowCircleRight, faClose } from '@fortawesome/free-solid-svg-icons';
-import { Comment } from '../friendEventPost';
+import { Comment } from '../eventPost';
 
 interface CommentSectionProps {
     comments: Comment[];
@@ -61,17 +61,18 @@ const CommentSection = ({ comments, disableComments }: CommentSectionProps) => {
         <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
             <View style={[{ flex: 1 }, styles.commentSectionContainer]}>
 
-                <View style={styles.exitContainer}>
+                {/* <View style={styles.exitContainer}>
                     <TouchableOpacity style={styles.exit} onPress={disableComments}>
                         <Text style={styles.exitText}>EXIT</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
                 <ScrollView style={
                     [
                         {
                             height: Math.max(height * 0.6 - inputHeight - paddingHeight, height * 0.6 - maxInputHeight - paddingHeight), 
                             marginBottom: Math.min(inputHeight + paddingHeight, maxInputHeight + paddingHeight),
-                            marginTop: '10%'
+                            
+                            // marginTop: '10%'
                         }
                     ]}
                     showsVerticalScrollIndicator={true}>

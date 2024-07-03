@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image, Modal, Dimensions } from 'react-native';
 import styles from './eventPost.style';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import CommentSection from './commentSection/commentSection';
+import { PanGestureHandler } from 'react-native-gesture-handler';
 
 interface Attendee {
     id: string;
@@ -47,6 +48,14 @@ const EventPost = ({ event }: FriendEventPostProps) => {
         console.log('open / close comment section');
         setShowComments(!showComments);
     };
+
+    const handleSwipeDown = (event: any) => {
+        if (event.nativeEvent.translationY > 200) {
+            setShowComments(false);
+        }
+    };
+
+    const { height } = Dimensions.get('window');
 
     return (
         <View style={styles.container}>
@@ -98,9 +107,23 @@ const EventPost = ({ event }: FriendEventPostProps) => {
                     
                 </LinearGradient>
 
-                {showComments && 
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={showComments}
+                    onRequestClose={() => setShowComments(false)}
+                >
+                    <PanGestureHandler onGestureEvent={handleSwipeDown}>
+                        <View style={{ flex: 1, justifyContent: 'flex-end', backgroundColor: 'rgba(0,0,0,0)' }}>
+                            <TouchableOpacity style={{ flex: 1 }} onPress={() => setShowComments(false)} />
+                            <CommentSection comments={event.comments} disableComments={handleCommentsToggle} />
+                        </View>
+                    </PanGestureHandler>
+                </Modal>
+
+                {/* {showComments && 
                     (<CommentSection comments={event.comments} disableComments={handleCommentsToggle} />)
-                }
+                } */}
             </ImageBackground>
         </View>
     );
