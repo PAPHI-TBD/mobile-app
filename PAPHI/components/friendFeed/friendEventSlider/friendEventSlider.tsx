@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, Text, ScrollView, Image } from 'react-native';
+import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 import styles from './friendEventSlider.style';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../../types'; // Adjust the import path as necessary
 import Event from '../../event/eventSlider/eventSlider';
 
 interface FriendEvent {
@@ -13,11 +15,19 @@ interface FriendEventSliderProps {
 }
 
 const FriendEventSlider = ({ eventList }: FriendEventSliderProps) => {
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const eventPage = () => {
+        navigation.navigate('EventPage', {});
+    };
+
     const renderCard = (event: FriendEvent) => {
         return (
-            <View style={styles.eventImage}>
+            // <View style={styles.eventImage}>
+            <TouchableOpacity style={styles.eventImage} onPress={eventPage}>
                 <Image style={styles.image}  source={require('../../../assets/event/sampleEvent.jpg')}/>
-            </View>
+            </TouchableOpacity>
+            // </View>
         );
     };
 
