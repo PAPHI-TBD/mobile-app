@@ -85,7 +85,10 @@ export default function Feed() {
                     <Text style={{ textTransform: 'uppercase', color: 'white', fontSize: 16, fontWeight: '800', marginHorizontal: 'auto' }}>friend feed</Text>
                     <TouchableOpacity style={styles.bellIcon}>
                         <FontAwesomeIcon icon={faBell} size={23} color='white'/>
-                        <Text style={styles.notiText}>3</Text>
+                        <View style={styles.notiTextCircle}>
+                            <Text style={styles.notiText}>3</Text>
+                        </View>
+                        
                     </TouchableOpacity>
                 </View>
 

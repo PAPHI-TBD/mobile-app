@@ -17,13 +17,20 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 25 * vw,
     },
-    notiText: {
-        color: '#FF0000',
-        fontSize: 14,
-        fontWeight: '600',
+    notiTextCircle: {
+        height: 20 * vw,
+        width: 20 * vw,
+        backgroundColor: '#FF0000',
+        borderRadius: 10 * vw,
         marginTop: -15 * vh,
         marginLeft: 'auto',
         marginRight: -7.5 * vw,
+    },
+    notiText: {
+        color: '#FFFFFF',
+        fontSize: 14,
+        fontWeight: '600',
+        margin: 'auto',
     },
     postContainer: {
         flex: 1,
