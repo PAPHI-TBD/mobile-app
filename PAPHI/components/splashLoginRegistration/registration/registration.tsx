@@ -35,7 +35,7 @@ export default function RegistrationPage() {
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
-                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    style={styles.input}
                     value={fullName}
                     onChangeText={setFullName}
                     placeholder="Full Name"

@@ -45,7 +45,7 @@ export default function LoginPage() {
             </View>
             <View style={styles.loginSection}>
                 <Text style={styles.loginHeaderText}>
-                    Log in here
+                    Log In
                 </Text>
                 <TextInput
                     style={styles.input}
@@ -55,6 +55,9 @@ export default function LoginPage() {
                     value={username}
                     onChangeText={setUsername}
                 />
+                <Text style={styles.forgotText}>
+                    Forgot Username?
+                </Text>
                 <TextInput
                     style={styles.input}
                     placeholder="Password"
@@ -71,7 +74,12 @@ export default function LoginPage() {
                     onPress={handleLoginPress}
                     disabled={!username && !password}
                     >
-                    <Text style={styles.loginButtonText}>Log in</Text>
+                    <Text style={[
+                        styles.loginButtonText,
+                        username && password ? styles.buttonTextEnabled : styles.buttonTextDisabled
+                    ]}>
+                        Submit
+                    </Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.orSection}>
@@ -98,8 +106,8 @@ export default function LoginPage() {
                 />
             </View>
             <View style={styles.signUpSection}>
-                <Text>
-                    Don't have an account? <Text style={styles.signUpText}onPress={handleRegistrationPress}>Sign up</Text>
+                <Text style={styles.dontHaveAcc}>
+                    Don't have an account? <Text style={styles.signUpText}onPress={handleRegistrationPress}>Sign up.</Text>
                 </Text>
             </View>
         </View>

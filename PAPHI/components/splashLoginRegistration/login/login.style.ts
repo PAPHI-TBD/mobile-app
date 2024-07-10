@@ -94,18 +94,24 @@ const styles = StyleSheet.create({
         elevation: 6,
     },
     buttonEnabled: {
-        backgroundColor: '#007BFF',
-        borderColor: '#007BFF'
+        backgroundColor: '#e4ccd8',
+        borderColor: '#000',
     },
     buttonDisabled: {
         backgroundColor: '#ccc',
         borderColor: '#ccc'
     },
+    buttonTextEnabled: {
+        color: '#000'
+    },
+    buttonTextDisabled: {
+        color: '#fff'
+    },
     loginButtonText: {
         marginTop: 6,
         fontSize: moderateScale(20), // Button text size
         fontFamily: 'Inter',
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: '#FFFFFF', // Button text color
         textAlign: 'center', // Text alignment
         justifyContent: 'center',
@@ -146,8 +152,11 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline', // Add underline to the text
     },
     signUpText: {
-        color: 'white',
-        fontWeight: 'bold',
+        // color: 'white',
+        // fontWeight: 'bold',
+    },
+    dontHaveAcc: {
+        textDecorationLine: 'underline'
     }
 });
 

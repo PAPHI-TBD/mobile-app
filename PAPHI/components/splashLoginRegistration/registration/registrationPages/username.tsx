@@ -39,7 +39,7 @@ export default function Username() {
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
-                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    // style={[styles.input, { backgroundColor: 'transparent' }]}
                     value={username}
                     onChangeText={setUsername}
                     placeholder="Username"
