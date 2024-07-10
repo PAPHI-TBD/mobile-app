@@ -6,16 +6,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { config } from '@gluestack-ui/config';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
 
-// Import your components
+
 import Home from './components/home/index';
 import Feed from './components/friendFeed/feed';
 import Post from './components/post/post';
 import Chat from './components/chat/chatLandingPage/chat';
 import Profile from './components/profile/profile';
-import SplashPage from './components/splashLoginRegistration/splashPage'; // Import your LogoPage component
+import SplashPage from './components/splashLoginRegistration/splashPage';
 import SplashPageButtons from './components/splashLoginRegistration/splashPageButtons';
-import LoginPage from './components/splashLoginRegistration/login/login'; // Import your LoginPage component
-import RegistrationPage from './components/splashLoginRegistration/registration/registration'; // Import your RegistrationPage component
+import LoginPage from './components/splashLoginRegistration/login/login'; 
+import RegistrationPage from './components/splashLoginRegistration/registration/registration'; 
 import HangRequest from './components/hangRequest/hangRequest';
 import Event from './components/event/event';
 import Birthday from './components/splashLoginRegistration/registration/registrationPages/birthday';
@@ -58,11 +58,11 @@ const svgDataProfile = `
   </svg>
 `;
 
-const svgBase64Home = btoa(svgDataHome); // Convert to base64
-const svgBase64Mingle = btoa(svgDataMingle); // Convert to base64
-const svgBase64Community = btoa(svgDataCommunity); // Convert to base64
-const svgBase64Chat = btoa(svgDataChat); // Convert to base64
-const svgBase64Profile = btoa(svgDataProfile); // Convert to base64
+const svgBase64Home = btoa(svgDataHome);
+const svgBase64Mingle = btoa(svgDataMingle);
+const svgBase64Community = btoa(svgDataCommunity);
+const svgBase64Chat = btoa(svgDataChat);
+const svgBase64Profile = btoa(svgDataProfile);
 
 const ChatIcon = () => (
   <img src={`data:image/svg+xml;base64,${svgBase64Chat}`} alt="Chat SVG" />
@@ -118,7 +118,6 @@ export default function App() {
   );
 }
 
-// Define your bottom tabs navigation
 function MainTabs() {
   const Tab = createBottomTabNavigator();
 
@@ -142,13 +141,13 @@ function MainTabs() {
             IconComponent = ProfileIcon;
           }
 
-          // Rest of the code...
+          
           return <IconComponent size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'tomato',
+        tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
-          backgroundColor: customColor, // Set the background color here
+          backgroundColor: customColor, 
         },
       })}
       >
