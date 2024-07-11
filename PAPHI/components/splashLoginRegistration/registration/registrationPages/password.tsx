@@ -125,7 +125,9 @@ export default function Password() {
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>Enter your</Text>
                 <Text style={styles.label}>password:</Text>
+                <Text style={styles.subLabel}>Create a pasword you will remember.</Text>
             </View>
+
             <View style={styles.inputWrapper}>
                 <TextInput
                     style={[styles.input, password ? styles.inputActive : styles.inputInactive]}
@@ -135,6 +137,23 @@ export default function Password() {
                     placeholderTextColor="#ccc"
                     secureTextEntry
                 />
+                <View style={styles.passwordConfirmingSubBox}>
+                    <Text style={styles.passwordConfirmingSubText}>
+                        Must include:
+                    </Text>
+                    <Text style={styles.passwordConfirmingSubText}>
+                        at least one special character
+                    </Text>
+                    <Text style={styles.passwordConfirmingSubText}>
+                        at least one capital letter
+                    </Text>
+                    <Text style={styles.passwordConfirmingSubText}>
+                        at least one number
+                    </Text>
+                    <Text style={styles.passwordConfirmingSubText}>
+                        at least 8 characters
+                    </Text>
+                </View>
             </View>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>Confirm your</Text>

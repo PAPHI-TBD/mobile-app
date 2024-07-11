@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     labelContainer: {
         alignItems: 'flex-start',
         width: '90%',
-        marginBottom: 16,
+        marginBottom: 80,
     },
     label: {
         fontSize: 30,
@@ -38,6 +38,12 @@ const styles = StyleSheet.create({
         // color: 'white',
         color: 'rgb(236, 129, 58)',
         textAlign: 'center',
+    },
+    subLabel: {
+        marginTop: 10,
+        color: 'rgb(236, 129, 58)',
+        fontSize: 15,
+        fontFamily: 'Inter',
     },
     inputWrapper: {
         flex: 1,
@@ -74,6 +80,15 @@ const styles = StyleSheet.create({
     },
     inputInactive: {
         color: '#A9A9A9'
+    },
+    passwordConfirmingSubBox: {
+        alignItems: 'center',
+        marginTop: 10
+    },
+    passwordConfirmingSubText: {
+        fontFamily: 'Inter',
+        color: 'rgb(236, 129, 58)',
+        fontSize: 15
     },
     buttonContainer: {
         position: 'absolute',
