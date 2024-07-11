@@ -12,10 +12,11 @@ const styles = StyleSheet.create({
     feedPageContainer: {
         flex: 1,
     },
-    bellIcon: {
+    icons: {
         marginVertical: '-8%',
         marginLeft: 'auto',
         marginRight: 25 * vw,
+        columnGap: 20 * vw,
     },
     notiTextCircle: {
         height: 20 * vw,

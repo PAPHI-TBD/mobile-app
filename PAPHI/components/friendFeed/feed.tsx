@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import styles from './feed.style';
 import FriendEventSlider from './friendEventSlider/friendEventSlider';
 import EventPost from './eventPost/eventPost';
@@ -83,13 +83,23 @@ export default function Feed() {
                 {/* header */}
                 <View style={{ marginTop: '15%' }}>
                     <Text style={{ textTransform: 'uppercase', color: 'white', fontSize: 16, fontWeight: '800', marginHorizontal: 'auto' }}>friend feed</Text>
-                    <TouchableOpacity style={styles.bellIcon}>
-                        <FontAwesomeIcon icon={faBell} size={23} color='white'/>
-                        <View style={styles.notiTextCircle}>
-                            <Text style={styles.notiText}>3</Text>
-                        </View>
-                        
-                    </TouchableOpacity>
+                    <View style={[styles.icons, { flexDirection: 'row' }]}>
+                        <TouchableOpacity >
+                            <FontAwesomeIcon icon={faBell} size={23} color='white'/>
+                            <View style={styles.notiTextCircle}>
+                                <Text style={styles.notiText}>3</Text>
+                            </View>
+                            
+                        </TouchableOpacity>   
+                        <TouchableOpacity >
+                            <FontAwesomeIcon icon={faPlusCircle} size={23} color='white'/>
+                            {/* <View style={styles.notiTextCircle}>
+                                <Text style={styles.notiText}>3</Text>
+                            </View> */}
+                            
+                        </TouchableOpacity> 
+                    </View>
+                    
                 </View>
 
                 {/* Slider */}
