@@ -9,7 +9,7 @@ const verticalScale = (size: number) =>
     (height / guidelineBaseHeight) * size;
 const moderateScale = (size: number, factor = 0.5) =>
     size + (horizontalScale(size) - size) * factor;
-    
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 30,
         paddingTop: 160,
-        backgroundColor: '#8BC0C8'
+        // backgroundColor: '#8BC0C8'
     },
     backButton: {
         position: 'absolute',
@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 35,
-        fontFamily: 'Arial',
+        fontFamily: 'DM Sans Serif',
         fontWeight: 'bold',
         marginBottom: -2,
-        color: 'white',
+        color: 'rgb(236, 129, 58)',
         // color: '#212F3D',
-        textAlign: 'left',
+        textAlign: 'center',
     },
     inputWrapper: {
         flex: 1,
@@ -46,37 +46,34 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingBottom: 160,
     },
-    radioButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
+    input: {
+        textAlign: 'center',
         width: '80%',
-        paddingVertical: 15,
-        borderWidth: 2,
-        borderColor: '#ccc',
-        borderRadius: 25,
-        marginBottom: 15,
+        height: 50,
+        borderWidth: 1,
+        borderColor: 'rgb(236, 129, 58)',
+        backgroundColor: '#FCF8E6',
+        borderRadius: 50,
+        paddingLeft: 10,
+        marginTop: 0,
+        marginBottom: 10,
+        fontSize: 15,
+        fontFamily: 'Inter',
+        // color: 'rgb(236, 129, 58)',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
-    radioButtonSelected: {
-        backgroundColor: '#3b99ff',
-        padding: 10,
-        borderColor: '#3b99ff',
+    inputActive: {
+        color: 'rgb(236, 129, 58)'
     },
-    radioButtonSelectedFemale: {
-        backgroundColor: '#E9CBD9', 
-        padding: 10,
-        borderColor: '#E9CBD9',
-    },
-    radioButtonText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        // color: "#FFFFFF",
-        color: '#eee',
-    },
-    radioButtonTextSelected: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#FFFFFF'
+    inputInactive: {
+        color: '#A9A9A9'
     },
     buttonContainer: {
         position: 'absolute',
@@ -92,18 +89,26 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 24,
         alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
     buttonEnabled: {
-        backgroundColor: '#007BFF',
+        backgroundColor: 'rgb(236, 129, 58)',
     },
     buttonDisabled: {
-        backgroundColor: '#A9A9A9',
+        backgroundColor: '#ccc',
     },
     buttonText: {
         color: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
     },
-});
+});    
 
 export default styles;

@@ -54,7 +54,7 @@ export default function Birthday() {
             keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
         >
             <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                <Icon name="arrowleft" size={35} color="white" />
+                <Icon name="arrowleft" size={35} color="rgb(236, 129, 58)" />
             </TouchableOpacity>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>Hello, {fullName}</Text>
@@ -65,7 +65,7 @@ export default function Birthday() {
                     <TextInput
                         style={styles.input}
                         placeholder="MM/DD/YYYY"
-                        placeholderTextColor="#ddd"
+                        placeholderTextColor="rgb(255, 183, 110)"
                         value={dateOfBirth}
                         onChangeText={setDateOfBirth}
                         editable={false}

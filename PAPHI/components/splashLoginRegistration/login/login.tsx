@@ -40,7 +40,7 @@ export default function LoginPage() {
     return (
         <View style={[styles.container, styles.content]}>
             <View style={styles.headerSection}>
-                <Text style={styles.headerText}>(Insert App Name)</Text>
+                <Text style={styles.headerText}>Mingley</Text>
                 <Text style={styles.subheaderText}>Bringing real world connections back</Text>
             </View>
             <View style={styles.loginSection}>
@@ -48,7 +48,7 @@ export default function LoginPage() {
                     Log In
                 </Text>
                 <TextInput
-                    style={styles.input}
+                    style={[styles.input, username ? styles.inputActive : styles.inputInactive]}
                     placeholder="Username"
                     placeholderTextColor="#A9A9A9"
                     keyboardType="email-address"
@@ -59,7 +59,7 @@ export default function LoginPage() {
                     Forgot Username?
                 </Text>
                 <TextInput
-                    style={styles.input}
+                    style={[styles.input, password ? styles.inputActive : styles.inputInactive]}
                     placeholder="Password"
                     placeholderTextColor="#A9A9A9"
                     secureTextEntry
@@ -74,10 +74,7 @@ export default function LoginPage() {
                     onPress={handleLoginPress}
                     disabled={!username && !password}
                     >
-                    <Text style={[
-                        styles.loginButtonText,
-                        username && password ? styles.buttonTextEnabled : styles.buttonTextDisabled
-                    ]}>
+                    <Text style={styles.loginButtonText}>
                         Submit
                     </Text>
                 </TouchableOpacity>

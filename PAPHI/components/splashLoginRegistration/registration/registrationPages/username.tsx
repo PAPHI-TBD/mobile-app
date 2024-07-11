@@ -31,19 +31,22 @@ export default function Username() {
             keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
         >
             <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                <Icon name="arrowleft" size={30} color="white" />
+                <Icon name="arrowleft" size={30} color="rgb(236, 129, 58)" />
             </TouchableOpacity>
             <View style={styles.labelContainer}>
-                <Text style={styles.label}>What is your</Text>
-                <Text style={styles.label}>username?</Text>
+                <Text style={styles.label}>Create a username</Text>
+                {/* <Text style={styles.label}>username</Text> */}
+                <Text style={styles.labelSubText}>
+                    Create a memorable username for your account. This can be changed.
+                </Text>
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
-                    // style={[styles.input, { backgroundColor: 'transparent' }]}
+                    style={[styles.input, username ? styles.inputActive : styles.inputInactive]}
                     value={username}
                     onChangeText={setUsername}
                     placeholder="Username"
-                    placeholderTextColor="#ddd"
+                    placeholderTextColor="#ccc"
                 />
             </View>
             <View style={styles.buttonContainer}>

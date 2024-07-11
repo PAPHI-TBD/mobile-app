@@ -20,7 +20,7 @@ interface FormData {
 
 export default function Password() {
     const route = useRoute<PasswordRouteProp>();
-    const { fullName, date, gender, username, email } = route.params;
+    const { fullName, date, gender, username, email, preferences } = route.params;
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
     const [password, setPassword] = useState('');
@@ -110,7 +110,7 @@ export default function Password() {
     };
 
     const handleBack = () => {
-        navigation.navigate('Email', { fullName, date, gender, username, email });
+        navigation.navigate('Preferences', { fullName, date, gender, username, email, preferences });
     };
     
     return (
@@ -120,7 +120,7 @@ export default function Password() {
             keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
         >
             <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                <Icon name="arrowleft" size={30} color="#212F3D" />
+                <Icon name="arrowleft" size={30} color="rgb(236, 129, 58)" />
             </TouchableOpacity>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>Enter your</Text>
@@ -128,11 +128,11 @@ export default function Password() {
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
-                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    style={[styles.input, password ? styles.inputActive : styles.inputInactive]}
                     value={password}
                     onChangeText={setPassword}
                     placeholder="Password"
-                    placeholderTextColor="#ddd"
+                    placeholderTextColor="#ccc"
                     secureTextEntry
                 />
             </View>
@@ -142,11 +142,11 @@ export default function Password() {
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
-                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    style={[styles.input, confirmPassword ? styles.inputActive : styles.inputInactive]}
                     value={confirmPassword}
                     onChangeText={setConfirmPassword}
                     placeholder="Confirm Password"
-                    placeholderTextColor="#ddd"
+                    placeholderTextColor="#ccc"
                     secureTextEntry
                     onFocus={() => setConfirmIsTyping(true)}
                     onBlur={() => setConfirmIsTyping(false)}

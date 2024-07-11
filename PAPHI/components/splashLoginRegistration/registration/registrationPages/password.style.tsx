@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 30,
         paddingTop: 160,
-        backgroundColor: '#8BC0C8'
+        // backgroundColor: '#8BC0C8'
     },
     backButton: {
         position: 'absolute',
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: -2,
         // color: 'white',
-        color: '#212F3D',
+        color: 'rgb(236, 129, 58)',
         textAlign: 'center',
     },
     inputWrapper: {
@@ -47,15 +47,33 @@ const styles = StyleSheet.create({
         paddingBottom: 160,
     },
     input: {
-        height: 50,
+        textAlign: 'center',
         width: '90%',
-        padding: 10,
-        borderBottomColor: '#ccc',
-        borderBottomWidth: 2,
-        backgroundColor: '#fff',
-        fontSize: 22,
+        height: 50,
+        borderWidth: 1,
+        borderColor: 'rgb(236, 129, 58)',
+        backgroundColor: '#FCF8E6',
+        borderRadius: 50,
+        paddingLeft: 10,
+        marginTop: 0,
         marginBottom: 10,
-        color: '#FFFFFF'
+        fontSize: 15,
+        fontFamily: 'Inter',
+        // color: 'rgb(236, 129, 58)',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
+    },
+    inputActive: {
+        color: 'rgb(236, 129, 58)'
+    },
+    inputInactive: {
+        color: '#A9A9A9'
     },
     buttonContainer: {
         position: 'absolute',
@@ -71,12 +89,20 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 24,
         alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
     buttonEnabled: {
-        backgroundColor: '#007BFF',
+        backgroundColor: 'rgb(236, 129, 58)',
     },
     buttonDisabled: {
-        backgroundColor: '#A9A9A9',
+        backgroundColor: '#ccc',
     },
     buttonText: {
         color: '#fff',

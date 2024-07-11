@@ -24,6 +24,7 @@ import Gender from './components/splashLoginRegistration/registration/registrati
 import Password from './components/splashLoginRegistration/registration/registrationPages/password';
 import Username from './components/splashLoginRegistration/registration/registrationPages/username';
 import Email from './components/splashLoginRegistration/registration/registrationPages/email';
+import Preferences from './components/splashLoginRegistration/registration/registrationPages/preferences';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -43,6 +44,7 @@ export default function App() {
           <Stack.Screen name="Gender" component={Gender}/>
           <Stack.Screen name="Username" component={Username}/>
           <Stack.Screen name="Email" component={Email}/>
+          <Stack.Screen name="Preferences" component={Preferences}/>
           <Stack.Screen name="Password" component={Password}/>
           {/* Your bottom tabs navigation */}
           <Stack.Screen name="MainTabs" component={MainTabs} />

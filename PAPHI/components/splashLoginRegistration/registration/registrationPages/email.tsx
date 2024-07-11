@@ -17,7 +17,7 @@ export default function Email() {
     const [email, setEmail] = useState('');
 
     const handleNext = () => {
-        navigation.navigate('Password', { fullName, date, gender, username, email });
+        navigation.navigate('Preferences', { fullName, date, gender, username, email });
     };
 
     const handleBack = () => {
@@ -31,7 +31,7 @@ export default function Email() {
             keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
         >
             <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                <Icon name="arrowleft" size={30} color="white" />
+                <Icon name="arrowleft" size={30} color="rgb(236, 129, 58)" />
             </TouchableOpacity>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>What is your</Text>
@@ -39,11 +39,11 @@ export default function Email() {
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
-                    style={[styles.input, { backgroundColor: 'transparent' }]}
+                    style={[styles.input, email ? styles.inputActive : styles.inputInactive]}
                     value={email}
                     onChangeText={setEmail}
                     placeholder="Email"
-                    placeholderTextColor="#ddd"
+                    placeholderTextColor="#ccc"
                 />
             </View>
             <View style={styles.buttonContainer}>

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 30,
         paddingTop: 160,
-        backgroundColor: '#8BC0C8'
+        // backgroundColor: '#8BC0C8'
     },
     backButton: {
         position: 'absolute',
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 35,
-        fontFamily: 'Arial',
+        fontFamily: 'DM Sans Serif',
         fontWeight: 'bold',
         marginBottom: -2,
-        color: 'white',
+        color: 'rgb(236, 129, 58)',
         // color: '#212F3D',
         textAlign: 'left',
     },
@@ -51,12 +51,13 @@ const styles = StyleSheet.create({
         // color: '#FFFFFF',
         textAlign: 'center',
         marginTop: 5,
-        color: '#212F3D',
+        color: 'rgb(236, 129, 58)',
+        fontFamily: 'Inter',
     },
     inputContainer: {
         height: 50,
         width: '100%',
-        borderBottomColor: '#ccc',
+        borderBottomColor: 'rgb(224, 89, 39)',
         borderBottomWidth: 2,
         justifyContent: 'center',
         marginBottom: 10,
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: '100%',
         fontSize: 22,
-        color: '#FFFFFF',
+        color: 'rgb(236, 129, 58)',
     },
     datePickerButtons: {
         flexDirection: 'row',
@@ -75,26 +76,44 @@ const styles = StyleSheet.create({
     cancelBirthdayButton: {
         flex: 1,
         marginRight: 10,
-        backgroundColor: '#ccc',
+        backgroundColor: '#ddd',
         borderRadius: 30,
         padding: 10,
         alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
     confirmBirthdayButton: {
         flex: 1,
         marginLeft: 10,
-        backgroundColor: '#3b99ff',
+        backgroundColor: 'rgb(255, 183, 110)',
         borderRadius: 30,
         padding: 10,
         alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
     cancelBirthdayButtonText: {
         color: '#FFFFFF',
         fontSize: 16,
+        fontWeight: 'bold'
     },
     confirmBirthdayButtonText: {
         color: '#FFFFFF',
         fontSize: 16,
+        fontWeight: 'bold'
     },
     buttonContainer: {
         position: 'absolute',
@@ -110,12 +129,20 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 24,
         alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 6,
     },
     buttonEnabled: {
-        backgroundColor: '#007BFF',
+        backgroundColor: 'rgb(236, 129, 58)',
     },
     buttonDisabled: {
-        backgroundColor: '#A9A9A9',
+        backgroundColor: '#ccc',
     },
     buttonText: {
         color: '#fff',

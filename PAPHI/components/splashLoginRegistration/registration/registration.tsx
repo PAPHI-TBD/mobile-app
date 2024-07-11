@@ -27,7 +27,7 @@ export default function RegistrationPage() {
             keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0} 
         >
             <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                <Icon name="close" size={30} color="white" />
+                <Icon name="close" size={30} color="rgb(236, 129, 58)" />
             </TouchableOpacity>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>What is your</Text>
@@ -35,11 +35,11 @@ export default function RegistrationPage() {
             </View>
             <View style={styles.inputWrapper}>
                 <TextInput
-                    style={styles.input}
+                    style={[styles.input, fullName ? styles.inputActive : styles.inputInactive]}
                     value={fullName}
                     onChangeText={setFullName}
                     placeholder="Full Name"
-                    placeholderTextColor="#ddd"
+                    placeholderTextColor="#A9A9A9"
                 />
                 <Text style={styles.subLabel}>This is how it will appear in the app</Text>
             </View>

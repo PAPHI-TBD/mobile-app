@@ -31,7 +31,7 @@ export default function Gender() {
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-                <Icon name="arrowleft" size={35} color="white" />
+                <Icon name="arrowleft" size={35} color="rgb(236, 129, 58)" />
             </TouchableOpacity>
             <View style={styles.labelContainer}>
                 <Text style={styles.label}>Select your</Text>

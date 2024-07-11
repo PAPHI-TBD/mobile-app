@@ -8,6 +8,7 @@ export type RootStackParamList = {
     Gender: { fullName: string, date: Date, gender?: string };
     Username: { fullName: string, date: Date, gender: string, username?: string };
     Email: { fullName: string, date: Date, gender: string, username: string, email?: string };
-    Password: { fullName: string, date: Date, gender: string, username: string, email: string, password?: string };
+    Preferences: { fullName: string, date: Date, gender: string, username: string, email: string, preferences?: string[] };
+    Password: { fullName: string, date: Date, gender: string, username: string, email: string, preferences: string[], password?: string };
     MainTabs: undefined;
 };
