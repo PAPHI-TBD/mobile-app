@@ -18,6 +18,7 @@ const SplashPageButtons: React.FC = () => {
     return (
         <LinearGradient
             colors={['#E9CBD9', '#8BC0C8']}
+            // colors={['rgb(236, 139, 66)', 'rgb(240, 187, 122)']}
             locations={[0.21, 0.49]}
             style={styles.container}
         >
