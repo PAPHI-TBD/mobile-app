@@ -12,4 +12,5 @@ export type RootStackParamList = {
     MainTabs: undefined;
     Attendees: undefined; // fix
     EventPage: {data ?: any}; // fix
+    Message: { user: any }
 };
