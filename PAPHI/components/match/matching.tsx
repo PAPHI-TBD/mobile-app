@@ -21,10 +21,10 @@ export default function Match() {
 
     useEffect(() => {
         const sampleUserRequests = [
-            { id: '1', name: 'leo', username: 'username1', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures' },
-            { id: '2', name: 'maya', username: 'username2', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures' },
-            { id: '3', name: 'leo1', username: 'username3', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures' },
-            { id: '4', name: 'maya1', username: 'username4', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures' },
+            { id: '1', name: 'leo', username: 'username1', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures', img: require('../../assets/bio/bio-pic.png'), prompt: 'What is your favorite color?', message: 'blah blah blah', messageTime: '2m', unread: true },
+            { id: '2', name: 'maya', username: 'username2', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures', img: require('../../assets/bio/bio-pic.png'), prompt: 'What are your hobbies?', message: 'blah blah blah', messageTime: '4d', unread: true },
+            { id: '3', name: 'leo1', username: 'username3', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures', img: require('../../assets/bio/bio-pic.png'), prompt: 'What music do you like?', message: 'blah blah blah', messageTime: '1w', unread: true },
+            { id: '4', name: 'maya1', username: 'username4', bio: 'I’m a passionate adventurer who loves traveling to new places and exploring different cultures', img: require('../../assets/bio/bio-pic.png'), prompt: 'What is your favorite movie', message: 'blah blah blah', messageTime: '2w', unread: false },
         ];
         setUserRequests(sampleUserRequests);
     }, []);
@@ -48,8 +48,9 @@ export default function Match() {
     
     const SecondRoute = () => (
         // <View style={{ flex: 1, backgroundColor: '#673ab7' }} />
-        <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <View style={{ flex: 1, backgroundColor: 'white',}}>
             <FlatList
+            style={{ marginTop: '5%' }}
             data={userRequests}
             renderItem={({ item }) => <MatchingRequestCard user={item} onAccept={onAccept} onReject={onReject} />}
             keyExtractor={(item) => item.id}
