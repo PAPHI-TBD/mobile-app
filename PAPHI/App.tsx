@@ -25,6 +25,7 @@ import Password from './components/splashLoginRegistration/registration/registra
 import Email from './components/splashLoginRegistration/registration/registrationPages/email';
 import Attendees from './components/event/attendeePage/attendees';
 import EventPage from './components/event/eventPage/eventPage';
+import UserCommunities from './components/userCommunities/UserCommunities';
 
 const customColor = '#322E22';
 
@@ -89,7 +90,10 @@ export default function App() {
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="SplashPage" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="UserCommunities" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="UserCommunities" component={UserCommunities} />
+        <Stack.Screen name="Community" component={Community} />
+
           {/* Include your pages here */}
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
