@@ -1,8 +1,14 @@
 {
   "dependencies": {
+    "@expo/metro-runtime": "~3.2.1",
     "@react-native-community/blur": "^4.4.0",
+    "@types/react": "~18.2.79",
+    "date-fns": "^3.6.0",
     "expo": "^51.0.2",
-    "react-native-shadow": "^1.2.2"
+    "react-dom": "18.2.0",
+    "react-native-shadow": "^1.2.2",
+    "react-native-web": "~0.19.10",
+    "typescript": "~5.3.3"
   },
   "devDependencies": {
     "metro": "^0.80.9"
