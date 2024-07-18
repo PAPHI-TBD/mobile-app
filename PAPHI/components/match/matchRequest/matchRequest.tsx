@@ -27,11 +27,11 @@ interface MatchingRequestProps {
 const MatchingRequestCard = ({ user, onAccept, onReject }: MatchingRequestProps ) => {
     const renderRightActions = () => (
         <View style={styles.actionsContainer}>
-            <TouchableOpacity style={[styles.actionButton, styles.acceptContainer]} onPress={() => onReject(user.id)}>
+            <TouchableOpacity style={[styles.actionButton, styles.rejectContainer]} onPress={() => onReject(user.id)}>
                 <FontAwesomeIcon icon={faX} size={24} color="black" />
                 {/* <Text style={styles.actionText}>Reject</Text> */}
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.actionButton, styles.rejectContainer]} onPress={() => onAccept(user.id)}>
+            <TouchableOpacity style={[styles.actionButton, styles.acceptContainer]} onPress={() => onAccept(user.id)}>
                 <FontAwesomeIcon icon={faCheck} size={24} color="black" />
                 {/* <Text style={styles.actionText}>Accept</Text> */}
             </TouchableOpacity>
