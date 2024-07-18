@@ -92,7 +92,7 @@ export default function App() {
         <Stack.Navigator initialRouteName="SplashPage" screenOptions={{ headerShown: false }}>
           {/* Include your pages here */}
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
-              {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
+              {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs 
             <Stack.Screen name="HangRequest"  component={HangRequest}/>
             <Stack.Screen name="SplashPage" component={SplashPage} />
             <Stack.Screen name="SplashPageButtons" component={SplashPageButtons} />

@@ -369,7 +369,7 @@ const ProfileScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity>
-          <Image source={require('../../assets/ProfileIcons/Settings.png')} style={styles.settingIcon} />
+          <Image source={require('../../assets/ProfileIcons/Bell.png')} style={styles.BellIcon} />
         </TouchableOpacity>
       </View>
 
@@ -379,27 +379,39 @@ const ProfileScreen = () => {
       </View>
 
       <View style={styles.profileSection}>
-        <View style={styles.userInfo}>
-          <TouchableOpacity style={styles.connectButton}>
-          <Text style={styles.buttonText}>Connect <Text style={styles.plusIcon}>+</Text></Text>
-          </TouchableOpacity>
-          <View style={styles.actionButtons}>
-            <TouchableOpacity>
-              <Image source={require('../../assets/ProfileIcons/Email.png')} style={styles.actionIcon} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image source={require('../../assets/ProfileIcons/Bell.png')} style={styles.actionIcon} />
-            </TouchableOpacity>
+        <Text style={styles.name}>JOHN DOE</Text>
+        <Text style={styles.username}>@queenoftears</Text>
+        
+        <View style={styles.statsContainer}>
+          <View style={styles.statItem}>
+            <Text style={styles.statValue}>111</Text>
+            <Text style={styles.statLabel}>Friends</Text>
+          </View>
+          <View style={styles.statItem}>
+            <Text style={styles.statValue}>27</Text>
+            <Text style={styles.statLabel}>Posts</Text>
           </View>
         </View>
-        <Text style={styles.name}>{username}</Text>
-        <Text style={styles.username}>@QUEENOFTEARS</Text>
-        <Text style={styles.connections}>111 MOXY CONNECTIONS</Text>
-        <Text style={styles.friends}>Friends with: <Text>Deven, Joshua, etc</Text></Text>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={[styles.button, styles.editProfileButton]}>
+            <Text style={[styles.buttonText, styles.editProfileButtonText]}>Edit Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.button, styles.shareProfileButton]}>
+            <Text style={[styles.buttonText, styles.shareProfileButtonText]}>Share Profile</Text>
+          </TouchableOpacity>
+        </View>
+
         <Text style={styles.bio}>
-          I'm a passionate adventurer who loves traveling 
-          to new places and exploring different cultures.
+          I'm a passionate adventurer who loves traveling to new places and exploring different cultures
         </Text>
+
+        <View style={styles.socialIconsContainer}>
+          <Image source={require('../../assets/ProfileIcons/Instagram.png')} style={styles.socialIcon} />
+          <Image source={require('../../assets/ProfileIcons/X.png')} style={styles.socialIcon} />
+          <Image source={require('../../assets/ProfileIcons/FaceBook.png')} style={styles.socialIcon} />
+          <Image source={require('../../assets/ProfileIcons/TikTok.png')} style={styles.socialIcon} />
+        </View>
       </View>
 
       <View style={styles.tabsContainer}>

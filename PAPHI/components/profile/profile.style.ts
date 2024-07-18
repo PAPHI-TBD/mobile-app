@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
     height: 24,
     marginHorizontal: 10,
   },
-  settingIcon: {
-    width: 24,
-    height: 24,
+  BellIcon: {
+    width: 30,
+    height: 30,
   },
   profileSection: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 20,
     paddingHorizontal: 20,
   },
   userInfo: {
@@ -58,8 +58,14 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   buttonText: {
-    color: '#FFFFFF',
+    textAlign: 'center',
     fontWeight: 'bold',
+  },
+  editProfileButtonText: {
+    color: 'white',
+  },
+  shareProfileButtonText: {
+    color: '#4A3AFF',
   },
   plusIcon: {
     color: '#FFFFFF',
@@ -67,9 +73,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   name: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    // marginVertical: 5,
     marginTop: 10,
   },
   addFriendButton: {
@@ -87,18 +92,57 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   socialIcon: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     marginHorizontal: 10,
   },
   socialIconsContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: 15,
   },
   username: {
     color: '#888888',
-    fontSize: 10,
+    fontSize: 14,
+    marginBottom: 10,
+  },
+  statsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 15,
+  },
+  statItem: {
+    alignItems: 'center',
+    marginHorizontal: 15,
+  },
+  statValue: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  statLabel: {
+    fontSize: 12,
+    color: '#888888',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginBottom: 15,
+  },
+  shareProfileButton: {
+    backgroundColor: 'white',
+    borderColor: '#4A3AFF',
+  },
+  button: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    width: '48%',
+  },
+  editProfileButton: {
+    backgroundColor: '#4A3AFF',
+    borderColor: '#4A3AFF',
   },
   connections: {
     marginVertical: 5,
@@ -108,7 +152,9 @@ const styles = StyleSheet.create({
   },
   bio: {
     textAlign: 'center',
-    marginVertical: 10,
+    marginVertical: 15,
+    paddingHorizontal: 20,
+    lineHeight: 20,
   },
   actionButtons: {
     flexDirection: 'row',
