@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import {TouchableOpacity } from 'react-native';
+
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { config } from '@gluestack-ui/config';
 import { GluestackUIProvider } from '@gluestack-ui/themed';
+import { Ionicons } from '@expo/vector-icons';
 
 // Import your components
+import { CommunityProvider } from './components/community/communityDetails/communityContext';
 import Home from './components/home/index';
 import Feed from './components/feed/feed';
-import Community from './components/community/community';
+import Community from './components/community/mainPage/community';
 import Chat from './components/chat/chatLandingPage/chat';
 import Profile from './components/profile/profile';
 import SplashPage from './components/splashLoginRegistration/splashPage'; // Import your LogoPage component
@@ -26,6 +30,7 @@ import Email from './components/splashLoginRegistration/registration/registratio
 import Attendees from './components/event/attendeePage/attendees';
 import EventPage from './components/event/eventPage/eventPage';
 import UserCommunities from './components/userCommunities/UserCommunities';
+import CommunityDetail from './components/community/communityDetails/communityDetail';
 
 const customColor = '#322E22';
 
@@ -90,10 +95,7 @@ export default function App() {
   return (
     <GluestackUIProvider config={config}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="UserCommunities" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="UserCommunities" component={UserCommunities} />
-        <Stack.Screen name="Community" component={Community} />
-
+        <Stack.Navigator initialRouteName="SplashPage" screenOptions={{ headerShown: false }}>
           {/* Include your pages here */}
             {/* COMMENT OUT STACK SCREEN FOR TESTING */}
               {/* MAKE SURE IN THE FUTURE CHECK IF THE USER HAS LOGGED IN/STAYED LOGGED IN THEN SKIP TO MainTabs */}
@@ -108,14 +110,17 @@ export default function App() {
             <Stack.Screen name="Email" component={Email} />
             <Stack.Screen name="Password" component={Password} /> */}
 
-            {/*<Stack.Screen name="Profile" component={Profile} />
-          {/* Your bottom tabs navigation */}
-          <Stack.Screen name="MainTabs" component={MainTabs} />
-          <Stack.Screen name="Attendees" component={Attendees} />
-          <Stack.Screen name="EventPage" component={EventPage} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </GluestackUIProvider>
+              {/*<Stack.Screen name="Profile" component={Profile} />
+            {/* Your bottom tabs navigation */}
+            <Stack.Screen name="MainTabs" component={MainTabs} />
+            <Stack.Screen name="Attendees" component={Attendees} />
+            <Stack.Screen name="EventPage" component={EventPage} />
+            <Stack.Screen name="CommunityDetail" component={CommunityDetail} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </GluestackUIProvider>
+    </CommunityProvider>
+
 
 
 
