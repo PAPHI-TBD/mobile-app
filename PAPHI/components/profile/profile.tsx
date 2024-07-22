@@ -3,7 +3,6 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, ImageBackg
 import { Calendar,CalendarProvider, CalendarList, Agenda, WeekCalendar  } from 'react-native-calendars';
 import { Theme } from 'react-native-calendars/src/types';
 import { format, parse } from 'date-fns';
-import { useNavigation } from '@react-navigation/native';
 import styles from './profile.style';
 
 interface Location {
@@ -39,8 +38,6 @@ interface ApiResponse<T> {
   data: T;
 }
 
-
-
 const getOrdinalSuffix = (day: number) => {
   if (day > 3 && day < 21) return 'TH';
   switch (day % 10) {
@@ -53,7 +50,6 @@ const getOrdinalSuffix = (day: number) => {
 
 function formatEventDateTime(dateString: string, timeString: string): string {
   const combinedDateTime = `${dateString}T${timeString}`;
-  
   const eventDate = parse(combinedDateTime, "yyyy-MM-dd'T'HH:mm:ss", new Date());
 
   return format(eventDate, "EEE, MMMM d - h:mma");
@@ -62,9 +58,8 @@ function formatEventDateTime(dateString: string, timeString: string): string {
 function daysUntilEvent(dateString: string, timeString: string): string {
 
   const combinedDateTime = `${dateString}T${timeString}`;
-  
   const eventDate = parse(combinedDateTime, "yyyy-MM-dd'T'HH:mm:ss", new Date());
-  
+
   const today = new Date();
   const differenceInTime = eventDate.getTime() - today.getTime();
   const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
@@ -84,12 +79,11 @@ function formatMonthDay(dateString: string): string {
 }
 
 const getCategoryColor = (category) => {
-  // Add more categories and colors as needed
+  //Add more categories and colors as needed
   const colors = {
     'Hiking': '#4E79E0',
     'Environmental': '#4CD964',
     'Fitness': '#FF2D55',
-    // Add more categories and colors here
   };
   return colors[category] || '#314BD8'; //default color is blue
 };
@@ -101,9 +95,9 @@ const ProfileScreen = () => {
   const [events, setEvents] = useState([]);
   const [calendarView, setCalendarView] = useState('month');
   const [selectedDate, setSelectedDate] = useState('');
+  const [filteredEvents, setFilteredEvents] = useState([]);
   const [selectedTab, setSelectedTab] = useState('photos');
   const [markedDates, setMarkedDates] = useState({});
-  const navigation = useNavigation();
 
   const toggleCalendarView = () => {
     setCalendarView(calendarView === 'month' ? 'week' : 'month');
@@ -118,16 +112,6 @@ const ProfileScreen = () => {
     require('../../assets/ProfileIcons/Photo4.png'),
     require('../../assets/ProfileIcons/Photo5.png'),
     require('../../assets/ProfileIcons/Photo6.png'),
-  ];
-
-  const eventsImages = [
-    require('../../assets/ProfileIcons/Event1.png'),
-    require('../../assets/ProfileIcons/Event2.png'),
-    require('../../assets/ProfileIcons/Event3.png'),
-    require('../../assets/ProfileIcons/Event1.png'),
-    require('../../assets/ProfileIcons/Event2.png'),
-    require('../../assets/ProfileIcons/Event3.png'),
-    require('../../assets/ProfileIcons/Event1.png'),
   ];
 
 
@@ -194,6 +178,20 @@ const ProfileScreen = () => {
     fetchProfileData();
   }, [username]);
 
+
+  //filter events based on selected date
+  useEffect(() => {
+    if (selectedDate && events.length > 0) {
+      const filtered = events.filter(event => {
+        const eventDate = event.data.date.split('T')[0];
+        return eventDate === selectedDate;
+      });
+      setFilteredEvents(filtered);
+    } else {
+      setFilteredEvents(events);
+    }
+  }, [selectedDate, events]);
+
   //Bckground for calendar where events are displayed
   useEffect(() => {
     if (events.length > 0) {
@@ -212,6 +210,7 @@ const ProfileScreen = () => {
     const combinedDates = {
       ...markedDates,
       [today]: { selected: true, selectedColor: 'black' },
+      [selectedDate]: { selected: true, selectedColor: '#4A3AFF' },
     };
 
     const commonTheme = {
@@ -311,33 +310,47 @@ const ProfileScreen = () => {
       <ScrollView contentContainerStyle={styles.eventsContainer}>
         {renderCalendar()}
         
-        {events.map((event, index) => ( 
-          <View key={index} style={styles.eventCard}>
-            <View style={[styles.eventColorTab, { backgroundColor: getCategoryColor(event.data.category) }]}>
-              <Text style={styles.eventDateIndicator}>{formatMonthDay(event.data.date)}</Text>
-            </View>
-            <View style={styles.eventImageContainer}>
-              <Image 
-                source={require('../../assets/ProfileIcons/Event1.png')} 
-                style={styles.eventImage} 
-              />
-            </View>
-            <View style={styles.eventContent}>
-              <View style={styles.eventHeader}>
-                <Text style={styles.eventName}>{event.data.name}</Text>
-              </View>
-              <Text style={styles.eventDate}>{daysUntilEvent(event.data.date, event.data.time)}</Text>
-              <Text style={styles.eventTime}>{formatEventDateTime(event.data.date, event.data.time)}</Text>
-              <Text style={styles.eventLocation}>{event.data.location.street}</Text>
-            </View>
-            <TouchableOpacity style={styles.notificationIcon}>
-              <Image 
-                source={require('../../assets/ProfileIcons/Bell.png')} 
-                style={styles.actionIcon} 
-              />
-            </TouchableOpacity>
+        {selectedDate && (
+          <View style={styles.selectedDateContainer}>
+            <Text style={styles.selectedDateText}>
+              Events for {format(parse(selectedDate, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')}
+            </Text>
           </View>
-        ))}
+        )}
+  
+        {filteredEvents.length > 0 ? (
+          filteredEvents.map((event, index) => ( 
+            <View key={index} style={styles.eventCard}>
+              <View style={[styles.eventColorTab, { backgroundColor: getCategoryColor(event.data.category) }]}>
+                <Text style={styles.eventDateIndicator}>{formatMonthDay(event.data.date)}</Text>
+              </View>
+              <View style={styles.eventImageContainer}>
+                <Image 
+                  source={require('../../assets/ProfileIcons/Event1.png')} 
+                  style={styles.eventImage} 
+                />
+              </View>
+              <View style={styles.eventContent}>
+                <View style={styles.eventHeader}>
+                  <Text style={styles.eventName}>{event.data.name}</Text>
+                </View>
+                <Text style={styles.eventDate}>{daysUntilEvent(event.data.date, event.data.time)}</Text>
+                <Text style={styles.eventTime}>{formatEventDateTime(event.data.date, event.data.time)}</Text>
+                <Text style={styles.eventLocation}>{event.data.location.street}</Text>
+              </View>
+              <TouchableOpacity style={styles.notificationIcon}>
+                <Image 
+                  source={require('../../assets/ProfileIcons/Bell.png')} 
+                  style={styles.actionIcon} 
+                />
+              </TouchableOpacity>
+            </View>
+          ))
+        ) : (
+          <View style={styles.selectedDateContainer}>
+          <Text style={styles.noEventsText}>No events on this date</Text>
+          </View>
+        )}
       </ScrollView>
     </View>
   );
