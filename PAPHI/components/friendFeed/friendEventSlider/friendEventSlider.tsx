@@ -24,7 +24,7 @@ const FriendEventSlider = ({ eventList }: FriendEventSliderProps) => {
     const renderCard = (event: FriendEvent) => {
         return (
             // <View style={styles.eventImage}>
-            <TouchableOpacity style={styles.eventImage} onPress={eventPage}>
+            <TouchableOpacity key={event.id} style={styles.eventImage} onPress={eventPage}>
                 <Image style={styles.image}  source={require('../../../assets/event/sampleEvent.jpg')}/>
             </TouchableOpacity>
             // </View>

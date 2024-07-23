@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBell, faPlus, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../types'; // Adjust the import path as necessary
 import styles from './feed.style';
 import FriendEventSlider from './friendEventSlider/friendEventSlider';
 import EventPost from './eventPost/eventPost';
@@ -73,6 +75,12 @@ export default function Feed() {
         // Add more events as needed
     ];    
 
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const createPost = () => {
+        navigation.navigate('CreatePost');
+    };
+
     return (
         <View style={{ flex: 1 }}>
             <LinearGradient
@@ -91,12 +99,8 @@ export default function Feed() {
                             </View>
                             
                         </TouchableOpacity>   
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={createPost}>
                             <FontAwesomeIcon icon={faPlusCircle} size={23} color='white'/>
-                            {/* <View style={styles.notiTextCircle}>
-                                <Text style={styles.notiText}>3</Text>
-                            </View> */}
-                            
                         </TouchableOpacity> 
                     </View>
                     

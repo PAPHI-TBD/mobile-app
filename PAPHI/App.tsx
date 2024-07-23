@@ -25,6 +25,7 @@ import Password from './components/splashLoginRegistration/registration/registra
 import Email from './components/splashLoginRegistration/registration/registrationPages/email';
 import Attendees from './components/event/attendeePage/attendees';
 import EventPage from './components/event/eventPage/eventPage';
+import CreatePost from './components/friendFeed/createPost/createPost';
 
 const customColor = '#322E22';
 
@@ -109,6 +110,7 @@ export default function App() {
           <Stack.Screen name="MainTabs" component={MainTabs} />
           <Stack.Screen name="Attendees" component={Attendees} />
           <Stack.Screen name="EventPage" component={EventPage} />
+          <Stack.Screen name="CreatePost" component={CreatePost} />
         </Stack.Navigator>
       </NavigationContainer>
     </GluestackUIProvider>
